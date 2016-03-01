@@ -5,6 +5,7 @@ var cookieParser=require('cookie-parser');
 var bodyParser=require('body-parser');
 var mongoose =require('mongoose');
 //var passport=require('passport');
+var MongoClient = require('mongodb').MongoClient;
 
 //varUser=require('./models/user.js');
 
@@ -41,16 +42,26 @@ if(app.get('env')==='development'){
 
 }
 
+ //StandardURIformat:mongodb://[dbuser:dbpassword@]host:port/dbname
+ var uri="mongodb://heroku_dvldc026:bkgs9p6shbfhl0ub46j51gk9b@ds015398.mongolab.com:15398/heroku_dvldc026";
+
+// Retrieve
+var MongoClient = require('mongodb').MongoClient;
+
+// Connect to the db
+MongoClient.connect(uri, function(err, db) {
+  if (err) {
+    return console.dir(err);
+  } return console.log("Vi er tilkoblet databasen");
+});
 
 module.exports=app;
 
 /*
 
- //StandardURIformat:mongodb://[dbuser:dbpassword@]host:port/dbname
-
- varuri='mongodb://heroku_dvldc026:bkgs9p6shbfhl0ub46j51gk9b@ds015398.mongolab.com:15398/heroku_dvldc026';
 
  mongodb.MongoClient.connect(uri,function(err,db){
+
 
  if(err){
  console.log("unabletoconnecttoMongoDBserverError...",err);
