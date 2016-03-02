@@ -19,14 +19,14 @@ function checkUsername(){
     if(username == "") {
         alert("Error: Username cannot be blank!");
         username.focus();
-        //return false;
+        return false;
     }
     if(!validUsername) {
         alert("Error: Username must contain only letters, numbers and underscores!");
         username.focus();
-        //return false;
+        return false;
     }
-    //return true
+    return true
 }
 
 //validate password
@@ -41,21 +41,27 @@ function checkPassword() {
         if(!checkPass(password)) {
             alert("The password you have entered is not valid!");
             password.focus();
-            //return false;
+            return false;
         }
     } else {
         alert("Error: Please check that you've entered and confirmed your password!");
         password.focus();
-        //return false;
+        return false;
     }
-    //return true;
+    return true;
 }
 
+var collection = db.collection('user');
 
 //Checks that all input values are valid and if so add it to the database
 function registerUser(){
 //lag kode for å lagre informasjon om brukeren i databasen
-//    if(checkUsername()){
+    if(checkUsername()&& checkPassword()){
+        var doc1 = {'username':'doc1', 'password' : 'sdffd'};
+
+        collection.insert(doc1, {w:1}, function(err, result) {});
+
+    }
 
     //}
 }
