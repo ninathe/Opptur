@@ -54,6 +54,12 @@ MongoClient.connect(uri, function(err, db) {
     return console.dir(err);
   }
   console.log("Vi er tilkoblet databasen");
+  });
+
+module.exports=app;
+
+
+/*
   var collection = db.collection('test');
   //collection.drop();
   var doc1 = {'brukernavn':'doc1', 'passerod' : 'sdffd'};
@@ -65,12 +71,6 @@ MongoClient.connect(uri, function(err, db) {
   collection.insert(doc1, {w:1}, function(err, result) {});
   //
   collection.insert(lotsOfDocs, {w:1}, function(err, result) {});
-  });
-
-module.exports=app;
-
-
-/*
   //
   collection.insert(doc1);
   //
