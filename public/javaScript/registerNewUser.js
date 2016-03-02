@@ -52,5 +52,4 @@ function checkForm(form)
 //Checks that all input values are valid and if so add it to the database
 function registerUser() {
 //lag kode for å lagre informasjon om brukeren i databasen
-    alert(name);
 }

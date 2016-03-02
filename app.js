@@ -5,7 +5,6 @@ var cookieParser=require('cookie-parser');
 var bodyParser=require('body-parser');
 var mongoose =require('mongoose');
 //var passport=require('passport');
-var MongoClient = require('mongodb').MongoClient;
 
 //varUser=require('./models/user.js');
 
@@ -98,17 +97,10 @@ module.exports=app;
  password :String
  });
 
+=======
+  });
 
- mongodb.MongoClient.connect(uri,function(err,db){
 
-
- if(err){
- console.log("unabletoconnecttoMongoDBserverError...",err);
- }else{
- console.log("WEareconneced");
- //inserttherestofthedatabsequerieshere
-
- }
 
  varuser=mongodb.model('emp',collection);*!/
  /!*
