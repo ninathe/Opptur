@@ -56,23 +56,24 @@ MongoClient.connect(uri, function(err, db) {
   console.log("Vi er tilkoblet databasen");
   var collection = db.collection('test');
   //collection.drop();
+  var doc1 = {'brukernavn':'doc1', 'passerod' : 'sdffd'};
+  var doc2 = {'hello':'doc2'};
+  var lotsOfDocs = [{'hello':'doc3'}, {'hello':'doc4'}];
 
 
+  collection.insert(doc2, {w:1}, function(err, result) {});
+  collection.insert(doc1, {w:1}, function(err, result) {});
+  //
+  collection.insert(lotsOfDocs, {w:1}, function(err, result) {});
   });
 
 module.exports=app;
 
 
 /*
-  var doc1 = {'brukernavn':'doc1', 'passerod' : 'sdffd'};
-  var doc2 = {'hello':'doc2'};
-  var lotsOfDocs = [{'hello':'doc3'}, {'hello':'doc4'}];
   //
   collection.insert(doc1);
   //
-  collection.insert(doc2, {w:1}, function(err, result) {});
-  //
-  collection.insert(lotsOfDocs, {w:1}, function(err, result) {});
   //var collection = db.collection('test');
   //var doc = {mykey:1, fieldtoupdate:1};
   //
