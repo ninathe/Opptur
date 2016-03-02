@@ -3,4 +3,7 @@
  */
 
 
-sdvnsld
+function registerUser() {
+    var name = document.getElementById("reg_username").value;
+    alert(name);
+}
