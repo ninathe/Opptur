@@ -54,7 +54,12 @@ MongoClient.connect(uri, function(err, db) {
     return console.dir(err);
   }
   console.log("Vi er tilkoblet databasen");
+});
 
+module.exports=app;
+
+
+/*
   var collection = db.collection('test');
   var doc1 = {'brukernavn':'doc1', 'passerod' : 'sdffd'};
   var doc2 = {'hello':'doc2'};
@@ -92,10 +97,6 @@ MongoClient.connect(uri, function(err, db) {
  userName :String,
  password :String
  });
-module.exports=app;
-
-
-/*
 
 
  mongodb.MongoClient.connect(uri,function(err,db){
