@@ -4,15 +4,27 @@ var EMAIL_REGEX=/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0
 function signUp(){
 
     var email = document.getElementById("reg_email").value;
-    checkEmail(email);
-
+    var mailValid=checkEmail(email);
+    var nickname="nick";
 
 
     var password = document.getElementById("reg_password").value;
     alert('value is '+ password);
     var passwordConfirm = document.getElementById("reg_password_confirm").value;
 
-    checkPassword(password, passwordConfirm);
+    var passValid=checkPassword(password, passwordConfirm);
+
+    if(mailValid && passValid){
+        $.post("/signIn",
+            {
+                nickname: nickname,
+                email: email,
+                password: password
+            },
+            function(data,status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+    }
 }
 
 
@@ -45,19 +57,9 @@ function checkPassword(password, passwordConfirmed) {
     return true;
 }
 
-//var collection = db.collection('user');
 
-//Checks that all input values are valid and if so add it to the database
-//function registerUser(){
-////lag kode for å lagre informasjon om brukeren i databasen
-//    if(checkUsername()&& checkPassword()){
-//        var doc1 = {'username':'doc1', 'password' : 'sdffd'};
-//
-//        collection.insert(doc1, {w:1}, function(err, result) {});
-//
-//    }
-//
-//}
+
+
 
 //var xhttp;
 //if (window.XMLHttpRequest) {

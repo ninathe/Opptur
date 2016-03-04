@@ -30,7 +30,8 @@
     <script src="JavaScript/leaflet/popupNewUser.js"></script>
     <script src="JavaScript/leaflet/popupLogin.js"></script>
     <script src="JavaScript/leaflet/popupInfo.js"></script>
-    
+
+
 
   </head>
   <!--Black background used in popups:-->
@@ -71,11 +72,11 @@
     <div id = "newUserPopup">
       <div class="login-form-1">
         <h1>Ny bruker</h1>
-        <form id="register-form" class="text-left">
+        <form id="register-form" class="text-left" method ='POST'>
           <div class="login-form-main-message"></div>
             <div class="main-login-form">
               <div class="login-group">
-                <div class="form-group">
+                <div class="form-group" onsubmit="signUp()">
                   <!--<label for="reg_username" class="sr-only">Email address</label>-->
                   <label for="reg_email" class="sr-only">Email</label>
                   <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="Enter email" required>
@@ -86,8 +87,8 @@
                 <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password" required>
 
                 <!--<input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">-->
-                <label for="reg_fullname" class="sr-only">Full Name</label>
-                <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="Nick name">
+                <label for="reg_nickname" class="sr-only">Nick Name</label>
+                <input type="text" class="form-control" id="reg_nickname" name="reg_nickname" placeholder="Nick name">
                 <div class="form-group login-group-checkbox">
                   <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
                   <label for="male">male</label>        
@@ -96,7 +97,7 @@
                   <!--<input type="checkbox" class="" id="reg_agree" name="reg_agree">-->
                   <!--<label for="reg_agree">i agree with <a href="#">terms</a></label>-->
                 </div>
-                <button  onclick="signUp()" class="login-button"><i class="fa fa-chevron-right"></i>Sign up</button><!--type="submit"--->
+                <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i>Sign up</button><!--type="submit"--->
               </div>
               <div class="etc-login-form">
                 <p>already have an account? <a href="#">login here</a></p>
