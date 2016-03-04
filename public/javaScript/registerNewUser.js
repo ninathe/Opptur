@@ -1,51 +1,46 @@
 
 var USERNAME_REGEX = /^[a-zA-Z0-9]+$/;
-var PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-var username;
-var password;
-var passwordConfirm;
+var EMAIL_REGEX=/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+
+function signUp(){
+
+    var email = document.getElementById("email").value;
+    checkEmail(email);
+
+
+
+    var password = document.getElementById("reg_password").value;
+    alert('value is'+ password);
+    var passwordConfirm = document.getElementById("reg_password_confirm").value;
+
+    checkPassword(password, passwordConfirm);
+}
+
 
 //Validates the username
-function checkUsername(){
-    username = document.getElementById("reg_username").value;
-    var validUsername = USERNAME_REGEX.test(username);
+function checkEmail(email){
 
-    //var validUsername = username.value.match(USERNAME_REGEX);
-    //if(validUsername == null){     FØRSTE FORSØKS GREIE
-    //    alert("Your username is not valid. Only characters and digits are acceptable.");
-    //    username.focus();
-    //    return false;
-    //}
-    if(username == "") {
+    var validEmail = EMAIL_REGEX.test(email);
+
+    if(email.length<1) {
         alert("Error: Username cannot be blank!");
-        username.focus();
         return false;
     }
-    if(!validUsername) {
-        alert("Error: Username must contain only letters, numbers and underscores!");
-        username.focus();
+    if(!validEmail) {
+        alert("Error: Email is not valid, please try again");
         return false;
     }
+    alert('valid email');
     return true
 }
 
 //validate password
-password = document.getElementById("reg_password").value;
-passwordConfirm = document.getElementById("reg_password_confirm").value;
-function checkPass(str) {
-    return PASSWORD_REGEX.test(str);
-}
 
-function checkPassword() {
-    if(password != "" && password == passwordConfirm) {
-        if(!checkPass(password)) {
-            alert("The password you have entered is not valid!");
-            password.focus();
-            return false;
-        }
+function checkPassword(password, passwordConfirmed) {
+    if(password.length>0 && password === passwordConfirmed) {
+        console.log('ok password');
     } else {
         alert("Error: Please check that you've entered and confirmed your password!");
-        password.focus();
         return false;
     }
     return true;
