@@ -1,10 +1,9 @@
 
-var USERNAME_REGEX = /^[a-zA-Z0-9]+$/;
 var EMAIL_REGEX=/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
 
 function signUp(){
 
-    var email = document.getElementById("email").value;
+    var email = document.getElementById("reg_email").value;
     checkEmail(email);
 
 
@@ -23,7 +22,7 @@ function checkEmail(email){
     var validEmail = EMAIL_REGEX.test(email);
 
     if(email.length<1) {
-        alert("Error: Username cannot be blank!");
+        alert("Error: Email cannot be blank!");
         return false;
     }
     if(!validEmail) {
@@ -46,17 +45,17 @@ function checkPassword(password, passwordConfirmed) {
     return true;
 }
 
-var collection = db.collection('user');
+//var collection = db.collection('user');
 
 //Checks that all input values are valid and if so add it to the database
-function registerUser(){
-//lag kode for å lagre informasjon om brukeren i databasen
-    if(checkUsername()&& checkPassword()){
-        var doc1 = {'username':'doc1', 'password' : 'sdffd'};
+//function registerUser(){
+////lag kode for å lagre informasjon om brukeren i databasen
+//    if(checkUsername()&& checkPassword()){
+//        var doc1 = {'username':'doc1', 'password' : 'sdffd'};
+//
+//        collection.insert(doc1, {w:1}, function(err, result) {});
+//
+//    }
+//
+//}
 
-        collection.insert(doc1, {w:1}, function(err, result) {});
-
-    }
-
-    //}
-}
