@@ -5,7 +5,6 @@ var cookieParser=require('cookie-parser');
 var bodyParser=require('body-parser');
 var mongoose =require('mongoose');
 //var passport=require('passport');
-var MongoClient = require('mongodb').MongoClient;
 
 //varUser=require('./models/user.js');
 
@@ -54,26 +53,22 @@ MongoClient.connect(uri, function(err, db) {
     return console.dir(err);
   }
   console.log("Vi er tilkoblet databasen");
-  });
+});
 
 module.exports=app;
 
 
 /*
   var collection = db.collection('test');
-  //collection.drop();
   var doc1 = {'brukernavn':'doc1', 'passerod' : 'sdffd'};
   var doc2 = {'hello':'doc2'};
   var lotsOfDocs = [{'hello':'doc3'}, {'hello':'doc4'}];
-
-
-  collection.insert(doc2, {w:1}, function(err, result) {});
-  collection.insert(doc1, {w:1}, function(err, result) {});
-  //
-  collection.insert(lotsOfDocs, {w:1}, function(err, result) {});
   //
   collection.insert(doc1);
   //
+  collection.insert(doc2, {w:1}, function(err, result) {});
+  //
+  collection.insert(lotsOfDocs, {w:1}, function(err, result) {});
   //var collection = db.collection('test');
   //var doc = {mykey:1, fieldtoupdate:1};
   //
@@ -94,6 +89,7 @@ module.exports=app;
 
     return console.toLocaleString(stream);
   });
+  });
 
  var collection2 = db.collection('user'){
  _id:String, //email
@@ -101,16 +97,10 @@ module.exports=app;
  password :String
  });
 
- mongodb.MongoClient.connect(uri,function(err,db){
+=======
+  });
 
 
- if(err){
- console.log("unabletoconnecttoMongoDBserverError...",err);
- }else{
- console.log("WEareconneced");
- //inserttherestofthedatabsequerieshere
-
- }
 
  varuser=mongodb.model('emp',collection);*!/
  /!*
