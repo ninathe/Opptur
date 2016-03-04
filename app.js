@@ -29,7 +29,7 @@ app.use(cookieParser('keyboardcat'));
 
 app.post('/', function(req, res){
 
-}
+});
 
 
 
