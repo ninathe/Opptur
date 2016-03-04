@@ -9,7 +9,7 @@ function signUp(){
 
 
     var password = document.getElementById("reg_password").value;
-    alert('value is'+ password);
+    alert('value is '+ password);
     var passwordConfirm = document.getElementById("reg_password_confirm").value;
 
     checkPassword(password, passwordConfirm);
@@ -59,3 +59,10 @@ function checkPassword(password, passwordConfirmed) {
 //
 //}
 
+//var xhttp;
+//if (window.XMLHttpRequest) {
+//    xhttp = new XMLHttpRequest();
+//} else {
+//    // code for IE6, IE5
+//    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+//}
