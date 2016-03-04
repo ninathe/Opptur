@@ -64,7 +64,7 @@ app.use(express.static('public'));
 //----------------koble til databasen--------------------------------
 
  //StandardURIformat:mongodb://[dbuser:dbpassword@]host:port/dbname
- var uri="mongodb://heroku_dvldc026:bkgs9p6shbfhl0ub46j51gk9b@ds015398.mongolab.com:15398/heroku_dvldc026";
+ var uri="mongodb://heroku_6055vbw4:blj69kp68glsc4nefksbvp48d3@ds019698.mlab.com:19698/heroku_6055vbw4";
 
 // Retrieve
 var MongoClient = require('mongodb').MongoClient;
