@@ -4,7 +4,7 @@ var EMAIL_REGEX=/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0
 
 function signUp(){
 
-    var email = document.getElementById("email").value;
+    var email = document.getElementById("reg_email").value;
     checkEmail(email);
 
 
