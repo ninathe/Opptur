@@ -30,6 +30,9 @@
     <!-- Custom styles for this template -->
     <link href="stylesheets/spesial.css" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/topptur.css" rel="stylesheet">
+
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -84,25 +87,27 @@
 <!--Container starts-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <ul class="nav nav-sidebar">
-                <li><h3>FINN DIN TUR</h3></li>
-                <li>Startpunkt</li>
-                <li><input type="text" name="fname"></input></li>
-                <li>Beliggenhet</li>
-                <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"></input></li>
-                <li>Hei</li>
-                <li>wiho, deette blir bræ</li>
-                <li>Se om det funker</li>
-
-                <li>Maks km</li>
-                <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"></input></li>
-                <li><button id = "btnSearch" type="button" class="btn btn-info">Søk</button></li>
+                <li><h3>Svingene</h3></li>
+                <li><h4>Topptur i Myrkdalen, Voss</h4></li>
+                <div class="rating">
+                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                </div>
             </ul>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-8">
             <!--Kart start-->
-            <div id = "map">
+
+            <iframe id = "mapTopptur" width="100%" frameBorder="0" src="https://umap.openstreetmap.fr/en/map/untitled-map_74468?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=undefined&captionBar=false">
+
+            </iframe>
+            <p><a href="https://umap.openstreetmap.fr/en/map/untitled-map_74468">See full screen</a></p>
+        </div>
+
+
+
+            <!-- <div id = "map">
                 <script type="text/javascript">
                     initmap();
                     function onMapMove(e) { askForPlots(); }
@@ -110,7 +115,9 @@
                     var marker = L.marker([61.6365, 8.3124]).addTo(map);
                     marker.bindPopup("<b>Galdhøpiggen</b><br>2469 moh").openPopup();
                 </script>
-            </div>
+            </div> -->
+
+
             <!--Kart-->
         </div><!--Kolonne-->
     </div> <!--Klasse row-->
