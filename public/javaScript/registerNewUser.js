@@ -8,12 +8,10 @@ function signUp(){  //is activated when the "sig up" button is clicked
     var passwordConfirm = document.getElementById("reg_password_confirm").value;
     var mailValid=checkEmail(email);
     var passValid=checkPassword(password, passwordConfirm);
+    var nickValid=checkNickname(nickname);
 
 
-    alert('value is '+ password);
-
-
-    if(mailValid && passValid){
+    if(mailValid && passValid && nickValid){
         $.post("/signIn",
             {
                 nickname: nickname,
@@ -51,6 +49,14 @@ function checkPassword(password, passwordConfirmed) {
         return false;
     }
     return true;
+}
+
+//validate nickname
+function checkNickname(nick){
+    if (nick.length<1){
+        console.log('You need a nickname');
+        return false
+    }return true;
 }
 
 
