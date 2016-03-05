@@ -1,11 +1,10 @@
 
 var EMAIL_REGEX=/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
 
-function signUp(){
-
+function signUp(){  //is activated when the "sig up" button is clicked
     var email = document.getElementById("reg_email").value;
     var mailValid=checkEmail(email);
-    var nickname="nick";
+    var nickname= document.getElementById("reg_email").value;;
 
 
     var password = document.getElementById("reg_password").value;
