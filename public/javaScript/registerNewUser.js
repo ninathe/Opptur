@@ -2,25 +2,25 @@
 var EMAIL_REGEX=/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
 
 function signUp(){  //is activated when the "sig up" button is clicked
-    var email = document.getElementById("reg_email").value;
-    var nickname=document.getElementById("reg_nickname").value;
-    var password = document.getElementById("reg_password").value;
+    var email           = document.getElementById("reg_email").value;
+    var nickname        = document.getElementById("reg_nickname").value;
+    var password        = document.getElementById("reg_password").value;
     var passwordConfirm = document.getElementById("reg_password_confirm").value;
-    var mailValid=checkEmail(email);
-    var passValid=checkPassword(password, passwordConfirm);
-    var nickValid=checkNickname(nickname);
+    var mailValid       = checkEmail(email);
+    var passValid       = checkPassword(password, passwordConfirm);
+    var nickValid       = checkNickname(nickname);
 
 
     if(mailValid && passValid && nickValid){
         $.post("/signIn",
             {
-                nickname: nickname,
                 email: email,
-                password: password
-            },
-            function(data,status){
-                alert("Data: " + data + "\nStatus: " + status);
-            });
+                password: password,
+                nickname: nickname
+            }
+            .done( function(data,status){
+                alert("Data loaded: " + data + "\nStatus: " + status);
+            }))
     }
 }
 
