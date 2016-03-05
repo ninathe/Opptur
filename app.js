@@ -1,11 +1,11 @@
-var express=require('express');
-var path=require('path');
-var logger=require('morgan');
-var cookieParser=require('cookie-parser');
-var bodyParser=require('body-parser');
-var mongoose =require('mongoose');
-var app=express();
-var router=express.Router();
+var express     = require('express');
+var path        = require('path');
+var logger      = require('morgan');
+var cookieParser= require('cookie-parser');
+var bodyParser  = require('body-parser');
+var mongoose    = require('mongoose');
+var app         = express();
+var router      = express.Router();
 
 //var passport=require('passport');
 //var routes=require('./api.js');
