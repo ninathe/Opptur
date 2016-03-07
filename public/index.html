@@ -72,31 +72,20 @@
     <div id = "newUserPopup">
       <div class="login-form-1">
         <h1>Ny bruker</h1>
-        <form id="register-form" class="text-left" method ='POST'>
+        <form id="register-form" class="text-left" >
           <div class="login-form-main-message"></div>
             <div class="main-login-form">
               <div class="login-group">
                 <div class="form-group" onsubmit="signUp()">
-                  <!--<label for="reg_username" class="sr-only">Email address</label>-->
                   <label for="reg_email" class="sr-only">Email</label>
-                  <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="Enter email" required>
+                  <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="Email" required>
                 </div>
                 <label for="reg_password" class="sr-only">Password</label>
-                <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password" required>
+                <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="Passord" required>
                 <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-                <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password" required>
-
-                <!--<input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">-->
+                <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="Gjenta passord" required>
                 <label for="reg_nickname" class="sr-only">Nick Name</label>
-                <input type="text" class="form-control" id="reg_nickname" name="reg_nickname" placeholder="Nick name">
-                <div class="form-group login-group-checkbox">
-                 <!--- <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
-                  <label for="male">male</label>        
-                  <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
-                  <label for="female">female</label>-->
-                  <!--<input type="checkbox" class="" id="reg_agree" name="reg_agree">-->
-                  <!--<label for="reg_agree">i agree with <a href="#">terms</a></label>-->
-                </div>
+                <input type="text" class="form-control" id="reg_nickname" name="reg_nickname" placeholder="Kallenavn">
                 <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i>Sign up</button><!--type="submit"--->
               </div>
               <div class="etc-login-form">
