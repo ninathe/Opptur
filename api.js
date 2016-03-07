@@ -9,7 +9,7 @@ var router      = express.Router();
 mongoose.connect('mongodb://heroku_dvldc026:bkgs9p6shbfhl0ub46j51gk9b@ds015398.mongolab.com:15398/heroku_dvldc026');
 db=mongoose.connection;
 
-var User = require('./models/user');
+var User        = require('./models/user');
 
 router.get('/', function(req, res){
 
@@ -17,7 +17,22 @@ router.get('/', function(req, res){
     res.json({message: 'wohooooooooo'});
 });
 
+//---post----
+var formData = {name:"ravi",age:"31"}; //Array
 
+$.ajax({
+    url : "AJAX_POST_URL",
+    type: "POST",
+    data : formData,
+    success: function(data, textStatus, jqXHR)
+    {
+        //data - response from server
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+
+    }
+});
 
 
 
