@@ -63,18 +63,33 @@ app.use(express.static('public'));
 
 //----------------koble til databasen--------------------------------
 
- //StandardURIformat:mongodb://[dbuser:dbpassword@]host:port/dbname
- var uri="mongodb://heroku_6055vbw4:blj69kp68glsc4nefksbvp48d3@ds019698.mlab.com:19698/heroku_6055vbw4";
 
-// Retrieve
-var MongoClient = require('mongodb').MongoClient;
+mongoose.connect('mongodb://heroku_6055vbw4:blj69kp68glsc4nefksbvp48d3@ds019698.mlab.com:19698/heroku_6055vbw4');
+var db=mongoose.connection;
 
-// Connect to the db
-MongoClient.connect(uri, function(err, db) {
-  if (err) {
-    return console.dir(err);
-  }
-  console.log("Vi er tilkoblet databasen");
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we're connected!");
 });
+
+
+
+// //StandardURIformat:mongodb://[dbuser:dbpassword@]host:port/dbname
+// var uri="mongodb://heroku_6055vbw4:blj69kp68glsc4nefksbvp48d3@ds019698.mlab.com:19698/heroku_6055vbw4";
+//// Retrieve
+//var MongoClient = require('mongodb').MongoClient;
+//
+//// Connect to the db
+//MongoClient.connect(uri, function(err, db) {
+//  if (err) {
+//    return console.dir(err);
+//  }
+//  console.log("Vi er tilkoblet databasen");
+//});
+
+
+
+
+
 
 module.exports=app;

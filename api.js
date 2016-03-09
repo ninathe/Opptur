@@ -6,19 +6,18 @@ var fs          = require("fs");
 var mongoose    = require("mongoose");
 var router      = express.Router();
 
-mongoose.connect('mongodb://heroku_dvldc026:bkgs9p6shbfhl0ub46j51gk9b@ds015398.mongolab.com:15398/heroku_dvldc026');
-db=mongoose.connection;
-
+//Hentet fra filen user.js
 var User        = require('./models/user');
 
 router.get('/', function(req, res){
-
-
     res.json({message: 'wohooooooooo'});
 });
 
 //---post----
-var formData = {name:"ravi",age:"31"}; //Array
+var formData = { password : "fsdsf", nickname:"ravi",email:"31"}; //Array
+var newUser = new User(formData);
+
+
 
 $.ajax({
     url : "AJAX_POST_URL",
@@ -33,6 +32,13 @@ $.ajax({
 
     }
 });
+
+
+//----------get---------
+Person.findOne({ 'name.last': 'Ghost' }, 'name occupation', function (err, person) {
+    if (err) return handleError(err);
+    console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
+})
 
 
 

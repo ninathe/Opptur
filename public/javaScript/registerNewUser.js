@@ -1,5 +1,6 @@
-
+//var exports = module.exports = {
 var EMAIL_REGEX=/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+
 
 function signUp(){  //is activated when the "sig up" button is clicked
     var email           = document.getElementById("reg_email").value;
@@ -12,20 +13,22 @@ function signUp(){  //is activated when the "sig up" button is clicked
 
 
     if(mailValid && passValid && nickValid){
-        $.post("/signIn",
-            {
-                email: email,
-                password: password,
-                nickname: nickname
-            }
-            .done( function(data,status){
-                alert("Data loaded: " + data + "\nStatus: " + status);
-            }))
+
+        alert("brukerdetaljer: " +email + " " +nickname + " " +password );
+        //$.post("/signIn",
+        //    {
+        //        email: email,
+        //        password: password,
+        //        nickname: nickname
+        //    }
+        //    .done( function(data,status){
+        //        alert("Data loaded: " + data + "\nStatus: " + status);
+        //    }))
     }
 }
 
 
-//Validates the username
+//Validates the email
 function checkEmail(email){
     var validEmail = EMAIL_REGEX.test(email);
     if(email.length<1) {
@@ -36,7 +39,6 @@ function checkEmail(email){
         alert("Error: Email is not valid, please try again");
         return false;
     }
-    alert('valid email');
     return true
 }
 
@@ -58,6 +60,8 @@ function checkNickname(nick){
         return false
     }return true;
 }
+
+
 
 
 //var xhttp;
