@@ -15,15 +15,15 @@ function signUp(){  //is activated when the "sig up" button is clicked
     if(mailValid && passValid && nickValid){
 
         alert("brukerdetaljer: " +email + " " +nickname + " " +password );
-        //$.post("/signIn",
-        //    {
-        //        email: email,
-        //        password: password,
-        //        nickname: nickname
-        //    }
-        //    .done( function(data,status){
-        //        alert("Data loaded: " + data + "\nStatus: " + status);
-        //    }))
+        $.post("/signIn",
+            {
+                email: email,
+                password: password,
+                nickname: nickname
+            })
+            .done( function(data,status){
+                alert("Data loaded: " + data + "\nStatus: " + status);
+            })
     }
 }
 

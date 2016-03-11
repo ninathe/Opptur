@@ -6,6 +6,7 @@ var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
 var app         = express();
 var router      = express.Router();
+var User        = require('./models/user');
 
 //var passport=require('passport');
 //var routes=require('./api.js');
@@ -19,27 +20,19 @@ app.use(cookieParser('keyboardcat'));
 
 //-----------------------API----------------------------------------
 
-/*
 
- app.post('/test', function(req, res) {
- console.log(req.body);
- res.status(200);
- })
- */
-
-app.post('/', function(req, res){
-
-});
-
-
-
-
-
-
-//-------------------------end API --------------------------------
 app.use('/',router);
 
+app.post('/signIn', function(req, res){
+  var newUser = new User(req.body);
+  newUser.save(function(err, user)  {
+        if (err) return console.error(err);
+    else console.log("success")
+  }
+  )
+});
 
+//-------------------------end API --------------------------------
 
 
 
@@ -54,8 +47,6 @@ app.use(function(req,res,next){
 
 
 //errorhandlers
-
-
 app.use(express.static('public'));
 
 
@@ -72,24 +63,7 @@ db.once('open', function() {
   console.log("we're connected!");
 });
 
-
-
-// //StandardURIformat:mongodb://[dbuser:dbpassword@]host:port/dbname
-// var uri="mongodb://heroku_6055vbw4:blj69kp68glsc4nefksbvp48d3@ds019698.mlab.com:19698/heroku_6055vbw4";
-//// Retrieve
-//var MongoClient = require('mongodb').MongoClient;
-//
-//// Connect to the db
-//MongoClient.connect(uri, function(err, db) {
-//  if (err) {
-//    return console.dir(err);
-//  }
-//  console.log("Vi er tilkoblet databasen");
-//});
-
-
-
-
+//-------------------------------------------------------------------
 
 
 module.exports=app;

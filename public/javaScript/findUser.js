@@ -1,10 +1,10 @@
 
 
+//kan brukes når man skal logge inn
 
-
-Person.findOne({ 'name.last': 'Ghost' }, 'name occupation', function (err, person) {
+//finds the user with the email mar@hotmail.com, selecting the name and password
+User.findOne({ 'email': 'mar@hotmail.com' }, 'nickname password', function (err, user) {
     if (err) return handleError(err);
-    console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
 })
 
 
