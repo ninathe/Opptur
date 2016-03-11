@@ -72,11 +72,11 @@
     <div id = "newUserPopup">
       <div class="login-form-1">
         <h1>Ny bruker</h1>
-        <form id="register-form" class="text-left" >
+        <form id="register-form" onsubmit= "signUp()" class="text-left" >
           <div class="login-form-main-message"></div>
             <div class="main-login-form">
               <div class="login-group">
-                <div class="form-group" onsubmit="signUp()">
+                <div class="form-group" >
                   <label for="reg_email" class="sr-only">Email</label>
                   <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="Email" required>
                 </div>
@@ -97,7 +97,7 @@
       </div>
     </div><!--new user popup-->
 
-    <script src = "/javaScript/registerNewUser.js"></script>
+    <!--<script src = "./javaScript/registerNewUser.js"></script>-->
 
       
       <!--Login Popup-->
@@ -146,7 +146,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-  <script src = "/javaScript/registerNewUser.js"></script>
+  <script src = "./javaScript/registerNewUser.js"></script>
 
   </body>
 </html>
