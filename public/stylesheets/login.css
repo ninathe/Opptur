@@ -33,7 +33,7 @@ form {
     height: auto;
 }
 
-input {
+input.fin {
     padding: 10px;
     border-radius:4px;
     border:0px;
@@ -51,7 +51,7 @@ input {
 
 
 
-input:focus {
+input:focus.fin {
     outline-color: rgba(110,110,110,0);
     background: rgba(255,255,255,.95);
     color: #ffa44c;
