@@ -21,7 +21,6 @@ footer {
 
 
 body {
-    padding: 30px;
 }
 input[type=range] {
     /*removes default webkit styles*/

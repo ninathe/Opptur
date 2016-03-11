@@ -5,6 +5,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  background: #b4b7b7;
 }
 
 
@@ -44,16 +45,23 @@ body {
     padding: 0px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
+    background-color: #b4b7b7;
+    color:#fff;
     border-right: 1px solid #eee;
   }
 }
 
+input#startPos{
+  width:70%;
+  margin:auto;
+  height:25px;
+}
 /* Sidebar navigation */
 .nav-sidebar {
   margin-right: -21px; /* 20px padding + 1px border */
   margin-bottom: 20px;
   margin-left: -20px;
+  margin-top: 30px;
 }
 .nav-sidebar > li > a {
   padding-right: 20px;

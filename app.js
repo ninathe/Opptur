@@ -1,114 +1,69 @@
-var express=require('express');
-var path=require('path');
-var logger=require('morgan');
-var cookieParser=require('cookie-parser');
-var bodyParser=require('body-parser');
-var mongoose =require('mongoose');
+var express     = require('express');
+var path        = require('path');
+var logger      = require('morgan');
+var cookieParser= require('cookie-parser');
+var bodyParser  = require('body-parser');
+var mongoose    = require('mongoose');
+var app         = express();
+var router      = express.Router();
+var User        = require('./models/user');
+
 //var passport=require('passport');
-
-//varUser=require('./models/user.js');
-
-var app=express();
+//var routes=require('./api.js');
 
 app.use(express.static(path.join(__dirname,'public')));
-//varroutes=require('./api.js');
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cookieParser('keyboardcat'));
-//app.use(passport.initialize());
 
-//configurepassport
-//passport.use(User.createStrategy());
 
-//routes
-//app.use('/user/',routes);
-//app.use('/',routes);
+//-----------------------API----------------------------------------
+
+
+app.use('/',router);
+
+app.post('/signIn', function(req, res){
+  var newUser = new User(req.body);
+  newUser.save(function(err, user)  {
+        if (err) return console.error(err);
+    else console.log("success")
+  }
+  )
+});
+
+//-------------------------end API --------------------------------
+
+
+
 
 
 //catch404andforwardtoerrorhandler
 app.use(function(req,res,next){
-  varerr=newError('NotFound');
+  var err="";//newError('NotFound');
   err.status=404;
   next(err);
 });
 
 
 //errorhandlers
+app.use(express.static('public'));
 
-if(app.get('env')==='development'){
 
-}
+
+
+//----------------koble til databasen--------------------------------
+
+
+mongoose.connect('mongodb://heroku_6055vbw4:blj69kp68glsc4nefksbvp48d3@ds019698.mlab.com:19698/heroku_6055vbw4');
+var db=mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we're connected!");
+});
+
+//-------------------------------------------------------------------
 
 
 module.exports=app;
-
-/*
-
- //StandardURIformat:mongodb://[dbuser:dbpassword@]host:port/dbname
-
- varuri='mongodb://heroku_dvldc026:bkgs9p6shbfhl0ub46j51gk9b@ds015398.mongolab.com:15398/heroku_dvldc026';
-
- mongodb.MongoClient.connect(uri,function(err,db){
-
- if(err){
- console.log("unabletoconnecttoMongoDBserverError...",err);
- }else{
- console.log("WEareconneced");
- //inserttherestofthedatabsequerieshere
-
- }
- /!*varcollection=db.collection({
- _id:String,//email
- userName:String,
- password:String
- });
-
- varuser=mongodb.model('emp',collection);*!/
- /!*
- app.post('/new',function(req,res){//ellerskrivenoeannetsomtiggerenactionnårmantrykker"registrernybruker"
- newuser({
- _id:req.body.email,
- userName:req.body.name,
- password:req.body.password
- }).save(function(err,doc){
- if(err){
- res.json(err);
- }elseres.send("Successfullyinserted")
- })
- });*!/
- /!*varcollection=db.collection('user');
-
- collection.find({name:'eksempel_bruker'}).toArray(function(err,result){//{name:'eksempel_bruker'}).toArray(function(err,result){
- if(err){
- console.log(err);
- }elseif(result.length){
- console.log('Found:',result);
- }else{
- console.log('Nodocument(s)foundwithdefined"find"criteria!');
- }
- //Closeconnection
- db.close();
- });*!/
-
-
- //functiondoesUserExist(uName,Pass,callback){
- //
- //collection.find({name:'eksempel_bruker'}).toArray(function(err,result){
- ////console.log('uName:'+uName);hentetfra:http://stackoverflow.com/questions/30909867/findone-to-return-boolean-value-nodejs
- ////console.log('Pass:'+Pass);//thiswillprintonconsole,workingfine
- //if(err)
- //returncallback(err,false);
- //if(result===null){
- //returncallback(null,false);//thiswillreturnundefinedtothecontroller
- //
- //}else{
- //returncallback(null,true);//thiswillreturnundefinedtothecontroller
- //}
- //});
- //}
-
- });
-
- */

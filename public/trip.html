@@ -23,6 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/coverTrip.css" rel="stylesheet">
+    <link href="stylesheets/login.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/offcanvas.css" rel="stylesheet">
@@ -86,16 +87,15 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><h3>FINN DIN TUR</h3></li>
-            <li>Startpunkt</li>
-            <li><input type="text" name="fname"></input></li>
-            <li>Beliggenhet</li>
-            <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"></input></li>
-            <li>Hei</li>
-            <li>wiho, deette blir bræ</li>
-            <li>Se om det funker</li>
-           
-            <li>Maks km</li>
+            <li><h3><span class="entypo-address"></span> FINN DIN TUR</h3></li>
+            <li>Din posisjon</li>
+            <li><input type="text" id ="startPos" class ="fin"placeholder="Adresse"><br></li>
+            <li>Avstand til startpunkt(timer)</li> <!--Finn metode for å finne nåværende posisjon-->
+            <!--Få inn API for å beregne avstand mellom punkter i DB og startposisjon-->
+            <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"  onchange="distanceValue.value=value" /><output id="distanceValue"></output></li>
+            <li>Lengde på tur</li>
+            <li><input class = "slider" type = "range"  min = "10" max = "40" step = "1" title = "Velg antall km" value = "0" onchange="distanceTripValue.value=value"/><output id="distanceTripValue"></output></li>
+            <li>Vanskelighetsgrad</li>
             <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"></input></li>
             <li><button id = "btnSearch" type="button" class="btn btn-info">Søk</button></li>
           </ul>
@@ -105,9 +105,23 @@
              <div id = "map">
                 <script type="text/javascript">
                   initmap();
+                  map.locate({setView: true, maxZoom: 8});
+
+                  //Setter marker ved posisjon:
+                  function onLocationFound(e) {
+                    var radius = e.accuracy / 2;
+
+                    L.marker(e.latlng).addTo(map)
+                            .bindPopup("Du er innenfor " + radius + " meter fra dette punktet").openPopup();
+
+                    L.circle(e.latlng, radius).addTo(map);
+                  }
+
+                  map.on('locationfound', onLocationFound);
                   function onMapMove(e) { askForPlots(); }
                   //legger inn en plassering på kartet :)
                   var marker = L.marker([61.6365, 8.3124]).addTo(map);
+                  var myrken = L.marker([60.87766484,6.46662943]).addTo(map);
                   marker.bindPopup("<b>Galdhøpiggen</b><br>2469 moh").openPopup();
                 </script>
               </div> 
@@ -125,68 +139,40 @@
     <!--New user popup-->
     <div id = "newUserPopup">
       <div class="login-form-1">
-        <h1>Ny bruker</h1>
-        <form id="register-form" class="text-left">
+        <h2><span class="entypo-user-add"></span>Ny bruker</h2>
+        <form id="register-form" onsubmit= "signUp()" class="text-left" >
           <div class="login-form-main-message"></div>
-            <div class="main-login-form">
-              <div class="login-group">
-                <div class="form-group">
-                  <label for="reg_username" class="sr-only">Email address</label>
-                  <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
-                </div>
-                <label for="reg_password" class="sr-only">Password</label>
-                <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
-                <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-                <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
+          <div class="main-login-form">
+            <div class="login-group">
+              <div class="form-group" >
                 <label for="reg_email" class="sr-only">Email</label>
-                <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
-                <label for="reg_fullname" class="sr-only">Full Name</label>
-                <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name">
-                <div class="form-group login-group-checkbox">
-                  <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
-                  <label for="male">male</label>        
-                  <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
-                  <label for="female">female</label>
-                  <input type="checkbox" class="" id="reg_agree" name="reg_agree">
-                  <label for="reg_agree">i agree with <a href="#">terms</a></label>
-                </div>
-                <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
+                <input type="text" class = "fin" class="form-control" id="reg_email" name="reg_email" placeholder="Email" required>
               </div>
-              <div class="etc-login-form">
-                <p>already have an account? <a href="#">login here</a></p>
-              </div>
+              <label for="reg_password" class="sr-only">Password</label>
+              <input type="password" class = "fin" class="form-control" id="reg_password" name="reg_password" placeholder="Passord" required>
+              <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
+              <input type="password" class = "fin" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="Gjenta passord" required>
+              <label for="reg_nickname" class="sr-only">Nick Name</label>
+              <input type="text" class = "fin" class="form-control" id="reg_nickname" name="reg_nickname" placeholder="Kallenavn">
+              <button type="submit" id ="registerBtn" class="login-button"><i class="fa fa-chevron-right"></i>Registrer deg</button><!--type="submit"--->
             </div>
           </div>
-        </form>
       </div>
+      </form>
+    </div>
     </div><!--new user popup-->
-      
+
+    <!--JQuery-->
+    <script src="javaScript/jquery.min.js"></script>
     <!--Login Popup-->
     <div id = "loginPopup">
-    <h1>Logg inn</h1>
-      <div class="col-md-12">
-      Login via
-        <div class="social-buttons">
-        <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-        <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-      </div>
-        or
-      <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-        <div class="form-group">
-          <label class="sr-only" for="exampleInputEmail2">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-          <label class="sr-only" for="exampleInputPassword2">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-          <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-            <div class="checkbox">
-              <label>
-              <input type="checkbox"> keep me logged-in</input>
-              </label>
-            </div>
-            <a id ="close">Lukk</a>
-          </div>
-        </div>
+      <form action="">
+        <h2><span class="entypo-login"></span> Logg inn</h2>
+        <button class="submit" id="loginBtn"><span class="entypo-lock"></span></button>
+        <span class="entypo-user inputUserIcon"></span>
+        <input type="text" class ="fin" id="user" placeholder="Brukernavn"/>
+        <span class="entypo-key inputPassIcon"></span>
+        <input type="password" class = "fin" id="pass" placeholder="Passord"/>
       </form>
     </div><!--login popup-->
 
@@ -211,6 +197,8 @@
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--LogIn jQuery-->
+    <script src="javaScript/login.js"></script>
     <script>
       $('#loggInn').toggleClass('active');
     </script>
