@@ -89,7 +89,7 @@
           <ul class="nav nav-sidebar">
             <li><h3><span class="entypo-address"></span> FINN DIN TUR</h3></li>
             <li>Din posisjon</li>
-            <li><input type="text" id ="startPos" class ="fin"><br></li>
+            <li><input type="text" id ="startPos" class ="fin"placeholder="Adresse"><br></li>
             <li>Avstand til startpunkt(timer)</li> <!--Finn metode for å finne nåværende posisjon-->
             <!--Få inn API for å beregne avstand mellom punkter i DB og startposisjon-->
             <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"  onchange="distanceValue.value=value" /><output id="distanceValue"></output></li>
@@ -105,6 +105,19 @@
              <div id = "map">
                 <script type="text/javascript">
                   initmap();
+                  map.locate({setView: true, maxZoom: 8});
+
+                  //Setter marker ved posisjon:
+                  function onLocationFound(e) {
+                    var radius = e.accuracy / 2;
+
+                    L.marker(e.latlng).addTo(map)
+                            .bindPopup("Du er innenfor " + radius + " meter fra dette punktet").openPopup();
+
+                    L.circle(e.latlng, radius).addTo(map);
+                  }
+
+                  map.on('locationfound', onLocationFound);
                   function onMapMove(e) { askForPlots(); }
                   //legger inn en plassering på kartet :)
                   var marker = L.marker([61.6365, 8.3124]).addTo(map);
