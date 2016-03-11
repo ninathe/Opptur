@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Custom styles for opptur -->
     <link href="stylesheets/coverDefault.css" rel="stylesheet">
+    <link href="stylesheets/login.css" rel="stylesheet">
+
     
     <!-- Custom styles for "forside" -->
     <link href="stylesheets/coverIndex.css" rel="stylesheet">
@@ -30,7 +32,6 @@
     <script src="JavaScript/leaflet/popupNewUser.js"></script>
     <script src="JavaScript/leaflet/popupLogin.js"></script>
     <script src="JavaScript/leaflet/popupInfo.js"></script>
-
 
 
   </head>
@@ -71,7 +72,7 @@
     <!--New user popup-->
     <div id = "newUserPopup">
       <div class="login-form-1">
-        <h1>Ny bruker</h1>
+        <h2><span class="entypo-user-add"></span>Ny bruker</h2>
         <form id="register-form" onsubmit= "signUp()" class="text-left" >
           <div class="login-form-main-message"></div>
             <div class="main-login-form">
@@ -97,37 +98,20 @@
       </div>
     </div><!--new user popup-->
 
-    <!--<script src = "./javaScript/registerNewUser.js"></script>-->
-
-      
+    <!--JQuery-->
+    <script src="javaScript/jquery.min.js"></script>
       <!--Login Popup-->
     <div id = "loginPopup">
-    <h1>Logg inn</h1>
-      <div class="col-md-12">
-      Login via
-        <div class="social-buttons">
-        <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-        <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-      </div>
-        or
-      <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-        <div class="form-group">
-          <label class="sr-only" for="exampleInputEmail2">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-          <label class="sr-only" for="exampleInputPassword2">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-          <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-            <div class="checkbox">
-              <label>
-              <input type="checkbox"> keep me logged-in</input>
-              </label>
-            </div>
-            <a id ="close">Lukk</a>
-          </div>
-        </div>
+      <form action="">
+          <h2><span class="entypo-login"></span> Logg inn</h2>
+          <button class="submit"><span class="entypo-lock"></span></button>
+          <span class="entypo-user inputUserIcon"></span>
+          <input type="text" class="user" placeholder="Brukernavn"/>
+          <span class="entypo-key inputPassIcon"></span>
+          <input type="password" class="pass" placeholder="Passord"/>
       </form>
     </div><!--login popup-->
+
 
     <!--Info Popup-->
     <div id = "infoPopup">
@@ -146,7 +130,9 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-  <script src = "./javaScript/registerNewUser.js"></script>
+    <script src = "./javaScript/registerNewUser.js"></script>
+    <!--LogIn jQuery-->
+    <script src="javaScript/login.js"></script>
 
   </body>
 </html>

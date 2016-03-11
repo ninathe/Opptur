@@ -32,7 +32,7 @@
 	_position:absolute; /* hack for internet explorer 6*/
 	height:auto;
 	width:auto;
-	background:#FFFFFF;
+	background: #b4b7b7;
 	border-radius: 10px;
 	border: 1px solid #000;
 	z-index:1050;
@@ -44,8 +44,8 @@
 	display:none;
 	position:fixed;
 	_position:absolute; /* hack for internet explorer 6*/
-	width:408px;
-	background:#FFFFFF;
+	width:auto;
+	background:#b4b7b7;
 	border-radius: 10px;
 	border: 1px solid #000;
 	z-index:1050;
