@@ -9,9 +9,11 @@ var router      = express.Router();
 //Hentet fra filen user.js
 var User        = require('./models/user');
 
+/*
 router.get('/', function(req, res){
     res.json({message: 'wohooooooooo'});
 });
+*/
 
 //---post----
 var formData = { password : "fsdsf", nickname:"ravi",email:"31"}; //Array
