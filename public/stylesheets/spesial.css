@@ -52,8 +52,8 @@ body {
 }
 
 input#startPos{
-  width:70%;
-  margin:auto;
+  width:60%;
+  margin-left: 20%;
   height:25px;
 }
 /* Sidebar navigation */
