@@ -99,13 +99,13 @@
     <script src="javaScript/jquery.min.js"></script>
     <!--Login Popup-->
     <div id = "loginPopup">
-      <form action="">
+      <form id="login-form" onsubmit= "logIn()" >
         <h2><span class="entypo-login"></span> Logg inn</h2>
-        <button class="submit" onsubmit= "logIn()" id="loginBtn"><span class="entypo-lock"></span></button>
+        <button type="submit"  class="submit"  id="loginBtn"><span class="entypo-lock"></span></button>
         <span class="entypo-user inputUserIcon"></span>
-        <input type="text" class ="fin" id="user" placeholder="Brukernavn"/>
+        <input type="text" class ="fin" class="form-control" id="user" placeholder="Brukernavn"/>
         <span class="entypo-key inputPassIcon"></span>
-        <input type="password" class = "fin" id="pass" placeholder="Passord"/>
+        <input type="password" class = "fin" class="form-control" id="pass" placeholder="Passord"/>
       </form>
     </div><!--login popup-->
 
@@ -128,6 +128,7 @@
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
     <script src = "./javaScript/registerNewUser.js"></script>
+    <script src = "./javaScript/findUser.js"></script>
     <!--LogIn jQuery-->
     <script src="javaScript/login.js"></script>
 
