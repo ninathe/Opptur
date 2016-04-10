@@ -1,18 +1,19 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose    = require('mongoose');
+var Schema      = mongoose.Schema;
+var User        = require('./user');
 
 // create a schema
 var tripSchema = new Schema({
-    navn: { type: String, required: true, unique: true },
-    beskrivelse: { type: String},
-    koordinater: {type: String, required: true},
-    sted: {type: String, required: true},
-    turTid : {type: Number}
+    name: { type: String, required: true, unique: true },
+    latitude: {type: String, required: true},
+    longitude: {type: Number, required: true},
+    place: {type: Number, required: true},
+    description: String,
+    duration : Number,
+    users : {type: User}
+
 });
 
-// the schema is useless so far
-// we need to create a model using it
 var Trip = mongoose.model('Trip', tripSchema);
 
-// make this available to our users in our Node applications
 module.exports = Trip;

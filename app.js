@@ -7,9 +7,7 @@ var mongoose    = require('mongoose');
 var app         = express();
 var router      = express.Router();
 var User        = require('./models/user');
-
-//var passport=require('passport');
-//var routes=require('./api.js');
+var Trip        = require('./models/trip');
 
 app.use(express.static(path.join(__dirname,'public')));
 app.use(logger('dev'));
@@ -39,32 +37,55 @@ app.post('/signUp', function(req, res){
 
 
 app.post('/logIn', function(req,res){
+
   //Talk to the database, check if user exist
-
-
   //finds the user with the email and password from user-input
-  console.log("HOLA!");
-  console.log(req.body);
+  //res.writeHead(200);
   var dbUser = User.find( req.body , function (err, user) {
-    console.log(user);
+    //console.log(user);
+    //var json = user.email; // TODO: ikke JSON-objekt?
+    console.log(res.json(user));
+
+
+
     if(user.length>0) {
-      res.send(true);
-      //console.log("user: "+dbUser);
+      //res.send(true);
+      setActiveUser(user);
+
+      //console.log("AKtiv bruker er "+activeUser);
     }else {
-      res=false;
+      //res.send(false);
       console.log('Wrong email or password');
       console.log("error - wrong input");
     }
   });
+});
 
+//-------------------------TRIP --------------------------------
+
+app.post('/makeTrip', function(req, res){
+  console.log(req.body);
+  var newTrip = new Trip(req.body);
+  newTrip.save(function(err, user)  {
+        if (err) return console.error(err);
+        else console.log("success")
+
+      }
+  )
 });
 
 
+//-------------------------activeUser-----------------------------
+var activeUser;
+function setActiveUser(user){
+  activeUser= user;
+}
+
+function getActiveUser(){
+  return activeUser;
+}
 
 
-
-
-//-------------------------end API --------------------------------
 
 
 
