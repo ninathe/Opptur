@@ -1,6 +1,6 @@
 var mongoose    = require('mongoose');
 var Schema      = mongoose.Schema;
-var User        = require('./user');
+//var User        = require('./user');
 
 // create a schema
 var tripSchema = new Schema({
@@ -10,7 +10,8 @@ var tripSchema = new Schema({
     place: {type: Number, required: true},
     description: String,
     duration : Number,
-    users : {type: User}
+    difficulty : Number
+    //users : {type: User}
 
 });
 

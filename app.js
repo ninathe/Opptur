@@ -50,9 +50,8 @@ app.post('/logIn', function(req,res){
 
     if(user.length>0) {
       //res.send(true);
-      setActiveUser(user);
 
-      //console.log("AKtiv bruker er "+activeUser);
+      console.log("AKtiv bruker er "+ user);
     }else {
       //res.send(false);
       console.log('Wrong email or password');
@@ -74,17 +73,19 @@ app.post('/makeTrip', function(req, res){
   )
 });
 
+app.post('/findTrip', function(req,res){
 
-//-------------------------activeUser-----------------------------
-var activeUser;
-function setActiveUser(user){
-  activeUser= user;
-}
+    //Talks to the database, check if trip exist
+    var dbTrip = Trip.find( req.body , function (err, trip) {
+        console.log(res.json(trip));
 
-function getActiveUser(){
-  return activeUser;
-}
-
+        if(trip.length>0) {
+            console.log('det sendes inn input, trip');
+        }else {
+            console.log("error - wrong input");
+        }
+    });
+});
 
 
 

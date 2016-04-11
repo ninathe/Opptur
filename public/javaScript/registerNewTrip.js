@@ -1,6 +1,3 @@
-/**
- * Created by Marie on 10.04.2016.
- */
 
     //Latitude measurements range from –90° to +90° Longitude measurements range from –180° to +180°
 var LATITUDE_REGEX =/^([-+]?\d{1,2}([.]\d+)?)$/g;
@@ -15,6 +12,7 @@ function registerTrip(){  //is activated when the "sig up" button is clicked
     var place           = document.getElementById("reg_password_confirm").value;
     var description     = document.getElementById("reg_password_confirm").value;
     var duration        = document.getElementById("reg_password_confirm").value;
+    var difficulty      = document.getElementById("reg_password_confirm").value;
     var nameValid       = checkName(name);
     var latitudeValid   = checkLatitude(latitude);
     var longitudeValid  = checkLongitude(longitude);
@@ -29,8 +27,9 @@ function registerTrip(){  //is activated when the "sig up" button is clicked
                 latitude: latitude,
                 longitude: longitude,
                 place: place,
-                description: description,
                 duration : duration,
+                description: description,
+                difficulty: difficulty,
                 users : {}
             })
             .done( function(data,status){
@@ -41,9 +40,9 @@ function registerTrip(){  //is activated when the "sig up" button is clicked
 
 
 //Validates the latiitude
-function checkLatitude(lang){
-    var validLatitude = LATITUDE_REGEX.test(lang);
-    if(lang.length<1) {
+function checkLatitude(lat){
+    var validLatitude = LATITUDE_REGEX.test(lat);
+    if(lat.length<1) {
         alert("Error: Fill in the latitude!");
         return false;
     }

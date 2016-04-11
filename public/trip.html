@@ -96,8 +96,8 @@
             <li>Lengde på tur</li>
             <li><input class = "slider" type = "range"  min = "10" max = "40" step = "1" title = "Velg antall km" value = "0" onchange="distanceTripValue.value=value"/><output id="distanceTripValue"></output></li>
             <li>Vanskelighetsgrad</li>
-            <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"></input></li>
-            <li><button id = "btnSearch" type="button" class="btn btn-info">Søk</button></li>
+            <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0" id="difficultyValue" ></input></li>
+            <li><button id = "btnSearch" onclick="findTrip()" type="button" class="btn btn-info">Søk</button></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -192,6 +192,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src = "./javaScript/findTrip.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
