@@ -37,11 +37,6 @@ function send(res, path) {
     });
 }
 // Getters
-app.all('/*', function(req, res, next) {
-    // Just send the index.html for other files to support HTML5Mode
-    console.log("GET %s", req.path);
-    send(res, __dirname + '/public/index.html');
-});
 
 app.post('/signUp', function(req, res){
   console.log(req.body);
@@ -64,15 +59,26 @@ var server = app.listen(PORT, function() {
     console.log('Server listening on http://%s:%s', host, port);
 });
 app.post('/logIn', function(req,res){
-
   //Talk to the database, check if user exist
   //finds the user with the email and password from user-input
   //res.writeHead(200);
   var dbUser = User.find( req.body , function (err, user) {
+<<<<<<< HEAD
 
     if(user.length>0) {
         console.log(user);
         console.log("Kallenavnet til denne brukeren er: " +user[0].nickname);
+=======
+    //console.log(user);
+    //var json = user.email; // TODO: ikke JSON-objekt?
+
+    if(user.length>0) {
+      //res.send(true);
+      setActiveUser(user);
+        res.status(200).send({ success: true });
+
+      //console.log("AKtiv bruker er "+activeUser);
+>>>>>>> angularTestBranch
     }else {
       console.log('Wrong email or password');
       console.log("error - wrong input");
@@ -95,6 +101,7 @@ app.post('/makeTrip', function(req, res){
 
 app.post('/findTrip', function(req,res){
 
+<<<<<<< HEAD
     //Talks to the database, check if trip exist
     var dbTrip = Trip.find( req.body , function (err, trip) {
         console.log(trip);
@@ -106,6 +113,25 @@ app.post('/findTrip', function(req,res){
         }
     });
 });
+=======
+app.all('/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    console.log("GET %s", req.path);
+    send(res, __dirname + '/public/index.html');
+});
+
+
+//-------------------------activeUser-----------------------------
+var activeUser;
+function setActiveUser(user){
+  activeUser= user;
+}
+
+function getActiveUser(){
+  return activeUser;
+}
+
+>>>>>>> angularTestBranch
 
 
 

@@ -34,7 +34,7 @@ form {
 }
 
 input.fin {
-    padding: 10px;
+    padding: 5px;
     border-radius:4px;
     border:0px;
     background: rgba(255,255,255,.2);
@@ -42,7 +42,7 @@ input.fin {
     margin: 15px;
     width: 300px;
     color:white;
-    height: 40px;
+    height: 30px;
 }
 
 .main-login-form{

@@ -14,7 +14,7 @@
                 <li ng-if="isAuthorized()"><a>Brukernavn</a></li>
                 <li><a id="BtnInfo">Om oss</a></li>
                 <li ng-if="isAuthorized()"><a id="BtnCreateTrip">Registrer tur</a></li>
-                <li ng-if="isAuthorized()"><a id="BtnlogOut">Logg ut</a></li>
+                <li ng-if="isAuthorized()"><a id="BtnlogOut" ng-click="logOut()">Logg ut</a></li>
             </ul>
         </div>
     </div>
