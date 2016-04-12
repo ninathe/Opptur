@@ -9,10 +9,10 @@ var router      = express.Router();
 var User        = require('./models/user');
 var Trip        = require('./models/trip');
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use('/', express.static(path.join(__dirname,'/public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser('keyboardcat'));
 
 
@@ -22,7 +22,26 @@ app.use(cookieParser('keyboardcat'));
 //-----------------------API----------------------------------------
 
 
-app.use('/',router);
+//app.use('/', router);
+
+// Web routing
+function send(res, path) {
+    res.sendFile(path, function(err) {
+        if (err) {
+            console.log(err);
+            res.status(err.status).end();
+        }
+        else {
+            res.status(200).end();
+        }
+    });
+}
+// Getters
+app.all('/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    console.log("GET %s", req.path);
+    send(res, __dirname + '/public/index.html');
+});
 
 app.post('/signUp', function(req, res){
   console.log(req.body);
@@ -35,7 +54,15 @@ app.post('/signUp', function(req, res){
   )
 });
 
+// START SERVER
 
+const PORT = 8080;
+var server = app.listen(PORT, function() {
+    var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('Server listening on http://%s:%s', host, port);
+});
 app.post('/logIn', function(req,res){
 
   //Talk to the database, check if user exist
@@ -92,15 +119,15 @@ function getActiveUser(){
 
 
 //catch404andforwardtoerrorhandler
-app.use(function(req,res,next){
-  var err="";//newError('NotFound');
-  err.status=404;
-  next(err);
-});
+//app.use(function(req,res,next){
+//  var err="";//newError('NotFound');
+//  err.status=404;
+//  next(err);
+//});
 
 
 //errorhandlers
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 
 

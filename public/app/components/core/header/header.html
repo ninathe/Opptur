@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+            </button>
+            <a ui-sref = "home"><img src="bilder/logo.png" style="width:300px, height = 153px" class ="navbar-brand" href="#"></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="!isAuthorized()"><a id="BtnNewUser">Ny bruker</a></li>
+                <li ng-if="!isAuthorized()"><a id="BtnlogIn">Logg inn</a></li>
+                <li ng-if="isAuthorized()"><a>Brukernavn</a></li>
+                <li><a id="BtnInfo">Om oss</a></li>
+                <li ng-if="isAuthorized()"><a id="BtnCreateTrip">Registrer tur</a></li>
+                <li ng-if="isAuthorized()"><a id="BtnlogOut">Logg ut</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
