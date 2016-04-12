@@ -1,6 +1,3 @@
-/**
- * Created by Marie on 10.04.2016.
- */
 
     //Latitude measurements range from –90° to +90° Longitude measurements range from –180° to +180°
 var LATITUDE_REGEX =/^([-+]?\d{1,2}([.]\d+)?)$/g;
@@ -9,13 +6,14 @@ var NUMBER_REGEX = /^\d+$/;
 
 
 function registerTrip(){  //is activated when the "sig up" button is clicked
-    var name            = document.getElementById("reg_name").value;
+    var tripName        = document.getElementById("reg_name").value;
     var latitude        = document.getElementById("reg_nickname").value;
     var longitude       = document.getElementById("reg_password").value;
     var place           = document.getElementById("reg_password_confirm").value;
     var description     = document.getElementById("reg_password_confirm").value;
     var duration        = document.getElementById("reg_password_confirm").value;
-    var nameValid       = checkName(name);
+    var difficulty      = document.getElementById("reg_password_confirm").value;
+    var nameValid       = checkName(tripName);
     var latitudeValid   = checkLatitude(latitude);
     var longitudeValid  = checkLongitude(longitude);
     var placeValid      = checkName(place);
@@ -25,12 +23,13 @@ function registerTrip(){  //is activated when the "sig up" button is clicked
     if(nameValid && latitudeValid && longitudeValid && placeValid && durationValid){
         $.post("/makeTrip",
             {
-                name: name,
+                tripName: tripName,
                 latitude: latitude,
                 longitude: longitude,
                 place: place,
-                description: description,
                 duration : duration,
+                description: description,
+                difficulty: difficulty,
                 users : {}
             })
             .done( function(data,status){
@@ -41,9 +40,9 @@ function registerTrip(){  //is activated when the "sig up" button is clicked
 
 
 //Validates the latiitude
-function checkLatitude(lang){
-    var validLatitude = LATITUDE_REGEX.test(lang);
-    if(lang.length<1) {
+function checkLatitude(lat){
+    var validLatitude = LATITUDE_REGEX.test(lat);
+    if(lat.length<1) {
         alert("Error: Fill in the latitude!");
         return false;
     }

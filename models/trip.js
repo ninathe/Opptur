@@ -1,16 +1,17 @@
 var mongoose    = require('mongoose');
 var Schema      = mongoose.Schema;
-var User        = require('./user');
+//var User        = require('./user');
 
 // create a schema
 var tripSchema = new Schema({
-    name: { type: String, required: true, unique: true },
+    tripName: { type: String, required: true, unique: true },
     latitude: {type: String, required: true},
     longitude: {type: Number, required: true},
     place: {type: Number, required: true},
     description: String,
     duration : Number,
-    users : {type: User}
+    difficulty : Number
+    //users : {type: User}
 
 });
 
