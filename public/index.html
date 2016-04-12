@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="opptur" lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -21,34 +21,49 @@
 
     <!-- Custom styles for "forside" -->
     <link href="stylesheets/coverIndex.css" rel="stylesheet">
+    <!-- Custom styles for "trip" -->
+    <link href="stylesheets/coverTrip.css" rel="stylesheet">
+    <link href="stylesheets/offcanvas.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/spesial.css" rel="stylesheet">
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
-    <!--For å få popup til å virke-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script> -->
+    <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+
+    <!--Inkluderer Leaflet-->
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <link rel="stylesheet" type="text/css" href="javaScript/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+    <!--<script type="text/javascript" src="javaScript/leaflet/leaflet.js"></script>-->
+    <!--<script src="JavaScript/leaflet/findPos.js"></script>-->
 
     <!--For popups-->
     <link rel="stylesheet" href="stylesheets/popup.css" type="text/css" media="screen" />
-    <script src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js" type="text/javascript"></script>
-    <script src="JavaScript/leaflet/popupNewUser.js"></script>
-    <script src="JavaScript/leaflet/popupLogin.js"></script>
-    <script src="JavaScript/leaflet/popupInfo.js"></script>
-
 
 </head>
-<!--Black background used in popups:-->
-<!--<div id = "backgroundPopup"></div>-->
 
 <body ng-controller="AppController">
 
-    <!-- JavaScript libraries -->
-    <script type="text/javascript" src="/assets/libs/angular.min.js"></script>
-    <script type="text/javascript" src="/assets/libs/angular-ui-router.min.js"></script>
+    <!-- LIBRARIES -->
 
-    <header ng-include="/app/components/core/header/header.html"></header>
+    <script type="text/javascript" src="/assets/libs/jquery/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="/assets/libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/libs/angular/angular-ui-router.min.js"></script>
+
+    <!-- END LIBRARIES -->
+
+    <!-- CONTENT -->
+
+    <div id="backgroundPopup"></div>
+    <loginpopup></loginpopup>
+
+    <header ng-include="'/app/components/core/header/header.html'"></header>
 
     <main ui-view></main>
+
+    <!-- END CONTENT -->
 
     <!-- SCRIPTS -->
 
@@ -58,100 +73,77 @@
     <script type="text/javascript" src="/app/app.run.js"></script>
     <script type="text/javascript" src="/app/app.controller.js"></script>
 
+    <!-- Login -->
+    <script type="text/javascript" src="/app/components/login/directives/loginpopup/loginpopup.js"></script>
+
+
     <!-- Home -->
     <script type="text/javascript" src="/app/components/home/controllers/home.controller.js"></script>
 
-<!--&lt;!&ndash; Fixed navbar - TESTING!!!!!!!!!!! &ndash;&gt;-->
-<!--<nav class="navbar navbar-default navbar-fixed-top">-->
-<!--<div class="container">-->
-<!--<div class="navbar-header">-->
-<!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">-->
-<!--<span class="sr-only">Toggle navigation</span>-->
-<!--<span class="icon-bar"></span>-->
-<!--</button>-->
-<!--<a href = "index.html"><img src="bilder/logo.png" style="width:300px, height = 153px" class ="navbar-brand" href="#"></a>-->
-<!--</div>-->
-<!--<div id="navbar" class="collapse navbar-collapse">-->
-<!--<ul class="nav navbar-nav navbar-right">-->
-<!--<li><a id = "BtnNewUser">Ny bruker</a></li>-->
-<!--<li><a id ="BtnlogIn">Logg inn</a></li>-->
-<!--<li><a id ="BtnInfo">Om oss</a></li>-->
-<!--</ul>-->
-<!--</div>&lt;!&ndash;/.nav-collapse &ndash;&gt;-->
-<!--</div>-->
-<!--</nav>-->
-<!---->
-<!--<div class="site-wrapper">-->
-<!--<div class="site-wrapper-inner">-->
-<!--<div class="cover-container">-->
-<!--<div class="inner cover">-->
-<!--<a href="trip.html" class="btn btn-lg btn-sucsess">Finn din tur</a>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
+    <!-- Annet -->
+    <script src="/assets/js/popupNewUser.js"></script>
+    <script src="/assets/js/popupLogin.js"></script>
+    <script src="/assets/js/popupInfo.js"></script>
+    <script src="/assets/js/popupRegistrerTur.js"></script>
 
-<!--&lt;!&ndash;New user popup&ndash;&gt;-->
-<!--<div id = "newUserPopup">-->
-<!--<div class="login-form-1">-->
-<!--<h2><span class="entypo-user-add"></span>Ny bruker</h2>-->
-<!--<form id="register-form" onsubmit= "signUp()" class="text-left" >-->
-<!--<div class="login-form-main-message"></div>-->
-<!--<div class="main-login-form">-->
-<!--<div class="login-group">-->
-<!--<div class="form-group" >-->
-<!--<label for="reg_email" class="sr-only">Email</label>-->
-<!--<input type="text" class = "fin" class="form-control" id="reg_email" name="reg_email" placeholder="Email" required>-->
-<!--</div>-->
-<!--<label for="reg_password" class="sr-only">Password</label>-->
-<!--<input type="password" class = "fin" class="form-control" id="reg_password" name="reg_password" placeholder="Passord" required>-->
-<!--<label for="reg_password_confirm" class="sr-only">Password Confirm</label>-->
-<!--<input type="password" class = "fin" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="Gjenta passord" required>-->
-<!--<label for="reg_nickname" class="sr-only">Nick Name</label>-->
-<!--<input type="text" class = "fin" class="form-control" id="reg_nickname" name="reg_nickname" placeholder="Kallenavn">-->
-<!--<button type="submit" id ="registerBtn" class="login-button"><i class="fa fa-chevron-right"></i>Registrer deg</button>&lt;!&ndash;type="submit"-&ndash;&gt;-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
-<!--</div>&lt;!&ndash;new user popup&ndash;&gt;-->
+    <!-- END SCRIPTS -->
 
-<!--&lt;!&ndash;JQuery&ndash;&gt;-->
-<!--<script src="javaScript/jquery.min.js"></script>-->
-<!--&lt;!&ndash;Login Popup&ndash;&gt;-->
-<!--<div id = "loginPopup">-->
-<!--<form action="">-->
-<!--<h2><span class="entypo-login"></span> Logg inn</h2>-->
-<!--<button class="submit" onsubmit= "logIn()" id="loginBtn"><span class="entypo-lock"></span></button>-->
-<!--<span class="entypo-user inputUserIcon"></span>-->
-<!--<input type="text" class ="fin" id="user" placeholder="Brukernavn"/>-->
-<!--<span class="entypo-key inputPassIcon"></span>-->
-<!--<input type="password" class = "fin" id="pass" placeholder="Passord"/>-->
-<!--</form>-->
-<!--</div>&lt;!&ndash;login popup&ndash;&gt;-->
+    <!--Info Popup-->
+    <div id = "infoPopup">
+    <h1>Om oss</h1>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui nisl, mollis quis tortor vitae, pharetra gravida enim. Etiam aliquam mauris vel arcu pharetra, ut eleifend massa molestie. Proin felis lacus, congue ac nisl sed, semper mattis orci. Aenean eu lacus lorem. Aliquam eu nulla eu sem tempor viverra eu eget felis. Nulla facilisi. Donec facilisis, libero a sollicitudin mattis, leo nisl blandit nisl, et ullamcorper est metus eget nibh.</p>
+    </div>
+    <!-- End info popup-->
+
+    <!--New user popup-->
+    <div id = "newUserPopup">
+        <div class="login-form-1">
+            <h2><span class="entypo-user-add"></span>Ny bruker</h2>
+            <form id="register-form" onsubmit= "signUp()" class="text-left" >
+                <div class="login-form-main-message"></div>
+                <div class="main-login-form">
+                    <div class="login-group">
+                        <div class="form-group" >
+                            <label for="reg_email" class="sr-only">Email</label>
+                            <input type="text" class = "fin" class="form-control" id="reg_email" name="reg_email" placeholder="Email" required>
+                        </div>
+                        <label for="reg_password" class="sr-only">Password</label>
+                        <input type="password" class = "fin" class="form-control" id="reg_password" name="reg_password" placeholder="Passord" required>
+                        <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
+                        <input type="password" class = "fin" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="Gjenta passord" required>
+                        <label for="reg_nickname" class="sr-only">Nick Name</label>
+                        <input type="text" class = "fin" class="form-control" id="reg_nickname" name="reg_nickname" placeholder="Kallenavn">
+                        <button type="submit" id ="registerBtn" class="login-button"><i class="fa fa-chevron-right"></i>Registrer deg</button><!--type="submit"--->
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+    </div>
+    <!-- End new user popup -->
+
+    <!-- New trip -->
+    <div id = "RegistrerTrip">
+        <h2>Registrer tur</h2>
+        <label for="trip_name" class="sr-only">Turnavn:</label>
+        <input type="text" class = "fin" class="form-control" id="trip_name" name="trip_name" placeholder="Eks: Blånebba" required>
+        <label for="reg_longitude" class="sr-only">Lengdegrad</label>
+        <input type="text" class = "fin" class="form-control" id="reg_longitude" name="reg_longitude" placeholder="Lengdegrad">
+        <label for="reg_latitude" class="sr-only">Breddegrad</label>
+        <input type="text" class = "fin" class="form-control" id="reg_latitude" name="reg_latitude" placeholder="Breddegrad">
+        <label for="reg_place" class="sr-only">Sted</label>
+        <input type="text" class = "fin" class="form-control" id="reg_place" name="reg_latitude" placeholder="Eks: Trondheim">
+        <label for="reg_description" class="sr-only">Beskrivelse</label>
+        <textarea class = "fin" class="form-control" id="reg_description" name="reg_description" placeholder="Kort beskrivelse av tur"></textarea>
+        <label for="reg_duration" class="sr-only">Varighet</label>
+        <input type="number" class = "fin" class="form-control" id="reg_duration" name="reg_duration" placeholder="hh-hh">
+        <button type="submit" id ="registerTurBtn" class="login-button"><i class="fa fa-chevron-right"></i>Registrer tur</button>
+    </div>
+
+    <!-- End new trip -->
 
 
-<!--&lt;!&ndash;Info Popup&ndash;&gt;-->
-<!--<div id = "infoPopup">-->
-<!--<h1>Om oss</h1>-->
-<!--<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui nisl, mollis quis tortor vitae, pharetra gravida enim. Etiam aliquam mauris vel arcu pharetra, ut eleifend massa molestie. Proin felis lacus, congue ac nisl sed, semper mattis orci. Aenean eu lacus lorem. Aliquam eu nulla eu sem tempor viverra eu eget felis. Nulla facilisi. Donec facilisis, libero a sollicitudin mattis, leo nisl blandit nisl, et ullamcorper est metus eget nibh.</p>-->
-<!--</div>&lt;!&ndash;info popup&ndash;&gt;-->
-
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-<!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
-<!--<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>-->
-<!--&lt;!&ndash; IE10 viewport hack for Surface/desktop Windows 8 bug &ndash;&gt;-->
-<!--<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>-->
-
-<!--<script src = "./javaScript/registerNewUser.js"></script>-->
-<!--&lt;!&ndash;LogIn jQuery&ndash;&gt;-->
-<!--<script src="javaScript/login.js"></script>-->
+    <script src="javaScript/leaflet/leafletembed.js"></script>
 
 </body>
 </html>

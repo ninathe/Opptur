@@ -6,12 +6,20 @@
 
     "use strict";
 
-    angular.module('opptur')
+    var cont=angular.module('opptur');
 
-    .controller('AppController', [AppController]);
+    cont.controller('AppController', [AppController]);
 
     function AppController() {
 
     }
 
+    cont.controller('mapController', [mapController]);
+
+    function mapController() {
+        initmap();
+    }
+
+
 })();
+

@@ -81,6 +81,17 @@ button#loginBtn {
     color:white;
     font-size:22px;
 }
+button#registerTurBtn {
+    float:right;
+    border: 0px;
+    background: #ffa44c;
+    border-radius:7px;
+    padding: 5px;
+    color:white;
+    font-size:12px;
+    box-shadow: 2px 2px 5px #888888;
+    margin-right:8%;
+}
 
 
 

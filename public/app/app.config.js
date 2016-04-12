@@ -8,19 +8,20 @@
 
     angular.module('opptur')
 
-    .config(['$locationProvider', '$httpProvider',
-        function($locationProvider, $httpProvider) {
+    .config(['$locationProvider', '$httpProvider', '$logProvider',
+        function($locationProvider, $httpProvider, $logProvider) {
+            $logProvider.debugEnabled(true);
 
             $locationProvider.html5Mode(true);
 
         }]
     )
 
-    .config(['$stateProvider', '$urlRouteProvider',
-        function($stateProvider, $urlRouteProvider) {
+    .config(['$stateProvider', '$urlRouterProvider',
+        function($stateProvider, $urlRouterProvider) {
 
             // If path/state does not exist
-            $urlRouteProvider.otherwise('/404');
+            $urlRouterProvider.otherwise('/404');
 
             $stateProvider
 
@@ -29,7 +30,12 @@
                 templateUrl: '/app/components/home/home.html',
                 controller: 'HomeController'
             })
+            .state('trip', {
+                url: '/trip',
+                templateUrl: '/app/components/trip/trip.html',
+                controller: 'mapController'
+            })
         }]
     );
 
-})();
+}());

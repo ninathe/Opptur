@@ -8,9 +8,9 @@
 
     angular.module('opptur')
 
-    .controller('HomeController', [HomeController]);
+    .controller('HomeController', ['$scope', HomeController]);
 
-    function HomeController() {
+    function HomeController($scope) {
 
     }
 

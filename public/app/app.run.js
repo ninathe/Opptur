@@ -6,13 +6,16 @@
 
     "use strict";
 
-    // "opptur" will be the name of the app, basically
+    // "opptur" will be the name of the app
     // Adds libraries to angular
     angular.module('opptur')
 
-    .run([
-        function() {
-            console.log("hey");
+    .run(['$rootScope',
+        function($rootScope) {
+            $rootScope.isAuthorized = function() {
+                return true;
+            }
+
         }
     ]);
 
