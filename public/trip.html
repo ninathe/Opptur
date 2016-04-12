@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +31,6 @@
     <!-- Custom styles for this template -->
     <link href="stylesheets/spesial.css" rel="stylesheet">
 
-
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
@@ -39,7 +38,7 @@
     <!--Inkluderer Leaflet-->
     <link rel="stylesheet" type="text/css" href="javaScript/leaflet/leaflet.css" />
     <script type="text/javascript" src="javaScript/leaflet/leaflet.js"></script>
-    <script type="text/javascript" src="javaScript/leaflet/leafletembed.js"></script>
+
 
     <script type="text/javascript" src="https://cdnjs.com/libraries/bootstrap-slider"></script>  
 
@@ -49,8 +48,14 @@
     <script src="JavaScript/leaflet/popupNewUser.js"></script>
     <script src="JavaScript/leaflet/popupLogin.js"></script>  
     <script src="JavaScript/leaflet/popupInfo.js"></script> 
-    <script src="JavaScript/leaflet/popupTrips.js"></script> 
-    
+    <script src="JavaScript/leaflet/popupTrips.js"></script>
+    <script src="JavaScript/leaflet/findPos.js"></script>
+
+    <!-- sliders-->
+    <script src="javaScript/jquery.min.js"></script>
+    <script src="JavaScript/slider.js"></script>
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -89,42 +94,34 @@
           <ul class="nav nav-sidebar">
             <li><h3><span class="entypo-address"></span> FINN DIN TUR</h3></li>
             <li>Din posisjon</li>
+            <li>
+              <div id="checkForm">
+                <input type="checkbox" id="currentPos">Bruk din posisjon
+              </div>
+            </li>
             <li><input type="text" id ="startPos" class ="fin"placeholder="Adresse"><br></li>
             <li>Avstand til startpunkt(timer)</li> <!--Finn metode for å finne nåværende posisjon-->
             <!--Få inn API for å beregne avstand mellom punkter i DB og startposisjon-->
             <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"  onchange="distanceValue.value=value" /><output id="distanceValue"></output></li>
             <li>Lengde på tur</li>
-            <li><input class = "slider" type = "range"  min = "10" max = "40" step = "1" title = "Velg antall km" value = "0" onchange="distanceTripValue.value=value"/><output id="distanceTripValue"></output></li>
+            <li><input class = "slider" type = "range"  min = "10" max = "40" step = "1" title = "Velg antall km" value = "0" onchange="distanceTripValue.value=value"/><output for ""id="distanceTripValue"></output></li>
             <li>Vanskelighetsgrad</li>
             <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0" id="difficultyValue" ></input></li>
             <li><button id = "btnSearch" onclick="findTrip()" type="button" class="btn btn-info">Søk</button></li>
           </ul>
         </div>
+
+        <script>
+          $('input[type="range"]').on('input', function () {
+          var percent = Math.ceil(((this.value - this.min) / (this.max - this.min)) * 100);
+          console.log(this.min);
+          $(this).css('background', '-webkit-linear-gradient(left, #ff7d00 0%, #fec389 ' + percent + '%, #e9e9e9 ' + percent + '%)');
+          });
+
+        </script>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
              <!--Kart start-->
-             <div id = "map">
-                <script type="text/javascript">
-                  initmap();
-                  map.locate({setView: true, maxZoom: 8});
-
-                  //Setter marker ved posisjon:
-                  function onLocationFound(e) {
-                    var radius = e.accuracy / 2;
-
-                    L.marker(e.latlng).addTo(map)
-                            .bindPopup("Du er innenfor " + radius + " meter fra dette punktet").openPopup();
-
-                    L.circle(e.latlng, radius).addTo(map);
-                  }
-
-                  map.on('locationfound', onLocationFound);
-                  function onMapMove(e) { askForPlots(); }
-                  //legger inn en plassering på kartet :)
-                  var marker = L.marker([61.6365, 8.3124]).addTo(map);
-                  var myrken = L.marker([60.87766484,6.46662943]).addTo(map);
-                  marker.bindPopup("<b>Galdhøpiggen</b><br>2469 moh").openPopup();
-                </script>
-              </div> 
+             <div id = "map"></div>
               <!--Kart-->
         </div><!--Kolonne-->
       </div> <!--Klasse row-->
@@ -203,5 +200,7 @@
     <script>
       $('#loggInn').toggleClass('active');
     </script>
+    <script src="JavaScript/leaflet/findPos.js"></script>
+    <script src="javaScript/leaflet/leafletembed.js"></script>
   </body>
 </html>
