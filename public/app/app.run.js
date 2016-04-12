@@ -12,8 +12,14 @@
 
     .run(['$rootScope',
         function($rootScope) {
+            var sessLoggedIn = sessionStorage.loggedIn;
+            $rootScope.loggedIn = (sessLoggedIn !== undefined ? (sessLoggedIn === 'true' ? true : false) : false);
             $rootScope.isAuthorized = function() {
-                return true;
+                return $rootScope.loggedIn;
+            }
+            $rootScope.logOut = function() {
+                $rootScope.loggedIn = false;
+                sessionStorage.loggedIn = false;
             }
 
         }

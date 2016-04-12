@@ -10,7 +10,7 @@ var tripSchema = new Schema({
     place: {type: Number, required: true},
     description: String,
     duration : Number,
-    users : {type: User}
+    users : {type: String}
 
 });
 

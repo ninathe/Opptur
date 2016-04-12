@@ -4,6 +4,30 @@
 
     angular.module('opptur')
 
+    .controller('LoginController', ['$rootScope', '$http',
+        function($rootScope, $http) {
+            var vm = this;
+
+            vm.credentials = {
+                'email': '',
+                'password': ''
+            }
+            vm.login = login;
+
+            function login(credentials) {
+                $http.post('/logIn', credentials)
+                .then(
+                    function(res) {
+                        $rootScope.loggedIn = res.data.success;
+                        sessionStorage.loggedIn = true;
+                    },
+                    function(err) {
+
+                    }
+                );
+            }
+        }
+    ])
     .directive('loginpopup', [
             function() {
                 return {
