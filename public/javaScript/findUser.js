@@ -1,15 +1,27 @@
 
-
+//Talking to frontEnd
 function logIn(){
-    var email           = document.getElementById("user").value;
-    var password        = document.getElementById("pass").value;
+    var email= document.getElementById("user").value;
+    var password = document.getElementById("pass").value;
+
+    //Get info from front end  (user), and send the info to back end so it can check database
+    $.post("/logIn",
+        {
+            "email" : email,
+            "password": password
+        }
+    ).complete( function(data,status){
+        console.log("Data loaded: " + data + "\nStatus: " + status);
+        //req.getResponseHeader();   //TODO : får  throw new Error('Can\'t set headers after they are sent.');
 
 
+        if (status.valueOf()){
+            console.log('status er true');
 
-    var dbUser = new User; // TODO: må bruke den User-collectionen fra DB
-//finds the user with the email ****, selecting the name and password
-    dbUser.findOne({ 'email': email, 'password' : password }, 'nickname password', function (err, user) {
-        if (err) return handleError(err);
-        alert('%s has the email %s with the password %s.', user.nickname, user.email, user.password ) // Noe has the email noe@hotmail.com with the password 123
-    });
+        }else{
+            console.log('status is false');
+        }
+    })
 }
+
+

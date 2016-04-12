@@ -113,7 +113,7 @@
                         <input type="password" class = "fin" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="Gjenta passord" required>
                         <label for="reg_nickname" class="sr-only">Nick Name</label>
                         <input type="text" class = "fin" class="form-control" id="reg_nickname" name="reg_nickname" placeholder="Kallenavn">
-                        <button type="submit" id ="registerBtn" class="login-button"><i class="fa fa-chevron-right"></i>Registrer deg</button><!--type="submit"--->
+                        <button type="submit" id ="registerBtn" class="login-button"><i class="fa fa-chevron-right"></i>Registrer deg</button><!--type="submit"-->
                     </div>
                 </div>
         </div>
@@ -121,6 +121,19 @@
     </div>
     </div>
     <!-- End new user popup -->
+    </div><!--new user popup-->
+
+    <!--Login Popup-->
+    <div id = "loginPopup">
+      <form id="login-form" onsubmit= "logIn()" >
+        <h2><span class="entypo-login"></span> Logg inn</h2>
+        <button type="submit"  class="submit"  id="loginBtn"><span class="entypo-lock"></span></button>
+        <span class="entypo-user inputUserIcon"></span>
+        <input type="text" class ="fin" class="form-control" id="user" placeholder="Brukernavn"/>
+        <span class="entypo-key inputPassIcon"></span>
+        <input type="password" class = "fin" class="form-control" id="pass" placeholder="Passord"/>
+      </form>
+    </div><!--login popup-->
 
     <!-- New trip -->
     <div id = "RegistrerTrip">
@@ -146,4 +159,26 @@
     <script src="javaScript/leaflet/leafletembed.js"></script>
 
 </body>
+    <!--Info Popup-->
+    <div id = "infoPopup">
+      <h1>Om oss</h1>
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui nisl, mollis quis tortor vitae, pharetra gravida enim. Etiam aliquam mauris vel arcu pharetra, ut eleifend massa molestie. Proin felis lacus, congue ac nisl sed, semper mattis orci. Aenean eu lacus lorem. Aliquam eu nulla eu sem tempor viverra eu eget felis. Nulla facilisi. Donec facilisis, libero a sollicitudin mattis, leo nisl blandit nisl, et ullamcorper est metus eget nibh.</p>
+    </div><!--info popup-->
+
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src = "./javaScript/registerNewUser.js"></script>
+    <script src = "./javaScript/findUser.js"></script>
+    <!--LogIn jQuery-->
+    <script src="javaScript/login.js"></script>
+
+  </body>
 </html>

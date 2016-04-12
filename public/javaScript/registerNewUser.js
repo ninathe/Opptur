@@ -13,9 +13,7 @@ function signUp(){  //is activated when the "sig up" button is clicked
 
 
     if(mailValid && passValid && nickValid){
-
-        alert("brukerdetaljer: " +email + " " +nickname + " " +password );
-        $.post("/signIn",
+        $.post("/signUp",
             {
                 email: email,
                 password: password,
@@ -60,14 +58,3 @@ function checkNickname(nick){
         return false
     }return true;
 }
-
-
-
-
-//var xhttp;
-//if (window.XMLHttpRequest) {
-//    xhttp = new XMLHttpRequest();
-//} else {
-//    // code for IE6, IE5
-//    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-//}
