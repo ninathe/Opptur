@@ -42,18 +42,11 @@ app.post('/logIn', function(req,res){
   //finds the user with the email and password from user-input
   //res.writeHead(200);
   var dbUser = User.find( req.body , function (err, user) {
-    //console.log(user);
-    //var json = user.email; // TODO: ikke JSON-objekt?
-    console.log(res.json(user));
-
-
 
     if(user.length>0) {
-      //res.send(true);
-
-      console.log("AKtiv bruker er "+ user);
+        console.log(user);
+        console.log("Kallenavnet til denne brukeren er: " +user[0].nickname);
     }else {
-      //res.send(false);
       console.log('Wrong email or password');
       console.log("error - wrong input");
     }
@@ -77,8 +70,8 @@ app.post('/findTrip', function(req,res){
 
     //Talks to the database, check if trip exist
     var dbTrip = Trip.find( req.body , function (err, trip) {
-        console.log(res.json(trip));
-
+        console.log(trip);
+        console.log(+trip[0].tripName);
         if(trip.length>0) {
             console.log('det sendes inn input, trip');
         }else {

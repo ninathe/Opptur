@@ -13,8 +13,8 @@ function findTrip() {  //is activated when the "sig up" button is clicked
     //Get info from front end  (user), and send the info to back end so it can check database
     $.post("/findTrip",  //TODO: få til at den finner avstand som er lik ELLER MINDRE
         {
-            "duration" : duration,
-            "difficulty": difficulty
+            "duration" : 123,
+            "difficulty": 2
         }
     ).complete( function(data,status){
         console.log("Data loaded: " + data + "\nStatus: " + status);
