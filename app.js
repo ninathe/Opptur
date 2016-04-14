@@ -43,16 +43,7 @@ app.all('/*', function(req, res, next) {
     send(res, __dirname + '/public/index.html');
 });
 
-app.post('/signUp', function(req, res){
-  console.log(req.body);
-  var newUser = new User(req.body);
-  newUser.save(function(err, user)  {
-        if (err) return console.error(err);
-        else console.log("success")
 
-      }
-  )
-});
 
 // START SERVER
 
@@ -63,6 +54,21 @@ var server = app.listen(PORT, function() {
 
     console.log('Server listening on http://%s:%s', host, port);
 });
+
+//------------USER---------
+
+app.post('/signUp', function(req, res){
+    console.log(req.body);
+    var newUser = new User(req.body);
+    newUser.save(function(err, user)  {
+            if (err) return console.error(err);
+            else console.log("success")
+
+        }
+    )
+});
+
+
 app.post('/logIn', function(req,res){
 
   //Talk to the database, check if user exist
@@ -83,9 +89,9 @@ app.post('/logIn', function(req,res){
 //-------------------------TRIP --------------------------------
 
 app.post('/makeTrip', function(req, res){
-  console.log(req.body);
+  alert(req.body);
   var newTrip = new Trip(req.body);
-  newTrip.save(function(err, user)  {
+  newTrip.save(function(err, trip)  {
         if (err) return console.error(err);
         else console.log("success")
 
@@ -106,24 +112,6 @@ app.post('/findTrip', function(req,res){
         }
     });
 });
-
-
-
-
-
-
-//catch404andforwardtoerrorhandler
-//app.use(function(req,res,next){
-//  var err="";//newError('NotFound');
-//  err.status=404;
-//  next(err);
-//});
-
-
-//errorhandlers
-//app.use(express.static('public'));
-
-
 
 
 //----------------koble til databasen--------------------------------
