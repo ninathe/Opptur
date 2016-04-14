@@ -12,15 +12,7 @@ function logIn(){
         }
     ).complete( function(data,status){
         console.log("Data loaded: " + data + "\nStatus: " + status);
-        //req.getResponseHeader();   //TODO : får  throw new Error('Can\'t set headers after they are sent.');
 
-
-        if (status.valueOf()){
-            console.log('status er true');
-
-        }else{
-            console.log('status is false');
-        }
     })
 }
 

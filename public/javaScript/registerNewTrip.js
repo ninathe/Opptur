@@ -30,7 +30,7 @@ function registerTrip(){  //is activated when the "sig up" button is clicked
                 duration : duration,
                 description: description,
                 difficulty: difficulty,
-                users : {}
+                //users : {}
             })
             .done( function(data,status){
                 alert("Data loaded: " + data + "\nStatus: " + status);
