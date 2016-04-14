@@ -137,20 +137,22 @@
 
     <!-- New trip -->
     <div id = "RegistrerTrip">
-        <h2>Registrer tur</h2>
-        <label for="trip_name" class="sr-only">Turnavn:</label>
-        <input type="text" class = "fin" class="form-control" id="trip_name" name="trip_name" placeholder="Eks: Blånebba" required>
-        <label for="reg_longitude" class="sr-only">Lengdegrad</label>
-        <input type="text" class = "fin" class="form-control" id="reg_longitude" name="reg_longitude" placeholder="Lengdegrad">
-        <label for="reg_latitude" class="sr-only">Breddegrad</label>
-        <input type="text" class = "fin" class="form-control" id="reg_latitude" name="reg_latitude" placeholder="Breddegrad">
-        <label for="reg_place" class="sr-only">Sted</label>
-        <input type="text" class = "fin" class="form-control" id="reg_place" name="reg_latitude" placeholder="Eks: Trondheim">
-        <label for="reg_description" class="sr-only">Beskrivelse</label>
-        <textarea class = "fin" class="form-control" id="reg_description" name="reg_description" placeholder="Kort beskrivelse av tur"></textarea>
-        <label for="reg_duration" class="sr-only">Varighet</label>
-        <input type="number" class = "fin" class="form-control" id="reg_duration" name="reg_duration" placeholder="hh-hh">
-        <button type="submit" id ="registerTurBtn" onclick="registerTrip()" class="login-button"><i class="fa fa-chevron-right"></i>Registrer tur</button>
+        <form id="regtrip-form" onsubmit= "registerTrip()" >
+            <h2>Registrer tur</h2>
+            <label for="trip_name" class="sr-only">Turnavn:</label>
+            <input type="text" class = "fin" class="form-control" id="trip_name" name="trip_name" placeholder="Eks: Blånebba" required>
+            <label for="reg_longitude" class="sr-only">Lengdegrad</label>
+            <input type="text" class = "fin" class="form-control" id="reg_longitude" name="reg_longitude" placeholder="Lengdegrad">
+            <label for="reg_latitude" class="sr-only">Breddegrad</label>
+            <input type="text" class = "fin" class="form-control" id="reg_latitude" name="reg_latitude" placeholder="Breddegrad">
+            <label for="reg_place" class="sr-only">Sted</label>
+            <input type="text" class = "fin" class="form-control" id="reg_place" name="reg_latitude" placeholder="Eks: Trondheim">
+            <label for="reg_description" class="sr-only">Beskrivelse</label>
+            <textarea class = "fin" class="form-control" id="reg_description" name="reg_description" placeholder="Kort beskrivelse av tur"></textarea>
+            <label for="reg_duration" class="sr-only">Varighet</label>
+            <input type="number" class = "fin" class="form-control" id="reg_duration" name="reg_duration" placeholder="hh-hh">
+            <button type="submit" id ="registerTurBtn" class="login-button"><i class="fa fa-chevron-right"></i>Registrer tur</button>
+        </form>
     </div>
 
     <!-- End new trip -->
@@ -177,6 +179,7 @@
 
     <script src = "./javaScript/registerNewUser.js"></script>
     <script src = "./javaScript/findUser.js"></script>
+    <script src = "./javaScript/registerNewTrip.js"></script>
     <!--LogIn jQuery-->
     <script src="javaScript/login.js"></script>
 
