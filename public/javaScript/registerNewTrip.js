@@ -5,14 +5,14 @@ var LONGITUDE_REGEX = /\s*([-+]?\d{1,3}([.]\d+)?)$/g;
 var NUMBER_REGEX = /^\d+$/;
 
 
-function registerTrip(){  //is activated when the "sig up" button is clicked
-    var tripName        = document.getElementById("reg_name").value;
-    var latitude        = document.getElementById("reg_nickname").value;
-    var longitude       = document.getElementById("reg_password").value;
-    var place           = document.getElementById("reg_password_confirm").value;
-    var description     = document.getElementById("reg_password_confirm").value;
-    var duration        = document.getElementById("reg_password_confirm").value;
-    var difficulty      = document.getElementById("reg_password_confirm").value;
+function registerTrip(){  //is activated when the "registerTurBtn" button is clicked
+    var tripName        = document.getElementById("trip_name").value;
+    var latitude        = document.getElementById("reg_latitude").value;
+    var longitude       = document.getElementById("reg_longitude").value;
+    var place           = document.getElementById("reg_place").value;
+    var description     = document.getElementById("reg_description").value;
+    var duration        = document.getElementById("reg_duration").value;
+    //var difficulty      = document.getElementById("reg_password_confirm").value;
     var nameValid       = checkName(tripName);
     var latitudeValid   = checkLatitude(latitude);
     var longitudeValid  = checkLongitude(longitude);
@@ -20,21 +20,23 @@ function registerTrip(){  //is activated when the "sig up" button is clicked
     var durationValid   = checkDuration(duration);
 
 
-    if(nameValid && latitudeValid && longitudeValid && placeValid && durationValid){
-        $.post("/makeTrip",
+     if(nameValid && latitudeValid && longitudeValid && placeValid && durationValid){
+         alert(tripName +" og lat "+ latitude+" og long "+ longitude +" og place "+ place +" og description "+ description +" og duration "+ duration)
+         $.post("/makeTrip",
             {
                 tripName: tripName,
                 latitude: latitude,
                 longitude: longitude,
                 place: place,
-                duration : duration,
                 description: description,
-                difficulty: difficulty,
-                users : {}
+                duration : duration
             })
             .done( function(data,status){
-                alert("Data loaded: " + data + "\nStatus: " + status);
+                alert(data);
+                //alert("Data loaded: " + data + "\nStatus: " + status);
             })
+
+
     }
 }
 
@@ -47,7 +49,7 @@ function checkLatitude(lat){
         return false;
     }
     if(!validLatitude) {
-        alert("The latitude should be on the format SOMETHING");
+        alert("The latitude should be on the format 63.4468");
         return false;
     }
     return true
@@ -59,7 +61,7 @@ function checkLongitude(long){
         return false;
     }
     if(!validLongitude) {
-        alert("The longitude should be on the format SOMETHING");
+        alert("The longitude should be on the format 10.4219");
         return false;
     }
     return true
@@ -68,9 +70,8 @@ function checkLongitude(long){
 //validate password
 function checkDuration(duration) {
     if(duration.length>0 && NUMBER_REGEX.test(duration)) {
-        console.log('ok password');
     } else {
-        alert("Error: Please check that you've entered and confirmed your password!");
+        alert("Error: Please check that you've entered the duration on the form hh-hh!");
         return false;
     }
     return true;
