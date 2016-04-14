@@ -5,14 +5,14 @@ var LONGITUDE_REGEX = /\s*([-+]?\d{1,3}([.]\d+)?)$/g;
 var NUMBER_REGEX = /^\d+$/;
 
 
-function registerTrip(){  //is activated when the "sig up" button is clicked
-    var tripName        = document.getElementById("reg_name").value;
-    var latitude        = document.getElementById("reg_nickname").value;
-    var longitude       = document.getElementById("reg_password").value;
-    var place           = document.getElementById("reg_password_confirm").value;
-    var description     = document.getElementById("reg_password_confirm").value;
-    var duration        = document.getElementById("reg_password_confirm").value;
-    var difficulty      = document.getElementById("reg_password_confirm").value;
+function registerTrip(){  //is activated when the "registerTurBtn" button is clicked
+    var tripName        = document.getElementById("trip_Name").value;
+    var longitude       = document.getElementById("reg_longitude").value;
+    var latitude        = document.getElementById("reg_latitude").value;
+    var place           = document.getElementById("reg_place").value;
+    var description     = document.getElementById("reg_description").value;
+    var duration        = document.getElementById("reg_duration").value;
+    //var difficulty      = document.getElementById("reg_password_confirm").value;
     var nameValid       = checkName(tripName);
     var latitudeValid   = checkLatitude(latitude);
     var longitudeValid  = checkLongitude(longitude);
@@ -28,8 +28,8 @@ function registerTrip(){  //is activated when the "sig up" button is clicked
                 longitude: longitude,
                 place: place,
                 duration : duration,
-                description: description,
-                difficulty: difficulty,
+                description: description
+                //difficulty: difficulty,
                 //users : {}
             })
             .done( function(data,status){
@@ -68,9 +68,9 @@ function checkLongitude(long){
 //validate password
 function checkDuration(duration) {
     if(duration.length>0 && NUMBER_REGEX.test(duration)) {
-        console.log('ok password');
+        console.log('duration registered');
     } else {
-        alert("Error: Please check that you've entered and confirmed your password!");
+        alert("Error: Please check that you've entered the duration on the form hh-hh!");
         return false;
     }
     return true;

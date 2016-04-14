@@ -14,7 +14,7 @@ function findTrip() {  //is activated when the "sig up" button is clicked
     $.post("/findTrip",  //TODO: få til at den finner avstand som er lik ELLER MINDRE
         {
             "duration" : 123,
-            "difficulty": 2
+            //"difficulty": 2
         }
     ).complete( function(data,status){
         console.log("Data loaded: " + data + "\nStatus: " + status);
