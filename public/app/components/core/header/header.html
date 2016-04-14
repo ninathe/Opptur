@@ -11,10 +11,10 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ng-if="!isAuthorized()"><a id="BtnNewUser">Ny bruker</a></li>
                 <li ng-if="!isAuthorized()"><a id="BtnlogIn">Logg inn</a></li>
-                <li ng-if="isAuthorized()"><a>Brukernavn</a></li>
                 <li><a id="BtnInfo">Om oss</a></li>
                 <li ng-if="isAuthorized()"><a id="BtnCreateTrip">Registrer tur</a></li>
                 <li ng-if="isAuthorized()"><a id="BtnlogOut" ng-click="logOut()">Logg ut</a></li>
+                <li ng-if="isAuthorized()">Brukernavn</li>
             </ul>
         </div>
     </div>
