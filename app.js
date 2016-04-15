@@ -104,8 +104,6 @@ app.post('/logIn', function(req,res) {
 
         //Talks to the database, check if trip exist
         var dbTrip = Trip.find(req.body, function (err, trip) {
-            console.log(trip);
-            console.log(+trip[0].tripName);
             if (trip.length > 0) {
                 console.log('det sendes inn input, trip');
             } else {
