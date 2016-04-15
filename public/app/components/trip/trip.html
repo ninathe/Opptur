@@ -13,12 +13,12 @@
                     <li><input type="text" id ="startPos" class ="fin"placeholder="Adresse"><br></li>
                     <li>Avstand til startpunkt(timer)</li> <!--Finn metode for å finne nåværende posisjon-->
                     <!--Få inn API for å beregne avstand mellom punkter i DB og startposisjon-->
-                    <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"  onchange="distanceValue.value=value" /><output id="distanceValue"></output></li>
+                    <li><input class = "slider" type = "range" id="inputDistanceToStart" min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"  onchange="distanceValue.value=value" /><output id="distanceValue"></output></li>
                     <li>Lengde på tur</li>
-                    <li><input class = "slider" type = "range"  min = "10" max = "40" step = "1" title = "Velg antall km" value = "0" onchange="distanceTripValue.value=value"/><output for ""id="distanceTripValue"></output></li>
+                    <li><input class = "slider" type = "range" id="distanceTrip" min = "10" max = "40" step = "1" title = "Velg antall km" value = "0" onchange="distanceTripValue.value=value"/><output id="distanceTripValue"></output></li>
                     <li>Vanskelighetsgrad</li>
-                    <li><inp class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"></input></li>
-                    <li><button id = "btnSearch" type="button" class="btn btn-info">Søk</button></li>
+                    <li><inp class = "slider" type = "range" id="difficulty" min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"></input></li>
+                    <li><button id = "btnSearch" type="button" onclick="findTrip()" class="btn btn-info">Søk</button></li>
                 </ul>
             </div>
             <script>
