@@ -35,6 +35,11 @@
                 templateUrl: '/app/components/trip/trip.html',
                 controller: 'mapController'
             })
+               // .state('maketrip', {
+                //    url: '/maketrip',
+                 //   templateUrl: '/app/components/maketrip/maketrip.html',
+                   // controller: 'drawMapController'
+               // })
         }]
     );
 

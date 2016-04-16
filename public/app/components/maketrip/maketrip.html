@@ -1,44 +1,95 @@
-<div id="tripContainer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
-                    <li><h3><span class="entypo-address"></span> FINN DIN TUR</h3></li>
-                    <li>Din posisjon</li>
-                    <li>
-                        <div id="checkForm">
-                            <input type="checkbox" id="currentPos">Bruk din posisjon
-                        </div>
-                    </li>
-                    <li><input type="text" id ="startPos" class ="fin"placeholder="Adresse"><br></li>
-                    <li>Avstand til startpunkt(timer)</li> <!--Finn metode for å finne nåværende posisjon-->
-                    <!--Få inn API for å beregne avstand mellom punkter i DB og startposisjon-->
-                    <li><input class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"  onchange="distanceValue.value=value" /><output id="distanceValue"></output></li>
-                    <li>Lengde på tur</li>
-                    <li><input class = "slider" type = "range"  min = "10" max = "40" step = "1" title = "Velg antall km" value = "0" onchange="distanceTripValue.value=value"/><output for ""id="distanceTripValue"></output></li>
-                    <li>Vanskelighetsgrad</li>
-                    <li><inp class = "slider" type = "range"  min = "0" max = "50" step = "1" title = "Velg antall km" value = "0"></input></li>
-                    <li><button id = "btnSearch" type="button" class="btn btn-info">Søk</button></li>
-                </ul>
-            </div>
-            <script>
-                $('input[type="range"]').on('input', function () {
-                    var percent = Math.ceil(((this.value - this.min) / (this.max - this.min)) * 100);
-                    console.log(this.min);
-                    $(this).css('background', '-webkit-linear-gradient(left, #ff7d00 0%, #fec389 ' + percent + '%, #e9e9e9 ' + percent + '%)');
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            <ul class="nav nav-sidebar">
+                <li><h3>Svingene</h3></li>
+                <li><h4>Topptur i Myrkdalen, Voss, Hordaland</h4></li>
+                <div class="rating">
+                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                </div>
+            </ul>
+        </div>
+        <div class="col-sm-8">
+
+
+
+           <!-- <div id='map'></div> -->
+
+            <div id="map" style="width: 100%; height: 90vh; border: 0px solid #ccc"></div>
+            <!-- <button id="changeColor">Rectangle -> Blue</button> -->
+
+        <script>
+
+
+                var map = new L.Map('map', {center: new L.LatLng(65.00, 11.50), zoom: 5});
+
+                // create a new tile layer
+                var tileUrl = 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
+                    layer = new L.TileLayer(tileUrl, {maxZoom: 18});
+
+                // add the layer to the map
+                map.addLayer(layer);
+
+
+                var drawnItems = new L.FeatureGroup();
+                map.addLayer(drawnItems);
+
+                // Set the title to show on the polygon button
+                L.drawLocal.draw.toolbar.buttons.polyline = 'Tegn topptur!';
+
+                var drawControl = new L.Control.Draw({
+                    position: 'topright',
+                    draw: {
+                        polyline: true,
+                        rectangle: false,
+                        polygon: false,
+                        circle: false,
+                        marker: false
+                    },
+                    edit: {
+                        featureGroup: drawnItems,
+                        remove: true
+                    }
+                });
+                map.addControl(drawControl);
+                drawControl.setDrawingOptions({ polyline: { shapeOptions: { color: '#3e8c6a', opacity: 1.0 } } });
+
+
+                map.on('draw:created', function (e) {
+                    var type = e.layerType,
+                            layer = e.layer;
+
+                    if (type === 'marker') {
+                        layer.bindPopup('A popup!');
+                    }
+
+                    drawnItems.addLayer(layer);
                 });
 
-            </script>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <!--Kart start-->
-                <div id = "map"></div>
-                <!--Kart-->
-            </div><!--Kolonne-->
-        </div> <!--Klasse row-->
-    </div><!--Slutt på container-->
-    <hr>
-    <footer>
-        <p>&copy; 2015 Company, Inc.</p>
-    </footer>
 
+
+                map.on('draw:edited', function (e) {
+                    var layers = e.layers;
+                    var countOfEditedLayers = 0;
+                    layers.eachLayer(function(layer) {
+                        countOfEditedLayers++;
+                    });
+                    console.log("Edited " + countOfEditedLayers + " layers");
+                });
+
+                L.DomUtil.get('changeColor').onclick = function () {
+                    drawControl.setDrawingOptions({ rectangle: { shapeOptions: { color: '#004a80' } } });
+                };
+
+
+        </script>
+
+
+
+
+            <!-- TESTER SLUTT!!!!!!!!!!!!! -->
+        </div>
+
+        </div>
+    </div>
 </div>
