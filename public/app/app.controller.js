@@ -20,11 +20,11 @@
         initmap();
     }
 
-  //  cont.controller('drawMapController', [drawMapController]);
+    cont.controller('drawMapController', [drawMapController]);
 
-  //  function drawMapController() {
-  //      initdrawmap();
-   // }
+    function drawMapController() {
+        initdrawmap();
+    }
 
 
 
