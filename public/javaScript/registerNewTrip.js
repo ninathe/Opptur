@@ -21,7 +21,6 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
 
 
      if(nameValid && latitudeValid && longitudeValid && placeValid && durationValid){
-         alert(tripName +" og lat "+ latitude+" og long "+ longitude +" og place "+ place +" og description "+ description +" og duration "+ duration)
          $.post("/makeTrip",
             {
                 tripName: tripName,
@@ -33,7 +32,7 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
             })
             .done( function(data,status){
                 alert(data);
-                //alert("Data loaded: " + data + "\nStatus: " + status);
+                alert("Data loaded: " + data + "\nStatus: " + status);
             })
 
 

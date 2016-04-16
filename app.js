@@ -91,11 +91,8 @@ app.post('/logIn', function(req,res) {
     app.post('/makeTrip', function (req, res) {
         var newTrip = new Trip(req.body);
         newTrip.save(function (err, trip) {
-            //console.log("Denne turen er beskrevet slik:  " + trip[0].description);
-
             if (err) return console.error(err);
-                else console.log("success")
-
+                else console.log("success");
             }
         )
     });
