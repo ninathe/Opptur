@@ -15,3 +15,7 @@ var tripSchema = new Schema({
 var Trip = mongoose.model('Trip', tripSchema);
 
 module.exports = Trip;
+
+
+
+//map
