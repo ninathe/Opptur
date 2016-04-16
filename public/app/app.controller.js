@@ -20,6 +20,13 @@
         initmap();
     }
 
+  //  cont.controller('drawMapController', [drawMapController]);
+
+  //  function drawMapController() {
+  //      initdrawmap();
+   // }
+
+
 
 })();
 
