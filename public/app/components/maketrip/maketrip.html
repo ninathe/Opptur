@@ -1,25 +1,41 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-4">
+    <div class="row" style = "background-color: #888888">
+        <div class="col-sm-4" style = "background-color: #888888">
             <ul class="nav nav-sidebar">
 
 
                 <div id="regTur">
                 <form>
 
-                    <li><h3>Svingene</h3></li>
-                    <li><h4>Topptur i Myrkdalen, Voss</h4></li>
-                    <li> <input placeholder="Navn på topptur" name="name" required pattern=".{2,}" /></li>
-                    <li><input placeholder="Plassering" name="place" /></li>
-                    <li><input placeholder="Vanskelighetsgrad" name="difficulty" /></li>
-                    <li><input placeholder="Beskrivelse" name="description"/></li>
-                    <li><button type="submit">Registrer tur</button>
+                    <li><h3 style="color: white; margin-bottom: 30px">Registrer din tur</h3></li>
+                    <li><h4 style="color: white"></h4></li>
+                    <li> <input id = "tripNavn" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Navn på topptur" name="name" required pattern=".{2,}" /></li>
+
+                    <li><input id = "tripPlassering" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Plassering" name="place" /></li>
+
+
+
+                    <li><p style = "color: white; font-size: smaller; margin-left: 40px; margin-right: 30px; margin-bottom: 40px; text-align: left;">
+                        Hvor er toppturen? Eksempler er "Myrkdalen" eller "Lofoten"</p></li>
+
+                    <li><input style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Vanskelighetsgrad" name="difficulty" /></li>
+
+
+                    <li><textarea id = "tripBeskrivelse" style = "margin: auto; margin-bottom: 20px" class = "fin" placeholder=" Beskrivelse" name="description"/></li>
+
+
+
+
+
+
+                    <li><button id = "BtnRegisterTrip" class="btn btn-info" type="submit">Registrer tur</button>
                 </form>
+
                 </div>
 
 
 
-                <div id="loginPopup" ng-controller="LoginController as login">
+                <!-- <div id="loginPopup" ng-controller="LoginController as login">
                     <form ng-submit="login.login(login.credentials)">
                         <h2><span class="entypo-login"></span> Logg inn</h2>
                         <button class="submit" onsubmit= "logIn()" id="loginBtn"><span class="entypo-lock"></span></button>
@@ -28,13 +44,13 @@
                         <span class="entypo-key inputPassIcon"></span>
                         <input type="password" class = "fin" id="pass" name="password" placeholder="Passord" ng-model="login.credentials.password"/>
                     </form>
-                </div>
+                </div> -->
 
 
 
             </ul>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-8" style = "background-color: #888888; margin-top: -4px">
 
 
 
@@ -44,7 +60,7 @@
             <!-- <button id="changeColor">Rectangle -> Blue</button> -->
 
         <script>
-
+                var shape_for_db = null;
 
                 var map = new L.Map('map', {center: new L.LatLng(65.00, 11.50), zoom: 5});
 
@@ -94,9 +110,10 @@
 
 
 
-                    var collection = drawnItems.toGeoJSON();
+                    var shape = drawnItems.toGeoJSON();
+                    shape_for_db = JSON.stringify(shape);
                     //var latlong = drawnItems.getLatLngs();
-                    console.log(collection);
+                    console.log(shape);
                     console.log(drawnItems);
                 });
 
