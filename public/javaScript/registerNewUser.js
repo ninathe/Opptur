@@ -22,6 +22,9 @@ function signUp(){  //is activated when the "sig up" button is clicked
             .done( function(data,status){
                 alert("Data loaded: " + data + "\nStatus: " + status);
             })
+
+        $("#backgroundPopup").fadeOut("slow");
+        $("#newUserPopup").fadeOut("slow");
     }
 }
 

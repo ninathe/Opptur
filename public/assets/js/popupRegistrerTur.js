@@ -87,4 +87,9 @@ $(document).ready(function(){
         }
     });
 
+    //Click the 'registrer tur button, : closes the popup
+    $(document).on('click', '#registerTurBtn', function(){
+        disableCreateTripPopup();
+    });
+
 });

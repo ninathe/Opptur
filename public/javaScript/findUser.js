@@ -9,11 +9,12 @@ function logIn(){
         {
             "email" : email,
             "password": password
-        }
-    ).complete( function(data,status){
+        })
+        .done( function(data,status){
         console.log("Data loaded: " + data + "\nStatus: " + status);
-
-    })
+        })
+    //$("#backgroundPopup").fadeOut("slow");
+    //$("#loginPopup").fadeOut("slow");
 }
 
 
