@@ -13,8 +13,8 @@ function logIn(){
         .done( function(data,status){
         console.log("Data loaded: " + data + "\nStatus: " + status);
         })
-    //$("#backgroundPopup").fadeOut("slow");
-    //$("#loginPopup").fadeOut("slow");
+    $("#backgroundPopup").fadeOut("slow");
+    $("#loginPopup").fadeOut("slow");
 }
 
 
