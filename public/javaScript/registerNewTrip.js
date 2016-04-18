@@ -6,22 +6,22 @@ var NUMBER_REGEX = /^\d+$/;
 
 
 function registerTrip(){  //is activated when the "registerTurBtn" button is clicked
-    var tripName        = document.getElementById("trip_name").value;
-    var latitude        = document.getElementById("reg_latitude").value;
-    var longitude       = document.getElementById("reg_longitude").value;
-    var place           = document.getElementById("reg_place").value;
-    var description     = document.getElementById("reg_description").value;
+    var tripName        = document.getElementById("tripNavn").value;
+    //var latitude        = document.getElementById("reg_latitude").value;
+    //var longitude       = document.getElementById("reg_longitude").value;
+    var place           = document.getElementById("tripPlassering").value;
+    var description     = document.getElementById("tripBeskrivelse").value;
     var duration        = document.getElementById("reg_duration").value;
-    //var difficulty      = document.getElementById("reg_password_confirm").value;
+    var difficulty      = document.getElementById("difficultvalue").value;
     var nameValid       = checkName(tripName);
-    var latitudeValid   = checkLatitude(latitude);
-    var longitudeValid  = checkLongitude(longitude);
+    //var latitudeValid   = checkLatitude(latitude);
+    //var longitudeValid  = checkLongitude(longitude);
     var placeValid      = checkName(place);
     var durationValid   = checkDuration(duration);
 
 
-     if(nameValid && latitudeValid && longitudeValid && placeValid && durationValid){
-         $.post("/makeTrip",
+     if(nameValid && placeValid){
+         /*$.post("/makeTrip",
             {
                 tripName: tripName,
                 latitude: latitude,
@@ -33,7 +33,8 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
             .done( function(data,status){
                 alert(data);
                 alert("Data loaded: " + data + "\nStatus: " + status);
-            })
+            })*/
+         console.log("Navnet: "+tripName + "\nplassering: " +place + " \nvanskelighetsgrad: " + difficulty + " \nbeskrivelse:" +description);
 
 
     }

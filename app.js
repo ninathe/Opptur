@@ -9,6 +9,8 @@ var router      = express.Router();
 var User        = require('./models/user');
 var Trip        = require('./models/trip');
 
+var bruker = "Superbruker";
+
 app.use('/', express.static(path.join(__dirname,'/public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -17,6 +19,17 @@ app.use(cookieParser('keyboardcat'));
 
 
 
+
+//-------------------------activeUser-----------------------------
+
+function setActiveUser(user) {
+    bruker = user;
+}
+
+/*function getSuperbruker() {
+    var bruker = 'fsdg';
+    return bruker;
+}*/
 
 
 //-----------------------API----------------------------------------
@@ -70,11 +83,10 @@ app.post('/logIn', function(req,res) {
     //res.writeHead(200);
     var dbUser = User.find(req.body, function (err, user) {
         if (user.length > 0) {
-            console.log("Kallenavnet til denne brukeren er: " + user[0].nickname);
+            var testtest =user[0].nickname;
+            setActiveUser(testtest);
 
             if (user.length > 0) {
-                //res.send(true);
-                setActiveUser(user);
                 res.status(200).send({success: true});
 
             } else {
@@ -84,6 +96,8 @@ app.post('/logIn', function(req,res) {
         }
     });
 });
+
+
 
 
 //-------------------------TRIP --------------------------------
@@ -116,16 +130,7 @@ app.post('/logIn', function(req,res) {
     });
 
 
-//-------------------------activeUser-----------------------------
-    var activeUser;
 
-    function setActiveUser(user) {
-        activeUser = user;
-    }
-
-    function getActiveUser() {
-        return activeUser;
-    }
 
 
 //----------------koble til databasen--------------------------------

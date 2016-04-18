@@ -1,5 +1,22 @@
 
 //Talking to frontEnd
+
+$(document).ready(function(){
+
+    //LOADING logIn
+    //Click the button event!
+    $(document).on('click', '#BtnRegisterTrip', function(){
+        logIn();
+        //document.getElementById("Brukernavn").innerHTML = bruker;
+        console.log(bruker);
+
+        //getSuperbruker();
+    });
+
+
+});
+
+
 function logIn(){
     var email= document.getElementById("user").value;
     var password = document.getElementById("pass").value;
@@ -15,6 +32,12 @@ function logIn(){
         })
     $("#backgroundPopup").fadeOut("slow");
     $("#loginPopup").fadeOut("slow");
+    //$("#Brukernavn").text(""+ bruker);
+
+
+
 }
+
+
 
 
