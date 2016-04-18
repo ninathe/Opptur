@@ -130,14 +130,11 @@
                     drawnItems.addLayer(layer);
 
 
-
-
-
                     var shape = drawnItems.toGeoJSON();
                     shape_for_db = JSON.stringify(shape);
                     //var latlong = drawnItems.getLatLngs();
-                    console.log(shape);
-                    console.log(drawnItems);
+                    console.log("db: " + shape_for_db);
+                    //console.log(drawnItems);
                 });
 
 
