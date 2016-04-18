@@ -1,25 +1,63 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-4">
+    <div class="row" style = "background-color: #888888">
+        <div class="col-sm-4" style = "background-color: #888888">
             <ul class="nav nav-sidebar">
 
 
                 <div id="regTur">
                 <form>
 
-                    <li><h3>Svingene</h3></li>
-                    <li><h4>Topptur i Myrkdalen, Voss</h4></li>
-                    <li> <input placeholder="Navn på topptur" name="name" required pattern=".{2,}" /></li>
-                    <li><input placeholder="Plassering" name="place" /></li>
-                    <li><input placeholder="Vanskelighetsgrad" name="difficulty" /></li>
-                    <li><input placeholder="Beskrivelse" name="description"/></li>
-                    <li><button type="submit">Registrer tur</button>
+                    <li><h3 style="color: white; margin-bottom: 30px; margin-top: 55px">Registrer din tur</h3></li>
+                    <li><h4 style="color: white"></h4></li>
+                    <li> <input id = "tripNavn" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Navn på topptur" name="name" required pattern=".{2,}" /></li>
+
+                    <li><input id = "tripPlassering" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Plassering" name="place" /></li>
+
+
+
+                    <li><p style = "color: white; font-size: smaller; margin-left: 40px; margin-right: 30px; margin-bottom: 40px; text-align: left;">
+                        Hvor er toppturen? Eksempler er "Myrkdalen" eller "Lofoten"</p></li>
+
+
+                    <li><p style = "margin: auto; margin-bottom: 10px; margin-left: 43px; text-align: left; color: white;">
+                        <b>Vanskelighetsgrad</b></p></li>
+
+                    <li><input class = "slider" style = "width: 300px" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" onchange="difficultValue.value=value"/>
+                        <output id="difficultvalue"></output></li>
+                    <p style = "color: white; font-size: smaller; display: inline;">Nybegynner</p>
+                    <p style = "color: white; font-size: smaller; display: inline; margin-left: 186px">Ekspert</p>
+
+
+                    <li><textarea id = "tripBeskrivelse" style = "margin: auto; margin-bottom: 20px; margin-top: 30px;" class = "fin" placeholder=" Beskrivelse" name="description"/></li>
+
+
+                    <li><p style = "color: white; font-size: smaller; margin-left: 40px; margin-right: 30px; margin-top: 40px; margin-bottom: 40px; text-align: left;">
+                        For å tegne inn stien på kartet, starter du med å zoome deg inn på riktig sted. Videre velger du polyline-verktøyet (ikonet under zoom).
+                    Deretter trykker du stien punkt for punkt. For å avslutte, trykker du på siste opptegnede punkt. <br><br>
+
+                        Dersom du har behov for å gjøre endringer på stien, kan du velge ikonet over søppelspannet.</p></li>
+
+
+
+
+
+                    <li><button id = "BtnRegisterTrip" class="btn btn-info" type="submit">Registrer tur</button>
                 </form>
+
+                    <script>
+                        $('input[type="range"]').on('input', function () {
+                            var percent = Math.ceil(((this.value - this.min) / (this.max - this.min)) * 100);
+                            console.log(this.min);
+                            $(this).css('background', '-webkit-linear-gradient(left, #ff7d00 0%, #fec389 ' + percent + '%, #e9e9e9 ' + percent + '%)');
+                        });
+
+                    </script>
+
                 </div>
 
 
 
-                <div id="loginPopup" ng-controller="LoginController as login">
+                <!-- <div id="loginPopup" ng-controller="LoginController as login">
                     <form ng-submit="login.login(login.credentials)">
                         <h2><span class="entypo-login"></span> Logg inn</h2>
                         <button class="submit" onsubmit= "logIn()" id="loginBtn"><span class="entypo-lock"></span></button>
@@ -28,23 +66,23 @@
                         <span class="entypo-key inputPassIcon"></span>
                         <input type="password" class = "fin" id="pass" name="password" placeholder="Passord" ng-model="login.credentials.password"/>
                     </form>
-                </div>
+                </div> -->
 
 
 
             </ul>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-8" style = "background-color: #888888; margin-top: -4px">
 
 
 
            <!-- <div id='map'></div> -->
 
-            <div id="map" style="width: 100%; height: 90vh; border: 0px solid #ccc"></div>
+            <div id="map" style="width: 100%; height: 92vh; border: 0px solid #ccc"></div>
             <!-- <button id="changeColor">Rectangle -> Blue</button> -->
 
         <script>
-
+                var shape_for_db = null;
 
                 var map = new L.Map('map', {center: new L.LatLng(65.00, 11.50), zoom: 5});
 
@@ -77,7 +115,7 @@
                     }
                 });
                 map.addControl(drawControl);
-                drawControl.setDrawingOptions({ polyline: { shapeOptions: { color: '#3e8c6a', opacity: 1.0 } } });
+                drawControl.setDrawingOptions({ polyline: { shapeOptions: { color: '#ffa44c', opacity: 1.0 } } });
 
 
                 map.on('draw:created', function (e) {
@@ -94,9 +132,10 @@
 
 
 
-                    var collection = drawnItems.toGeoJSON();
+                    var shape = drawnItems.toGeoJSON();
+                    shape_for_db = JSON.stringify(shape);
                     //var latlong = drawnItems.getLatLngs();
-                    console.log(collection);
+                    console.log(shape);
                     console.log(drawnItems);
                 });
 
@@ -112,7 +151,7 @@
                 });
 
                 L.DomUtil.get('changeColor').onclick = function () {
-                    drawControl.setDrawingOptions({ rectangle: { shapeOptions: { color: '#004a80' } } });
+                    drawControl.setDrawingOptions({ rectangle: { shapeOptions: { color: '#ffa44c' } } });
                 };
 
 
