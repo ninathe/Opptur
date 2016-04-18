@@ -40,6 +40,11 @@
                     templateUrl: '/app/components/maketrip/maketrip.html',
                     controller: 'drawMapController'
                 })
+                .state('tripview', {
+                    url: '/tripview',
+                    templateUrl: '/app/components/maketrip/tripview.html',
+                    controller: 'drawMapController'
+                })
         }]
     );
 

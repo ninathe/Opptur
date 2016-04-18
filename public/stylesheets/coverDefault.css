@@ -9,6 +9,11 @@ a:hover {
   color: #000;
 }
 
+a#Brukernavn{
+  color:#ffa44c;
+  font-weight:bold;
+}
+
 .navbar-nav>li>.dropdown-menu {
   paddiing: 10px;
 }

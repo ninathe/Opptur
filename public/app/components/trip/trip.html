@@ -15,7 +15,7 @@
                     <!--Få inn API for å beregne avstand mellom punkter i DB og startposisjon-->
                     <li><input class = "slider" type = "range" id="inputDistanceToStart" min = "0" max = "10" step = "1" title = "Velg antall km" value = "0"  onmousemove="distanceValue.value=value" /><output id="distanceValue"></output></li>
                     <li>Lengde på tur(t)</li>
-                    <li><input class = "slider" type = "range" id="distanceTrip" min = "1" max = "10" step = "1" title = "Velg antall km" value = "0" onmousemove="distanceTripValue.value=value"/><output id="distanceTripValue"></output></li>
+                    <li><input class = "slider" type = "range" id="distanceTrip" min = "1" max = "10" step = "1" title = "Velg antall km" value = "0" onmousemove="distanceTripValue.value=value" + "t"/><output id="distanceTripValue"></output></li>
                     <li>Vanskelighetsgrad</li>
                     <li><input class = "slider" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" onchange="difficultValue.value=value"/><output id="difficultvalue"></output></li>
                     <li><button id = "btnSearch" type="button" onclick="findTrip()" class="btn btn-info">Søk</button></li>
