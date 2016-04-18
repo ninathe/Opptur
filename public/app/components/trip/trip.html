@@ -1,24 +1,29 @@
 <div id="tripContainer">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
+            <div class="col-sm-4 col-md-3 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li><h3><span class="entypo-address"></span> FINN DIN TUR</h3></li>
+                    <li><h3 style="margin-top: 50px"><span class="entypo-address" ></span> Finn din tur</h3></li>
                     <li>Din posisjon</li>
                     <li>
                         <div id="checkForm">
                             <input type="checkbox" id="currentPos">Bruk din posisjon
                         </div>
                     </li>
-                    <li><input type="text" id ="startPos" class ="fin"placeholder="Adresse"><br></li>
-                    <li>Avstand til startpunkt(timer)</li> <!--Finn metode for å finne nåværende posisjon-->
+                    <li><input type="text" id ="startPos" class ="fin"placeholder="Adresse" style = "width: 240px;"><br></li>
+                    <li>Avstand til startpunkt (timer)</li> <!--Finn metode for å finne nåværende posisjon-->
                     <!--Få inn API for å beregne avstand mellom punkter i DB og startposisjon-->
-                    <li><input class = "slider" type = "range" id="inputDistanceToStart" min = "0" max = "10" step = "1" title = "Velg antall km" value = "0"  onmousemove="distanceValue.value=value" /><output id="distanceValue"></output></li>
-                    <li>Lengde på tur(t)</li>
-                    <li><input class = "slider" type = "range" id="distanceTrip" min = "1" max = "10" step = "1" title = "Velg antall km" value = "0" onmousemove="distanceTripValue.value=value" + "t"/><output id="distanceTripValue"></output></li>
+                    <li><input class = "slider" style = "width: 240px;" type = "range" id="inputDistanceToStart" min = "0" max = "10" step = "1" title = "Velg antall km" value = "0"  onmousemove="distanceValue.value=value" /><output id="distanceValue"></output></li>
+                    <li>Lengde på tur (timer)</li>
+                    <li><input class = "slider" style = "width: 240px;" type = "range" id="distanceTrip" min = "1" max = "10" step = "1" title = "Velg antall km" value = "0" onmousemove="distanceTripValue.value=value" + "t"/><output id="distanceTripValue"></output></li>
                     <li>Vanskelighetsgrad</li>
-                    <li><input class = "slider" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" onchange="difficultValue.value=value"/><output id="difficultvalue"></output></li>
-                    <li><button id = "btnSearch" type="button" onclick="findTrip()" class="btn btn-info">Søk</button></li>
+                    <li><input class = "slider" style = "width: 240px;" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" onchange="difficultValue.value=value"/><output id="difficultvalue"></output></li>
+
+                    <p style = "color: white; font-size: smaller; display: inline;">Nybegynner</p>
+                    <p style = "color: white; font-size: smaller; display: inline; margin-left: 130px">Ekspert</p>
+
+
+                    <li><button id = "btnSearch" type="button" onclick="findTrip()" class="btn btn-info" style = "background-color: #ffa44c; border: 0px; margin-top: 20px; width: 75px;">Søk</button></li>
                 </ul>
             </div>
             <script>
@@ -29,7 +34,7 @@
                 });
 
             </script>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style = "margin-top: -4px;">
+            <div class="col-sm-8 col-sm-offset-3 col-md-9 col-md-offset-2 main" style = "margin-top: -4px; background-color: #a4a5a5">
                 <!--Kart start-->
                 <div id = "map" position = fixed></div>
                 <!--Kart-->
