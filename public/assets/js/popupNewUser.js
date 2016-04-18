@@ -83,5 +83,10 @@ $(document).ready(function(){
 			disableNewUserPopup();
 		}
 	});
+	//Click the 'registrer deg' button, : closes the popup
+	$(document).on('click', '#registerBtn', function(){
+		newUserStatus=0;
+		//disableNewUserPopup();
+	});
 
 });

@@ -75,6 +75,7 @@ $(document).ready(function(){
 	});
 	//Click out event!
 	$("#backgroundPopup").click(function(){
+		console.log("popup skal lukkes");
 		disablePopup();
 	});
 	//Press Escape event!
@@ -82,6 +83,13 @@ $(document).ready(function(){
 		if(e.keyCode==27 && loginStatus==1){
 			disablePopup();
 		}
+	});
+
+	//click Login - disable popup:
+	$("#loginBtn").click(function(){
+		//centering with css
+		disablePopup();
+
 	});
 
 });
