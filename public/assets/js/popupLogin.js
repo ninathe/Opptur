@@ -87,7 +87,6 @@ $(document).ready(function(){
 	//Click the log in button : closes the popup
 	$(document).on('click', '#loginBtn', function(){
 		disablePopup();
-		//loginStatus=0;
 	});
 
 });
