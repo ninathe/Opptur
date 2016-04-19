@@ -80,22 +80,24 @@ app.post('/logIn', function(req,res) {
     //finds the user with the email and password from user-input
     var dbUser = User.find(req.body, function (err, user) {
         if (user.length > 0) {
-            /*var testtest =user[0].nickname;
+            var testtest =user[0].nickname;
             bruker = testtest;
-            setActiveUser(testtest);
-*/
+            //setActiveUser(testtest);
+            res.status(200).send({success: true});
+            console.log(testtest);
 
-            if (user.length > 0) {
-                res.status(200).send({success: true});
-
-            } else {
-                console.log('Wrong email or password');
-                console.log("error - wrong input");
-            }
+        } else {
+            console.log('Wrong email or password');
+            console.log("error - wrong input");
         }
     });
+
 });
 
+app.get('/getUsername', function(req,res) {
+    console.log("dette er brukeren: " + bruker);
+
+});
 
 
 //-------------------------TRIP --------------------------------
