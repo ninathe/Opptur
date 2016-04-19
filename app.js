@@ -84,7 +84,7 @@ app.post('/logIn', function(req,res) {
         if (user.length > 0) {
             var testtest =user[0].nickname;
             bruker = testtest;
-            
+
             //setActiveUser(testtest);
             res.status(200).send({success: true});
             console.log(testtest);
