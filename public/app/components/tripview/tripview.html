@@ -42,7 +42,7 @@
 
 
                     <div id="checkFormAvalange" style = "color: white; font-size: small; margin-top: -20px;">
-                        <input type="checkbox" id="currentPos"><b> Se aktsomhetsområder for skred</b>
+                        <input type="checkbox" id="checkFormAvalange";"><b> Se aktsomhetsområder for skred</b>
                     </div>
 
                     <script>
@@ -129,7 +129,7 @@
                     layers: layer,
                     format: 'image/png',
                     transparent: true,
-                    opacity: 0.5,
+                    opacity: 0.2,
                     attribution: "NVE eier alt dette"
                 });
 
@@ -138,22 +138,13 @@
                 $(document).on('click', '#checkFormAvalange :checkbox', function() {
                     console.log('check');
                     var $this = $(this);
-                    //var layerGroup = L.LayerGroup();
                     var layerGroup = L.layerGroup().addTo(map);
 
-                    // $this will contain a reference to the checkbox
                     if ($this.is(':checked')) {
                         skredfare.addTo(layerGroup);
 
                     } else{
-                        //layerGroup.clearLayers();
                         map.removeLayer(skredfare);
-
-                       // map.eachLayer(function (layer) {
-                       // map.removeLayer(layer);
-
-                       // });
-
                     }
 
                 });
