@@ -80,13 +80,14 @@ app.post('/logIn', function(req,res) {
     //finds the user with the email and password from user-input
     var dbUser = User.find(req.body, function (err, user) {
         if (user.length > 0) {
-            /*var testtest =user[0].nickname;
+            var testtest =user[0].nickname;
             bruker = testtest;
-            setActiveUser(testtest);
-*/
+            console.log(testtest);
+            //setActiveUser(testtest);
+
 
             if (user.length > 0) {
-                res.status(200).send({success: true});
+                res.status(200).send({success: true, username: "" + testtest});
 
             } else {
                 console.log('Wrong email or password');
