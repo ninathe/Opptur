@@ -56,6 +56,23 @@
 	font-size:13px;
 }
 
+#RegistrerTrip{
+	display:none;
+	position:relative;
+	_position:absolute; /* hack for internet explorer 6*/
+	width:408px;
+	background:#b4b7b7;
+	border-radius: 10px;
+	border: 1px solid #000;
+	z-index:1050;
+	padding:12px;
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-bottom: 35px;
+	font-size:13px;
+	color:white;
+}
+
 #infoPopup{
 	display:none;
 	position:relative;

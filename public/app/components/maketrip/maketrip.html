@@ -1,0 +1,168 @@
+<div class="container-fluid">
+    <div class="row" style = "background-color: #a4a5a5">
+        <div class="col-sm-4" style = "background-color: #a4a5a5">
+            <ul class="nav nav-sidebar">
+
+
+                <div id="regTur">
+                <form>
+
+                    <li><h3 style="color: white; margin-bottom: 30px; margin-top: 40px"><span class="entypo-pencil"></span>  Registrer din tur</h3></li>
+                    <li><h4 style="color: white"></h4></li>
+                    <li> <input id = "tripNavn" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Navn på topptur" name="name" required pattern=".{2,}" /></li>
+
+                    <li><input id = "tripPlassering" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Plassering" name="place" /></li>
+
+
+
+                    <li><p style = "color: white; font-size: smaller; margin-left: 40px; margin-right: 30px; margin-bottom: 25px; text-align: left;">
+                        Hvor er toppturen? Eksempler er "Myrkdalen" eller "Lofoten"</p></li>
+
+
+                    <li><p style = "margin: auto; margin-bottom: 10px; margin-left: 43px; text-align: left; color: white;">
+                        <b>Vanskelighetsgrad</b></p></li>
+
+                    <li><input class = "slider" style = "width: 300px" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" onchange="difficultValue.value=value"/>
+                        <output id="difficultvalue"></output></li>
+                    <p style = "color: white; font-size: smaller; display: inline;">Nybegynner</p>
+                    <p style = "color: white; font-size: smaller; display: inline; margin-left: 186px">Ekspert</p>
+
+
+                    <li><textarea id = "tripBeskrivelse" style = "height: 130px; margin: auto; margin-bottom: 20px; margin-top: 25px;" class = "fin" placeholder=" Beskrivelse" name="description"/></li>
+
+
+                    <li><p style = "color: white; font-size: smaller; margin-left: 40px; margin-right: 30px; margin-top: 20px; margin-bottom: 20px; text-align: left;">
+                        For å tegne inn stien på kartet, starter du med å zoome deg inn på riktig sted. Videre velger du polyline-verktøyet (ikonet under zoom).
+                    Deretter trykker du stien punkt for punkt. For å avslutte, trykker du på siste opptegnede punkt. Når du er fornøyd med kartutsnittet du ser, og
+                        har fylt inn all informasjonen du ønsker, trykker du på "Registrer tur".<br><br>
+
+                        Dersom du har behov for å gjøre endringer på stien, kan du velge ikonet over søppelspannet.</p></li>
+
+
+
+
+
+                    <li><button id = "BtnRegisterTrip" onsubmit = "registerTrip()" class="btn btn-info" type="submit">Registrer tur</button>
+                </form>
+
+                    <script>
+                        $('input[type="range"]').on('input', function () {
+                            var percent = Math.ceil(((this.value - this.min) / (this.max - this.min)) * 100);
+                            console.log(this.min);
+                            $(this).css('background', '-webkit-linear-gradient(left, #ff7d00 0%, #fec389 ' + percent + '%, #e9e9e9 ' + percent + '%)');
+                        });
+
+                    </script>
+
+                </div>
+
+
+
+                <!-- <div id="loginPopup" ng-controller="LoginController as login">
+                    <form ng-submit="login.login(login.credentials)">
+                        <h2><span class="entypo-login"></span> Logg inn</h2>
+                        <button class="submit" onsubmit= "logIn()" id="loginBtn"><span class="entypo-lock"></span></button>
+                        <span class="entypo-user inputUserIcon"></span>
+                        <input type="text" class ="fin" id="user" name="email" placeholder="E-post" ng-model="login.credentials.email"/>
+                        <span class="entypo-key inputPassIcon"></span>
+                        <input type="password" class = "fin" id="pass" name="password" placeholder="Passord" ng-model="login.credentials.password"/>
+                    </form>
+                </div> -->
+
+
+
+            </ul>
+        </div>
+        <div class="col-sm-8" style = "background-color: #a4a5a5; margin-top: -4px">
+
+
+
+           <!-- <div id='map'></div> -->
+
+            <div id="map" style="width: 100%; height: 92vh; border: 0px solid #ccc; position: fixed"></div>
+            <!-- <button id="changeColor">Rectangle -> Blue</button> -->
+
+        <script>
+                var shape_for_db = null;
+
+                var map = new L.Map('map', {center: new L.LatLng(65.00, 27.50), zoom: 5});
+
+                // create a new tile layer
+                var tileUrl = 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
+                    layer = new L.TileLayer(tileUrl, {maxZoom: 18});
+
+                // add the layer to the map
+                map.addLayer(layer);
+
+
+                var drawnItems = new L.FeatureGroup();
+                map.addLayer(drawnItems);
+
+                // Set the title to show on the polygon button
+                L.drawLocal.draw.toolbar.buttons.polyline = 'Tegn topptur!';
+
+                var drawControl = new L.Control.Draw({
+                    position: 'topleft',
+                    draw: {
+                        polyline: true,
+                        rectangle: false,
+                        polygon: false,
+                        circle: false,
+                        marker: false
+                    },
+                    edit: {
+                        featureGroup: drawnItems,
+                        remove: true
+                    }
+                });
+                map.addControl(drawControl);
+                drawControl.setDrawingOptions({ polyline: { shapeOptions: { color: '#ffa44c', opacity: 1.0 } } });
+
+
+                map.on('draw:created', function (e) {
+                    var type = e.layerType,
+                            layer = e.layer;
+
+                    if (type === 'marker') {
+                        layer.bindPopup('A popup!');
+                    }
+
+                    drawnItems.addLayer(layer);
+
+
+                    var shape = drawnItems.toGeoJSON();
+                    shape_for_db = JSON.stringify(shape);
+                    //var latlong = drawnItems.getLatLngs();
+                    console.log("db: " + shape_for_db);
+                    //console.log(drawnItems);
+                });
+
+
+
+                map.on('draw:edited', function (e) {
+                    var layers = e.layers;
+                    var countOfEditedLayers = 0;
+                    layers.eachLayer(function(layer) {
+                        countOfEditedLayers++;
+                    });
+                    console.log("Edited " + countOfEditedLayers + " layers");
+                });
+
+                L.DomUtil.get('changeColor').onclick = function () {
+                    drawControl.setDrawingOptions({ rectangle: { shapeOptions: { color: '#ffa44c' } } });
+                };
+
+
+        </script>
+
+            <script src="public/assets/js/registerNewTrip.js"></script>
+
+
+
+            <!-- TESTER SLUTT!!!!!!!!!!!!! -->
+        </div>
+
+        </div>
+    </div>
+</div>
+

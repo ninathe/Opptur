@@ -18,35 +18,37 @@ $(document).ready(function(){
 
 //window.onload=pos();
 
+$("#currentPos").click(function(){
+	console.log('clicl');
+});
 
-	$('#checkForm :checkbox').click(function() {
-		var $this = $(this);
-		// $this will contain a reference to the checkbox
-		if ($this.is(':checked')) {
-			givePosition();
-			document.getElementById("startPos").disabled = true;
-		} else{
-			remove();
-			map.removeLayer(yourPos);
-			map.removeLayer(posCircle);
-			console.log("Layer?" + map.hasLayer(yourPos));
-			console.log(map.removeLayer(yourPos));
-			map.setView(new L.LatLng(63.446827, 10.421906),5);
-			map.locate({setView: true, maxZoom: 10});
-			document.getElementById("startPos").disabled = false;
+$(document).on('click', '#checkForm :checkbox', function() {
+	console.log('check');
+	var $this = $(this);
+	// $this will contain a reference to the checkbox
+	if ($this.is(':checked')) {
+		givePosition();
+		document.getElementById("startPos").disabled = true;
+	} else{
+		remove();
+		map.removeLayer(yourPos);
+		map.removeLayer(posCircle);
+		console.log("Layer?" + map.hasLayer(yourPos));
+		console.log(map.removeLayer(yourPos));
+		map.setView(new L.LatLng(63.446827, 10.421906),5);
+		map.locate({setView: true, maxZoom: 10});
+		document.getElementById("startPos").disabled = false;
 
-		}
+	}
 
-	});
+});
+
 
 function remove(){
 	map.removeLayer(yourPos);
 
 }
 
-
-
-initmap();
 
 function initmap() {
 	// set up AJAX request
@@ -68,6 +70,10 @@ function initmap() {
 	map.setView(new L.LatLng(63.446827, 10.421906),5);
 	//map.locate({setView: true, maxZoom: 8});
 	map.addLayer(osm);
+
+
+
+
 
 	//askForPlots();
 	//map.on('moveend', onMapMove);
@@ -120,8 +126,8 @@ function onLocationFound(e) {
 
 
 	console.log(yourPos);
-	//map.addLayer(yourPos);
-	//yourPos.bindPopup("Du er innenfor " + radius + " meter fra dette punktet").openPopup();
+	map.addLayer(yourPos);
+	yourPos.bindPopup("Du er innenfor " + radius + " meter fra dette punktet").openPopup();
 
 	posCircle = L.circle(e.latlng, radius);
 	posCircle.addTo(map);
