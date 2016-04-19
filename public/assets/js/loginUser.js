@@ -14,7 +14,10 @@ function logIn(){
         })
         .done( function(data,status){
         console.log("Data loaded: " + data + "\nStatus: " + status);
-        })
+        });
+    $.get("/getUsername", function(data){
+       console.log("i frontend? : " +data);
+    });
     $("#backgroundPopup").fadeOut("slow");
     $("#loginPopup").fadeOut("slow");
     console.log(getSuperbruker());
