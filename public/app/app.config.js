@@ -42,7 +42,7 @@
                 })
                 .state('tripview', {
                     url: '/tripview',
-                    templateUrl: '/app/components/maketrip/tripview.html',
+                    templateUrl: '/app/components/tripview/tripview.html',
                     controller: 'drawMapController'
                 })
         }]

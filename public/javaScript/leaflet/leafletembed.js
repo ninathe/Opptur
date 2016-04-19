@@ -70,6 +70,10 @@ function initmap() {
 	//map.locate({setView: true, maxZoom: 8});
 	map.addLayer(osm);
 
+
+
+
+
 	//askForPlots();
 	//map.on('moveend', onMapMove);
 }
