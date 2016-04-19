@@ -32,11 +32,10 @@ function logIn(){
         })
     $("#backgroundPopup").fadeOut("slow");
     $("#loginPopup").fadeOut("slow");
+    console.log(getSuperbruker());
     //$("#Brukernavn").text(""+ bruker);
-
-
-
 }
+
 
 
 

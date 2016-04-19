@@ -21,19 +21,21 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
 
 
      if(nameValid && placeValid){
-         /*$.post("/makeTrip",
+         $.post("/makeTrip",
             {
                 tripName: tripName,
                 latitude: latitude,
                 longitude: longitude,
                 place: place,
                 description: description,
-                duration : duration
+                duration : duration,
+                methods : {'getCenter()', "getZoom()"},
+                points : Object
             })
             .done( function(data,status){
                 alert(data);
                 alert("Data loaded: " + data + "\nStatus: " + status);
-            })*/
+            })
          console.log("Navnet: "+tripName + "\nplassering: " +place + " \nvanskelighetsgrad: " + difficulty + " \nbeskrivelse:" +description);
 
 
