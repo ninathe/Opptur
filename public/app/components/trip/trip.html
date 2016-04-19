@@ -4,14 +4,20 @@
             <div class="col-sm-4 col-md-3 sidebar">
                 <ul class="nav nav-sidebar">
                     <li><h3 style="margin-top: 50px"><span class="entypo-address" ></span> Finn din tur</h3></li>
-                    <li>Din posisjon</li>
-                    <li>
-                        <div id="checkForm">
-                            <input type="checkbox" id="currentPos">Bruk din posisjon
-                        </div>
-                    </li>
-                    <li><input type="text" id ="startPos" class ="fin"placeholder="Adresse" style = "width: 240px;"><br></li>
-                    <li>Avstand til startpunkt (timer)</li> <!--Finn metode for å finne nåværende posisjon-->
+                    <div id ="positionBox">
+                        <li>Din posisjon</br></li>
+                        <li>
+                            <div id="checkForm">
+                                <input type="checkbox" id="currentPos"> <p class="kommentar">Gjeldende plassering</p>
+                            </div>
+                        </li>
+                        <li><p class ="kommentar">-eller-</p></li>
+                        <li><input class="fin" type="text" id="txtautocomplete"  placeholder="Skriv inn en adresse"/></li>
+                        <li><label id="lblresult"></label></li>
+                        <!--<li><input type="text" id ="startPos" class ="fin"placeholder="Adresse"><br></li>-->
+                    </div>
+                    <li>Avstand til startpunkt(timer)</li> <!--Finn metode for å finne nåværende posisjon-->
+
                     <!--Få inn API for å beregne avstand mellom punkter i DB og startposisjon-->
                     <li><input class = "slider" style = "width: 240px;" type = "range" id="inputDistanceToStart" min = "0" max = "10" step = "1" title = "Velg antall km" value = "0"  onmousemove="distanceValue.value=value" /><output id="distanceValue"></output></li>
                     <li>Lengde på tur (timer)</li>
@@ -19,8 +25,8 @@
                     <li>Vanskelighetsgrad</li>
                     <li><input class = "slider" style = "width: 240px;" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" onchange="difficultValue.value=value"/><output id="difficultvalue"></output></li>
 
-                    <p style = "color: white; font-size: smaller; display: inline;">Nybegynner</p>
-                    <p style = "color: white; font-size: smaller; display: inline; margin-left: 130px">Ekspert</p>
+                    <p class = "kommentar">Nybegynner</p>
+                    <p class = "kommentar" style = "margin-left: 130px">Ekspert</p>
 
 
                     <li><button id = "btnSearch" type="button" onclick="findTrip()" class="btn btn-info" style = "background-color: #ffa44c; border: 0px; margin-top: 20px; width: 75px;">Søk</button></li>
