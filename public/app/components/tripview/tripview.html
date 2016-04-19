@@ -79,6 +79,7 @@
 
             <!-- <div id='map'></div> -->
 
+
             <div id="map" style="width: 100%; height: 92vh; border: 0px solid #ccc; position: fixed"></div>
             <!-- <button id="changeColor">Rectangle -> Blue</button> -->
 
@@ -86,7 +87,6 @@
                 var shape_for_db = null;
 
                 var map = new L.Map('map', {center: new L.LatLng(65.00, 27.50), zoom: 5});
-
                 // create a new tile layer
                 var tileUrl = 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
                         layer = new L.TileLayer(tileUrl, {maxZoom: 18});
@@ -95,25 +95,31 @@
                 map.addLayer(layer);
 
 
-               // var drawnItems = new L.FeatureGroup();
-               // map.addLayer(drawnItems);
+                var polyLineStyle = {
+                    "color": "#ffa44c",
+                    "weight": 4,
+                    "opacity": 1.0
+                };
 
 
-//PRØVER Å TEGNE LAYER FROM STRING
-               var tegne = JSON.parse(
+                var myPolyLine =  {"type":"FeatureCollection","features":
+                        [{"type":"Feature","properties":{},"geometry":{"type":"LineString","coordinates":[
+                            [5.3029632568359375,60.392147922518845],
+                            [10.356674194335938,63.430860212678105],
+                            [10.708236694335938,59.88893689676585]]}}]};
 
-                        {"type":"FeatureCollection","features":
-                                [{"type":"Feature","properties":{},"geometry":{"type":"LineString","coordinates":[
-                                    [5.3029632568359375,60.392147922518845],
-                                    [10.356674194335938,63.430860212678105],
-                                    [10.708236694335938,59.88893689676585]]}}]}
-
-                );
+                //L.geoJson(test).addTo(map);
 
 
-                </script>
+                L.geoJson(myPolyLine, {style: polyLineStyle}).addTo(map);
 
-        </div>
+
+
+
+                  </script>
+
+
+                    </div>
 
     </div>
 </div>
