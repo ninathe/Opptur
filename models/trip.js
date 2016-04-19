@@ -6,6 +6,7 @@ var tripSchema = new Schema({
     tripName: { type: String, required: true},
     latitude: {type: String},
     longitude: {type: String},
+    difficulty : Number,
     place: {type: String, required: true},
     description: String,
     //duration : Number,

@@ -12,16 +12,16 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
     var tripName        = document.getElementById("tripNavn").value;
     var place           = document.getElementById("tripPlassering").value;
     var description     = document.getElementById("tripBeskrivelse").value;
+    var difficulty      = document.getElementById("difficult").value;
     //var latitude        = document.getElementById("reg_latitude").value;
     //var longitude       = document.getElementById("reg_longitude").value;
     //var duration        = document.getElementById("reg_duration").value;
-    //var difficulty      = document.getElementById("difficultvalue").value;
     var nameValid       = checkName(tripName);
     var placeValid      = checkName(place);
     //var latitudeValid   = checkLatitude(latitude);
     //var longitudeValid  = checkLongitude(longitude);
     //var durationValid   = checkDuration(duration);
-    console.log("Før posting:::: Navnet: "+tripName + "plassering: " +place + "beskrivelse:" +description);
+    console.log("Før posting:::: \nNavnet: "+tripName + "\nplassering: " +place + "\nbeskrivelse: " +description + "\nvanskelighetsgrad: " + difficulty);
 
 
     if(nameValid && placeValid){
@@ -31,6 +31,7 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
                 latitude: latitude,
                 longitude: longitude,
                 place: place,
+                difficulty : difficulty,
                 description: description,
                 //duration : Number,
                 center : Number,

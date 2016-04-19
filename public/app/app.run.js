@@ -12,7 +12,6 @@
 
         .run(['$rootScope',
             function($rootScope) {
-                console.log("heihoooo");
                 var sessLoggedIn = sessionStorage.loggedIn;
                 $rootScope.loggedIn = (sessLoggedIn !== undefined ? (sessLoggedIn === 'true' ? true : false) : false);
                 $rootScope.isAuthorized = function() {

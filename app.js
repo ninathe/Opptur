@@ -9,9 +9,6 @@ var router      = express.Router();
 var User        = require('./models/user');
 var Trip        = require('./models/trip');
 
-var bruker = "Superbruker";
-
-
 
 app.use('/', express.static(path.join(__dirname,'/public')));
 app.use(logger('dev'));
@@ -19,18 +16,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser('keyboardcat'));
 
-
-
-
-//-------------------------activeUser-----------------------------
-
-/*function setActiveUser(user) {
-    bruker = user;
-}
-
-function getSuperbruker() {
-    return bruker;
-}*/
 
 //-----------------------API----------------------------------------
 
@@ -49,9 +34,6 @@ function send(res, path) {
         }
     });
 }
-// Getters
-
-
 
 // START SERVER
 
@@ -66,11 +48,10 @@ var server = app.listen(PORT, function() {
 //------------USER---------
 
 app.post('/signUp', function(req, res){
-    console.log(req.body);
     var newUser = new User(req.body);
     newUser.save(function(err, user)  {
             if (err) return console.error(err);
-            else console.log("success")
+            else console.log("signIn success")
 
         }
     )
@@ -83,33 +64,23 @@ app.post('/logIn', function(req,res) {
     var dbUser = User.find(req.body, function (err, user) {
         if (user.length > 0) {
             var testtest =user[0].nickname;
-            bruker = testtest;
-
-            //setActiveUser(testtest);
-            res.status(200).send({success: true});
             console.log(testtest);
-            //setActiveUser(testtest);
-
-
             if (user.length > 0) {
                 res.status(200).send({success: true, username: "" + testtest});
-
             } else {
                 console.log('Wrong email or password');
-                console.log("error - wrong input");
             }
         }
     });
-
 });
 
 app.get('/getUsername', function(req,res) {
     console.log("dette er brukeren: " + bruker);
-
 });
 
 
 //-------------------------TRIP --------------------------------
+
 
     app.post('/makeTrip', function (req, res) {
         var newTrip = new Trip(req.body);
