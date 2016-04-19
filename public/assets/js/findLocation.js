@@ -1,7 +1,6 @@
 /**
  * Created by Nina on 18.04.16.
  */
-// google.maps.event.addDomListener(window, 'load', intilize);
 
 function intilizeLocation() {
     google.maps.event.addDomListener(window, 'load', function(){
