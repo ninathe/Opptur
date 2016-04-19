@@ -26,6 +26,7 @@
     function drawMapController() {
        // initdrawmap();
         intilizeLocation();
+        //registerTrip();
     }
 
 

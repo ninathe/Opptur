@@ -9,6 +9,8 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
     alert("knappen ble trykket");
     var latitude        = "63.1234";
     var longitude       = "10.1234";
+    var latlng          = document.getElementById("map").getCenter();
+    var zoom            = document.getElementById("map").getZoom();
     var tripName        = document.getElementById("tripNavn").value;
     var place           = document.getElementById("tripPlassering").value;
     var description     = document.getElementById("tripBeskrivelse").value;
@@ -22,7 +24,7 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
     //var longitudeValid  = checkLongitude(longitude);
     //var durationValid   = checkDuration(duration);
     console.log("Før posting:::: Navnet: "+tripName + "plassering: " +place + "beskrivelse:" +description);
-
+    console.log("Latlng: " + latlng + "Zoom: " + zoom);
 
     if(nameValid && placeValid){
          $.post("/makeTrip",

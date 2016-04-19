@@ -86,7 +86,6 @@ app.post('/logIn', function(req,res) {
             bruker = testtest;
 
             //setActiveUser(testtest);
-            res.status(200).send({success: true});
             console.log(testtest);
             //setActiveUser(testtest);
 
