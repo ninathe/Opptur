@@ -43,6 +43,38 @@ $(document).on('click', '#checkForm :checkbox', function() {
 
 });
 
+
+$(document).on('click', '#checkFormAvalange :checkbox', function() {
+	console.log('check');
+	var $this = $(this);
+	var url = "http://wms3.nve.no/map/services/SkredSnoAktR/MapServer/WmsServer";
+	var layer = "Snoskred-Aktsomhetsomrader";
+	var skredfare = L.tileLayer.wms(url, {
+		layers: layer,
+		format: 'image/png',
+		transparent: true,
+		opacity: 0.5,
+		attribution: "NVE eier alt dette"
+	});
+	var layerGroup = L.LayerGroup();
+	// $this will contain a reference to the checkbox
+	if ($this.is(':checked')) {
+		skredfare.addTo(layerGroup);
+		layerGroup.addTo(map);
+
+	} else{
+
+		layerGroup.clearLayers();
+
+		//map.eachLayer(function (layer) {
+		//	map.removeLayer(layer);
+		//});
+
+	}
+
+});
+
+
 function remove(){
 	map.removeLayer(yourPos);
 
