@@ -11,6 +11,8 @@ var Trip        = require('./models/trip');
 
 var bruker = "Superbruker";
 
+
+
 app.use('/', express.static(path.join(__dirname,'/public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());

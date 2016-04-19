@@ -6,24 +6,25 @@ var NUMBER_REGEX = /^\d+$/;
 
 
 function registerTrip(){  //is activated when the "registerTurBtn" button is clicked
-    var tripName        = document.getElementById("tripNavn").value;
-    //var latitude        = document.getElementById("reg_latitude").value;
+    alert("knappen ble trykket");
     var latitude        = "63.1234";
-    //var longitude       = document.getElementById("reg_longitude").value;
     var longitude       = "10.1234";
+    var tripName        = document.getElementById("tripNavn").value;
     var place           = document.getElementById("tripPlassering").value;
     var description     = document.getElementById("tripBeskrivelse").value;
+    //var latitude        = document.getElementById("reg_latitude").value;
+    //var longitude       = document.getElementById("reg_longitude").value;
     //var duration        = document.getElementById("reg_duration").value;
     //var difficulty      = document.getElementById("difficultvalue").value;
     var nameValid       = checkName(tripName);
+    var placeValid      = checkName(place);
     //var latitudeValid   = checkLatitude(latitude);
     //var longitudeValid  = checkLongitude(longitude);
-    var placeValid      = checkName(place);
     //var durationValid   = checkDuration(duration);
-    console.log("Før det blir postet\nNavnet: "+tripName + "\nplassering: " +place + "\n beskrivelse:" +description);
+    console.log("Før posting:::: Navnet: "+tripName + "plassering: " +place + "beskrivelse:" +description);
 
 
-     if(nameValid && placeValid){
+    if(nameValid && placeValid){
          $.post("/makeTrip",
             {
                 tripName: tripName,
@@ -31,13 +32,10 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
                 longitude: longitude,
                 place: place,
                 description: description,
-                //duration : duration,
-                //center : "getCenter()",
-                //zoom : "getZoom()",
-                //points : {
-                //    punkt: "noe",
-                //    jopp : "annet"
-                //}
+                //duration : Number,
+                center : Number,
+                zoom : Number,
+                points : Object
             })
             .done( function(data,status){
                 alert(data);

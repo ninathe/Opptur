@@ -7,11 +7,11 @@ var tripSchema = new Schema({
     latitude: {type: String},
     longitude: {type: String},
     place: {type: String, required: true},
-    description: String
+    description: String,
     //duration : Number,
-    //center : String,
-    //zoom : String,
-    //points : Object
+    center : Number,
+    zoom : Number,
+    points : Object
 });
 
 var Trip = mongoose.model('Trip', tripSchema);

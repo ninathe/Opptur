@@ -24,7 +24,7 @@
     cont.controller('drawMapController', [drawMapController]);
 
     function drawMapController() {
-        initdrawmap();
+       // initdrawmap();
         intilizeLocation();
     }
 
