@@ -22,15 +22,13 @@ app.use(cookieParser('keyboardcat'));
 
 //-------------------------activeUser-----------------------------
 
-function setActiveUser(user) {
+/*function setActiveUser(user) {
     bruker = user;
 }
 
-/*function getSuperbruker() {
-    var bruker = 'fsdg';
+function getSuperbruker() {
     return bruker;
 }*/
-
 
 //-----------------------API----------------------------------------
 
@@ -80,11 +78,12 @@ app.post('/signUp', function(req, res){
 app.post('/logIn', function(req,res) {
     //Talk to the database, check if user exist
     //finds the user with the email and password from user-input
-    //res.writeHead(200);
     var dbUser = User.find(req.body, function (err, user) {
         if (user.length > 0) {
-            var testtest =user[0].nickname;
+            /*var testtest =user[0].nickname;
+            bruker = testtest;
             setActiveUser(testtest);
+*/
 
             if (user.length > 0) {
                 res.status(200).send({success: true});
@@ -96,7 +95,6 @@ app.post('/logIn', function(req,res) {
         }
     });
 });
-
 
 
 
