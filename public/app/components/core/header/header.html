@@ -15,12 +15,12 @@
                 <li ng-if="isAuthorized()"><a ui-sref="maketrip">Registrer tur</a></li>
                 <li ng-if="isAuthorized()"><a id="BtnlogOut" ng-click="logOut()">Logg ut</a></li>
                 <!--<li ng-if="isAuthorized()"><a id="Brukernavn">Brukernavn</a></li>-->
-                <li ng-if="isAuthorized()"><a id="Brukernavn"></a></li>
+                <li ng-if="isAuthorized()"><a id="Brukernavn"ng-bind="getUsername()"></a></li>
             </ul>
         </div>
         <!--<script src="app.js"></script>-->
         <script>
-            document.getElementById("Brukernavn").innerHTML = "testing";
+            //document.getElementById("Brukernavn").innerHTML = "testing";
 
         </script>
 

@@ -28,7 +28,7 @@ $(document).on('click', '#checkForm :checkbox', function() {
 	// $this will contain a reference to the checkbox
 	if ($this.is(':checked')) {
 		givePosition();
-		document.getElementById("startPos").disabled = true;
+		document.getElementById("txtautocomplete").disabled = true;
 	} else{
 		remove();
 		map.removeLayer(yourPos);
@@ -37,7 +37,7 @@ $(document).on('click', '#checkForm :checkbox', function() {
 		console.log(map.removeLayer(yourPos));
 		map.setView(new L.LatLng(63.446827, 10.421906),5);
 		map.locate({setView: true, maxZoom: 10});
-		document.getElementById("startPos").disabled = false;
+		document.getElementById("txtautocomplete").disabled = false;
 
 	}
 

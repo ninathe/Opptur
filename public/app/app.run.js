@@ -22,7 +22,9 @@
                     $rootScope.loggedIn = false;
                     sessionStorage.loggedIn = false;
                 }
-
+                $rootScope.getUsername = function() {
+                    return sessionStorage.username;
+                }
             }
         ]);
 
