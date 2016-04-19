@@ -42,7 +42,7 @@ body {
   height: 100%; /* For at least Firefox */
   min-height: 100%;
   -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+  box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 .site-wrapper-inner {
   display: table-cell;
@@ -129,6 +129,13 @@ body {
 }
 
 
+p.kommentar{
+  color: white;
+  font-size: smaller;
+  display: inline;
+}
+
+
 /*
  * Affix and center
  */
@@ -175,8 +182,8 @@ body {
   color:#d21919;
 }
 .navbar-nav>li>a {
-    padding-top: 30px;
-    padding-bottom: 15px;
+  padding-top: 30px;
+  padding-bottom: 15px;
 }
 
 @media (min-width: 992px) {

@@ -50,10 +50,12 @@ body {
   }
 }
 
-input#startPos{
-  width:60%;
+input#txtautocomplete{
+  width:70%;
   margin-left: 20%;
   height:25px;
+  margin-top:5px;
+  margin-bottom:0px;
 }
 /* Sidebar navigation */
 .nav-sidebar {
