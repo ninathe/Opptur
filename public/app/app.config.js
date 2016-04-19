@@ -8,44 +8,44 @@
 
     angular.module('opptur')
 
-    .config(['$locationProvider', '$httpProvider', '$logProvider',
-        function($locationProvider, $httpProvider, $logProvider) {
-            $logProvider.debugEnabled(true);
+        .config(['$locationProvider', '$httpProvider', '$logProvider',
+            function($locationProvider, $httpProvider, $logProvider) {
+                $logProvider.debugEnabled(true);
 
-            $locationProvider.html5Mode(true);
+                $locationProvider.html5Mode(true);
 
-        }]
-    )
+            }]
+        )
 
-    .config(['$stateProvider', '$urlRouterProvider',
-        function($stateProvider, $urlRouterProvider) {
+        .config(['$stateProvider', '$urlRouterProvider',
+            function($stateProvider, $urlRouterProvider) {
 
-            // If path/state does not exist
-            $urlRouterProvider.otherwise('/404');
+                // If path/state does not exist
+                $urlRouterProvider.otherwise('/404');
 
-            $stateProvider
+                $stateProvider
 
-            .state('home', {
-                url: '/',
-                templateUrl: '/app/components/home/home.html',
-                controller: 'HomeController'
-            })
-            .state('trip', {
-                url: '/trip',
-                templateUrl: '/app/components/trip/trip.html',
-                controller: 'mapController'
-            })
-                .state('maketrip', {
-                    url: '/maketrip',
-                    templateUrl: '/app/components/maketrip/maketrip.html',
-                    controller: 'drawMapController'
-                })
-                .state('tripview', {
-                    url: '/tripview',
-                    templateUrl: '/app/components/tripview/tripview.html',
-                    controller: 'drawMapController'
-                })
-        }]
-    );
+                    .state('home', {
+                        url: '/',
+                        templateUrl: '/app/components/home/home.html',
+                        controller: 'HomeController'
+                    })
+                    .state('trip', {
+                        url: '/trip',
+                        templateUrl: '/app/components/trip/trip.html',
+                        controller: 'mapController'
+                    })
+                    .state('maketrip', {
+                        url: '/maketrip',
+                        templateUrl: '/app/components/maketrip/maketrip.html',
+                        controller: 'drawMapController'
+                    })
+                    .state('tripview', {
+                        url: '/tripview',
+                        templateUrl: '/app/components/tripview/tripview.html',
+                        controller: 'drawMapController'
+                    })
+            }]
+        );
 
 }());
