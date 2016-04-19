@@ -122,7 +122,47 @@
 
 
 
-                  </script>
+            //aktsomhetssoner for skred
+                var url = "http://wms3.nve.no/map/services/SkredSnoAktR/MapServer/WmsServer";
+                var layer = "Snoskred-Aktsomhetsomrader";
+                var skredfare = L.tileLayer.wms(url, {
+                    layers: layer,
+                    format: 'image/png',
+                    transparent: true,
+                    opacity: 0.5,
+                    attribution: "NVE eier alt dette"
+                });
+
+
+                //checkboks
+                $(document).on('click', '#checkFormAvalange :checkbox', function() {
+                    console.log('check');
+                    var $this = $(this);
+                    //var layerGroup = L.LayerGroup();
+                    var layerGroup = L.layerGroup().addTo(map);
+
+                    // $this will contain a reference to the checkbox
+                    if ($this.is(':checked')) {
+                        skredfare.addTo(layerGroup);
+
+                    } else{
+                        //layerGroup.clearLayers();
+                        map.removeLayer(skredfare);
+
+                       // map.eachLayer(function (layer) {
+                       // map.removeLayer(layer);
+
+                       // });
+
+                    }
+
+                });
+
+
+
+            </script>
+
+
 
 
                     </div>
