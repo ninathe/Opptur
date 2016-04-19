@@ -82,13 +82,20 @@ app.post('/logIn', function(req,res) {
         if (user.length > 0) {
             var testtest =user[0].nickname;
             bruker = testtest;
+            
             //setActiveUser(testtest);
             res.status(200).send({success: true});
             console.log(testtest);
+            //setActiveUser(testtest);
 
-        } else {
-            console.log('Wrong email or password');
-            console.log("error - wrong input");
+
+            if (user.length > 0) {
+                res.status(200).send({success: true, username: "" + testtest});
+
+            } else {
+                console.log('Wrong email or password');
+                console.log("error - wrong input");
+            }
         }
     });
 
