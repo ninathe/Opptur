@@ -127,7 +127,6 @@ function onLocationFound(e) {
 	//yourPos = L.marker([63.4, 10.4]).addTo(map);
 
 
-	console.log(yourPos);
 	map.addLayer(yourPos);
 	yourPos.bindPopup("Du er innenfor " + radius + " meter fra dette punktet").openPopup();
 

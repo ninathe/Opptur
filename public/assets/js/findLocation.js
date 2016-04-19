@@ -17,6 +17,10 @@ function intilizeLocation() {
             location += "Latitude: " + latitude + "<br/>";
             location += "Longitude: " + longitude;
             //document.getElementById('lblresult').innerHTML = location
+            var marker = L.marker([latitude, longitude]);
+            map.addLayer(marker);
+            map.setView([latitude, longitude], 8);
+            //map.locate({setView: true, maxZoom: 8});
         });
     });
 
