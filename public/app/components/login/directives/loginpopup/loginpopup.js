@@ -22,6 +22,7 @@ var brukerenass;
                     function(res) {
                         $rootScope.loggedIn = res.data.success;
                         sessionStorage.loggedIn = true;
+                        sessionStorage.username = res.data.username;
                     },
                     function(err) {
 

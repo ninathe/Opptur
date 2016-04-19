@@ -13,16 +13,24 @@
 
 
 
+
+                        <!-- VANSKELIGHETSGRAD -->
+
                         <li><p style = "margin: auto; margin-bottom: 7px; font-size: medium; margin-left: 43px; text-align: left; color: white;">
                             <b>Vanskelighetsgrad</b></p></li>
-
-                        <li><input class = "slider" style = "width: 300px" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" onchange="difficultValue.value=value"/>
-                            <output id="difficultvalue"></output></li>
-
-
+                        <li><img src="bilder/vanskelighetsgrad3.png" style="width:300px; margin-top: -10px;"></li>
                         <p style = "color: white; font-size: smaller; display: inline; margin-top: 7px;">Nybegynner</p>
                         <p style = "color: white; font-size: smaller; display: inline; margin-left: 186px;  margin-top: 7px;">Ekspert</p>
 
+
+
+
+
+
+
+
+
+                        <!-- BESKRIVELSE -->
                         <li><p style = "margin: auto; margin-bottom: 5px; margin-top: 40px; margin-left: 43px; text-align: left; font-size: medium; color: white;">
                             <b>Beskrivelse</b></p></li>
 
@@ -33,16 +41,14 @@
                             egestas neque vel, efficitur quam. Maecenas maximus velit massa, sit amet semper lacus vulputate et.
                             Proin pellentesque, elit id sollicitudin faucibus, metus augue bibendum orci, vel porttitor lacus urna ornare
                             nibh. Curabitur massa dolor, cursus id auctor vel, posuere in urna. Mauris turpis libero, faucibus volutpat
-                            gravida eu, dictum at neque. Morbi egestas pulvinar ullamcorper. Ut dapibus posuere commodo. Proin convallis
-                            laoreet suscipit. Vestibulum mattis fermentum tortor, ut dapibus lacus facilisis et. Integer sagittis et eros
-                            non tincidunt. Nullam sodales quis eros ac maximus. Nam consequat interdum facilisis.</p></li>
+                            gravida eu, dictum at neque. Morbi egestas pulvinar ullamcorper.</p></li>
 
 
                     </form>
 
 
                     <div id="checkFormAvalange" style = "color: white; font-size: small; margin-top: -20px;">
-                        <input type="checkbox" id="currentPos"><b> Se aktsomhetsområder for skred</b>
+                        <input type="checkbox" id="checkFormAvalange";"><b> Se aktsomhetsområder for skred</b>
                     </div>
 
                     <script>
@@ -129,7 +135,7 @@
                     layers: layer,
                     format: 'image/png',
                     transparent: true,
-                    opacity: 0.5,
+                    opacity: 0.2,
                     attribution: "NVE eier alt dette"
                 });
 
@@ -138,22 +144,13 @@
                 $(document).on('click', '#checkFormAvalange :checkbox', function() {
                     console.log('check');
                     var $this = $(this);
-                    //var layerGroup = L.LayerGroup();
                     var layerGroup = L.layerGroup().addTo(map);
 
-                    // $this will contain a reference to the checkbox
                     if ($this.is(':checked')) {
                         skredfare.addTo(layerGroup);
 
                     } else{
-                        //layerGroup.clearLayers();
                         map.removeLayer(skredfare);
-
-                       // map.eachLayer(function (layer) {
-                       // map.removeLayer(layer);
-
-                       // });
-
                     }
 
                 });
