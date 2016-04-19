@@ -120,6 +120,8 @@ function setPos(lat, long){
 function onLocationFound(e) {
 	lat= e.latitude;
 	long= e.longitude;
+	longitude = long;
+	latitude = lat;
 	var radius = e.accuracy / 2;
 	yourPos = L.marker(e.latlng).addTo(map);
 	//yourPos = L.marker([63.4, 10.4]).addTo(map);
