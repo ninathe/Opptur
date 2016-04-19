@@ -7,7 +7,7 @@ var tripSchema = new Schema({
     latitude: {type: String},
     longitude: {type: String},
     place: {type: String, required: true},
-    description: String,
+    description: String
     //duration : Number,
     //center : String,
     //zoom : String,
