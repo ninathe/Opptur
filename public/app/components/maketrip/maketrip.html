@@ -10,7 +10,14 @@
                     <li><input id = "tripPlassering" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Plassering" name="place" /></li>
                     <li><p style = "color: white; font-size: smaller; margin-left: 40px; margin-right: 30px; margin-bottom: 25px; text-align: left;">
                         Hvor er toppturen? Eksempler er "Myrkdalen" eller "Lofoten"</p></li>
+
                     <li><p style = "margin: auto; margin-bottom: 10px; margin-left: 43px; text-align: left; color: white;">
+                        <b>Estimert turtid</b></p></li>
+                    <li><input class = "slider" style = "width: 300px" type = "range" id="estmturtid" min = "1" max = "10" step = "1" title = "Velg turtid" value = "0"/>
+                        <output id="turtid"></output></li>
+
+
+                    <li><p style = "margin: auto; margin-bottom: 10px; margin-top: 20px; margin-left: 43px; text-align: left; color: white;">
                         <b>Vanskelighetsgrad</b></p></li>
                     <li><input class = "slider" style = "width: 300px" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" /></li>
                     <p style = "color: white; font-size: smaller; display: inline;">Nybegynner</p>
