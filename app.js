@@ -98,11 +98,11 @@ app.get('/getUsername', function(req,res) {
             if (trip.length > 0) {
                 //var testtur =trip;
 
-                /*for (i=0; i < trip.length; i ++) {
+                for (i=0; i < trip.length; i ++) {
                     console.log("dette er testturen: " + i);
                     console.log(trip[i].tripName);
                     console.log( (trip[i].path));
-                }*/
+                }
                 res.status(200).send({success: true, tripName: "" + trip[0]});
 
             } else {
