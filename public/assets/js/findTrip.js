@@ -16,23 +16,17 @@ function findTrip() {  //is activated when the "sig up" button is clicked
 
     //Get info from front end  (user), and send the info to back end so it can check database
 
+        delete sessionStorage.tripName;
         $.post("/findTrip",
             {
                 "difficulty" : maxDifficulty,
                 "duration" : maxDuration
             }
         ).complete( function(data,status){
-            console.log("Data loaded: " + data + "\nStatus: " + status);
-
+            console.log(data);
+            console.log("Data loaded: " + data+ "\nStatus: " + status);
+            sessionStorage.tripName = data.responseJSON.tripName;
         })
-
-
-
-
-
-
-
-
 }
 
 

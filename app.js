@@ -103,7 +103,7 @@ app.get('/getUsername', function(req,res) {
                     console.log(trip[i].tripName);
                     console.log( (trip[i].path));
                 }
-                res.status(200).send({success: true, tripName: "" + trip[0]});
+                res.status(200).send({success: true, tripName: "" + trip[0].tripName});
 
             } else {
                 console.log("error - wrong input");
