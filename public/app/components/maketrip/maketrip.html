@@ -50,7 +50,7 @@
                             $(document).on('click', '#BtnRegisterTrip', function(){
                                 console.log("on click #Btn");
                                 registerTrip();
-                                location.reload();
+//                                location.reload();
                             });
                         });
                     </script>
@@ -84,6 +84,10 @@
 
         <script>
                 var shape_for_db = null;
+                var shape;
+                var center = map.getCenter();
+                var center = map.getCenter();
+
 
                 var map = new L.Map('map', {center: new L.LatLng(65.00, 27.50), zoom: 5, zoomControl:false });
 
@@ -132,7 +136,7 @@
                     drawnItems.addLayer(layer);
 
 
-                    var shape = drawnItems.toGeoJSON();
+                    shape = drawnItems.toGeoJSON();
                     shape_for_db = JSON.stringify(shape);
                     //var latlong = drawnItems.getLatLngs();
                     console.log("db: " + shape_for_db);

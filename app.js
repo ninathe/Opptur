@@ -101,7 +101,7 @@ app.get('/getUsername', function(req,res) {
                 for (i=0; i < trip.length; i ++) {
                     console.log("dette er testturen: " + i);
                     console.log(trip[i].tripName);
-                    console.log( (trip[i].path)[0].type);
+                    console.log( (trip[i].path));
                 }
             } else {
                 console.log("error - wrong input");

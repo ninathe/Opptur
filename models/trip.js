@@ -9,7 +9,7 @@ var tripSchema = new Schema({
     place: {type: String, required: true},
     difficulty : Number,
     description: String,
-    //duration : Number,
+    duration : Number,
     center : Object,
     zoom : Number,
     path : Object
