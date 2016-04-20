@@ -28,17 +28,21 @@
 
                         <li><p style = "margin: auto; margin-bottom: 7px; font-size: medium; margin-left: 43px; text-align: left; color: white;">
                             <b>Vanskelighetsgrad</b></p></li>
-                        <li><img src="bilder/vanskelighetsgrad3.png" style="width:300px; margin-top: -10px;"></li>
+                        <li>
+
+                            <span ng-switch="currentTrip.difficulty">
+                            <span ng-switch-when="1"> <img src="bilder/vanskelighetsgrad0.png" style="width:300px; margin-top: -10px;"></span> <!-- Bytt ut bokstavene med bilder (duh) -->
+                            <span ng-switch-when="2"> <img src="bilder/vanskelighetsgrad1.png" style="width:300px; margin-top: -10px;"></span>
+                            <span ng-switch-when="3"> <img src="bilder/vanskelighetsgrad2.png" style="width:300px; margin-top: -10px;"></span>
+                            <span ng-switch-when="4"> <img src="bilder/vanskelighetsgrad3.png" style="width:300px; margin-top: -10px;"></span>
+                            <span ng-switch-when="5"> <img src="bilder/vanskelighetsgrad4.png" style="width:300px; margin-top: -10px;"></span>
+                            <span ng-switch-default> <img src="bilder/vanskelighetsgrad0.png" style="width:300px; margin-top: -10px;"></span>
+                        </span>
+
+
+                        </li>
                         <p style = "color: white; font-size: smaller; display: inline; margin-top: 7px;">Nybegynner</p>
                         <p style = "color: white; font-size: smaller; display: inline; margin-left: 186px;  margin-top: 7px;">Ekspert</p>
-                        <span ng-switch="currentTrip.difficulty">
-                            <span ng-switch-when="1">A</span> <!-- Bytt ut bokstavene med bilder (duh) -->
-                            <span ng-switch-when="2">B</span>
-                            <span ng-switch-when="3">C</span>
-                            <span ng-switch-when="4">D</span>
-                            <span ng-switch-when="5">E</span>
-                            <span ng-switch-default>F</span>
-                        </span>
 
 
                         <!-- BESKRIVELSE -->
@@ -61,7 +65,19 @@
                             <b>Snøskredvarsel for området</b></p></li>
 
 
-                        <li style = " text-align: left;"><img src="bilder/skredfaresone3.png" style="width:180px; margin-top: 7px; margin-left: 43px; text-align: left;"></li>
+                        <li style = " text-align: left;">
+
+                            <span ng-switch="currentTrip.difficulty">
+                            <span ng-switch-when="0"> <p class="kommentar" style="margin-left: 43px;">Det er ikke registrert skredvarseldata for dette området</p></span>
+                            <span ng-switch-when="1"> <img src="bilder/skredfaresone1.png" style="width:180px; margin-top: 7px; margin-left: 43px; text-align: left;"></span> <!-- Bytt ut bokstavene med bilder (duh) -->
+                            <span ng-switch-when="2"> <img src="bilder/skredfaresone2.png" style="width:180px; margin-top: 7px; margin-left: 43px; text-align: left;"></span>
+                            <span ng-switch-when="3"> <img src="bilder/skredfaresone3.png" style="width:180px; margin-top: 7px; margin-left: 43px; text-align: left;"></span>
+                            <span ng-switch-when="4"> <img src="bilder/skredfaresone4.png" style="width:180px; margin-top: 7px; margin-left: 43px; text-align: left;"></span>
+                            <span ng-switch-when="5"> <img src="bilder/skredfaresone5.png" style="width:180px; margin-top: 7px; margin-left: 43px; text-align: left;"></span>
+                            <span ng-switch-default> <p class="kommentar" style="margin-left: 43px;">Får ikke hentet skredvarseldata fra NVE</p></span>
+                        </span>
+
+                        </li>
 
 
 
