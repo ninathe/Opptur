@@ -129,16 +129,17 @@ function onLocationFound(e) {
 
 	var markerIcon = L.icon({
 		iconUrl: 'bilder/Location.png',
-		shadowUrl: 'leaf-shadow.png',
 
 		iconSize:     [30, 40], // size of the icon
 		iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
 	});
-
+	
 	yourPos = L.marker([lat, long], {icon: markerIcon}).addTo(map);
 
 
-	map.addLayer(yourPos);
+	//map.addLayer(yourPos);
+
+
 	//yourPos.bindPopup("Du er innenfor " + radius + " meter fra dette punktet").openPopup();
 
 	posCircle = L.circle(e.latlng, radius);
