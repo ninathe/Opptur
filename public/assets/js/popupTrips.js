@@ -64,6 +64,11 @@ $(document).ready(function(){
 	$(document).on('click', '#backgroundTripsPopup', function(){
 		disableTripsPopup();
 	});
+	$(document).on('click', '#popupContent', function(){
+		disableTripsPopup();
+	});
+	//Pres
+
 	//Press Escape event!
 	$(document).keypress(function(e){
 		if(e.keyCode==27 && loginStatus==1){

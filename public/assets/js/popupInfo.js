@@ -73,6 +73,9 @@ $(document).ready(function(){
 	$(document).on('click', '#backgroundPopup', function(){
 		disableInfoPopup();
 	});
+	$(document).on('click', '#tripsPopup', function(){
+		disableInfoPopup();
+	});
 	//Press Escape event!
 	$(document).keypress(function(e){
 		if(e.keyCode==27 && loginStatus==1){
