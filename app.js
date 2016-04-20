@@ -145,7 +145,7 @@ app.post('/findTrip', function (req, res) {
             getGoogleDur(latOrig, longOrig, dest,
                 function(data) {
                     var json = JSON.parse(data);
-                    var validTrips = []
+                    var validTrips = [];
                     for (var d = 0; d < json.destination_addresses.length; ++d) {
                         if (json.rows[0].elements[d].duration.value <= distance)
                             validTrips.push(trips[d]);
