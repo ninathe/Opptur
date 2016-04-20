@@ -15,6 +15,11 @@ body {
 }
 
 
+h3{
+  margin-top: 57px;
+}
+
+
 /* Padding for spacing */
 .inner {
   padding: 30px;
