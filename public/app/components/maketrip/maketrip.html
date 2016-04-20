@@ -79,14 +79,14 @@
 
 
            <!-- <div id='map'></div> -->
-
+            <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
             <div id="map" style="width: 100%; height: 92vh; border: 0px solid #ccc; position: fixed"></div>
             <!-- <button id="changeColor">Rectangle -> Blue</button> -->
 
         <script>
                 var shape_for_db = null;
 
-                var map = new L.Map('map', {center: new L.LatLng(65.00, 27.50), zoom: 5});
+                var map = new L.Map('map', {center: new L.LatLng(65.00, 27.50), zoom: 5, zoomControl:false });
 
                 // create a new tile layer
                 var tileUrl = 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
@@ -101,6 +101,8 @@
 
                 // Set the title to show on the polygon button
                 L.drawLocal.draw.toolbar.buttons.polyline = 'Tegn topptur!';
+
+                var zoomControl = new L.Control.Zoom({ position: 'topleft' }).addTo(map);
 
                 var drawControl = new L.Control.Draw({
                     position: 'topleft',
