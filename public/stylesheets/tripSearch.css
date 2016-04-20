@@ -1,0 +1,20 @@
+ul#popupContent{
+    color: white;
+}
+a.navntrip{
+    color: white;
+}
+
+
+
+
+
+/*<div id = "tripsPopup">
+<h1>Mulige turer</h1>
+                  <ul id = "popupContent">
+<li ng-repeat="trip in trips"><a class="navntrip" ng-bind="trip.tripName" ui-sref="tripview" ng-click="selectTrip(trip)"></a></li>
+                                                                                                                               </ul>
+                                                                                                                                 </div><!--Trips-->
+                                                                                                                                                                                                                                                                                                                                                                                                           li#popuoC{
+
+                                                                                                                                                                                                                                                                                                                                                                                                           }                                                                                                                                         #

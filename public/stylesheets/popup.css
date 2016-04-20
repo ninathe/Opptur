@@ -122,6 +122,9 @@
 	padding:12px;
 	font-size:13px;
 	color:white;
+	overflow:auto;
+	border-bottom: 2em solid;
+	border-top: 2em solid;
 }
 
 #newUser{
