@@ -122,7 +122,8 @@ function getGoogleDur(lat, long, dest, callback) {
 app.post('/findTrip', function (req, res) {
     var query = {
         'difficulty': { $lte: req.body.difficulty },
-        'duration': { $lte: req.body.duration }
+        'duration': { $lte: req.body.duration },
+        'godkjent': true
     };
     //Talks to the database, check if trip exist
     var dbTrip = Trip.find(query, function (err, trip) {
