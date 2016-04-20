@@ -139,8 +139,13 @@ app.post('/findTrip', function (req, res) {
             var longOrig = req.body.long;
             var distance = Number(req.body.distance) * 3600;
             var dest = '';
-            for (var t = 0; t < trips.length; ++t)
-                dest += trips[t].latitude + '%2C' + trips[t].longitude + '%7C';
+            for (var t = 0; t < trips.length; ++t){
+                if(trips[t].latitude+""==="undefined"||trips[t].longitude+""==="undefined")
+                    console.log("Udefinert tur!!");
+                else
+                    dest += trips[t].latitude + '%2C' + trips[t].longitude + '%7C';
+            }
+
 
             getGoogleDur(latOrig, longOrig, dest,
                 function(data) {
