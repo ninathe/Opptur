@@ -1,3 +1,5 @@
+var brukerenass;
+
 (function() {
 
     "use strict";

@@ -1,7 +1,8 @@
 /**
  * Created by Nina on 18.04.16.
  */
-// google.maps.event.addDomListener(window, 'load', intilize);
+var longitude;
+var latitude;
 
 function intilizeLocation() {
     google.maps.event.addDomListener(window, 'load', function(){
@@ -11,9 +12,15 @@ function intilizeLocation() {
 
             var place = autocomplete.getPlace();
             var location = "Address: " + place.formatted_address + "<br/>";
-            location += "Latitude: " + place.geometry.location.lat() + "<br/>";
-            location += "Longitude: " + place.geometry.location.lng();
-            document.getElementById('lblresult').innerHTML = location
+            latitude = place.geometry.location.lat();
+            longitude = place.geometry.location.lng();
+            location += "Latitude: " + latitude + "<br/>";
+            location += "Longitude: " + longitude;
+            //document.getElementById('lblresult').innerHTML = location
+            var marker = L.marker([latitude, longitude]);
+            map.addLayer(marker);
+            map.setView([latitude, longitude], 8);
+            //map.locate({setView: true, maxZoom: 8});
         });
     });
 
