@@ -32,7 +32,7 @@
                     })
                     .state('trip', {
                         url: '/trip',
-                        templateUrl: '/app/components/trip/trip.html',
+                        templateUrl: '/app/components/trip/directives/trippopup/trip.html',
                         controller: 'mapController'
                     })
                     .state('maketrip', {
