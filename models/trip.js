@@ -4,8 +4,6 @@ var Schema      = mongoose.Schema;
 // create a schema
 var tripSchema = new Schema({
     tripName: { type: String, required: true},
-    latitude: {type: String},
-    longitude: {type: String},
     place: {type: String, required: true},
     difficulty : Number,
     description: String,
