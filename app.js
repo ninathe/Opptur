@@ -92,16 +92,16 @@ app.get('/getUsername', function(req,res) {
     });
 
     app.post('/findTrip', function (req, res) {
-
-        //Talks to the database, check if trip exist
-        var dbTrip = Trip.find(req.body, function (err, trip) {
+        //henter informasjon fra /trip 'avstand til startpunkt' og plassering
+        console.log(req.body.utregning);
+        //Talks to the database, check if trip exist  (resten av input fra bruker: duration, difficulty)
+        var dbTrip = Trip.find(req.body.turverdier, function (err, trip) {
             if (trip.length > 0) {
                 //var testtur =trip;
 
                 for (i=0; i < trip.length; i ++) {
                     console.log("dette er testturen: " + i);
                     console.log(trip[i].tripName);
-                    console.log( (trip[i].path));
                 }
                 res.status(200).send({success: true, tripName: "" + trip[0].tripName});
 

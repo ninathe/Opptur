@@ -1,13 +1,11 @@
 
-var maxDuration = 10;
-var maxDifficulty = 5;
-var maxDistance;
+var maxDistance = 15;
 
 function findTrip() {  //is activated when the "sig up" button is clicked
 //TODO: lage if for om noen er tomme
-    maxDuration    = document.getElementById("distanceTrip").value;
+    var maxDuration    = document.getElementById("distanceTrip").value;
     maxDistance    = document.getElementById("inputDistanceToStart").value;
-    maxDifficulty  = document.getElementById("difficult").value;
+    var maxDifficulty  = document.getElementById("difficult").value;
 
 
     //Plassering, avstand til punktet, må bruke kortestevei greier
@@ -19,8 +17,18 @@ function findTrip() {  //is activated when the "sig up" button is clicked
         delete sessionStorage.tripName;
         $.post("/findTrip",
             {
-                "difficulty" : maxDifficulty,
-                "duration" : maxDuration
+                utregning: {
+                    "avstand": maxDistance,
+                    "posisjon": {
+                        "lat": latitude,
+                        "long": longitude
+                    }
+                },
+                turverdier : {
+                    "difficulty" : maxDifficulty,
+                    "duration" : maxDuration
+                }
+
             }
         ).complete( function(data,status){
             console.log(data);
