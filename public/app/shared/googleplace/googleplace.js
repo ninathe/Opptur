@@ -19,7 +19,7 @@
                         var longitude = scope.gPlace.gm_accessors_.place.Rd.place.geometry.location.lng();
                         $rootScope.tripSearchParams.latitude = latitude;
                         $rootScope.tripSearchParams.longitude = longitude;
-                        map.setView([latitude, longitude], 8);
+                        map.setView([latitude, longitude], 9);
                     });
                 });
             }

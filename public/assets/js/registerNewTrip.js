@@ -36,7 +36,8 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
                     long : 10.421906
                 },
                 zoom : 5,
-                path : path
+                path : path,
+                godkjent : false
             })
             .done( function(data,status){
                 alert(data);
