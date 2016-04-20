@@ -85,11 +85,12 @@
         <script>
                 var shape_for_db = null;
                 var shape;
-                var center = map.getCenter();
-                var center = map.getCenter();
 
 
                 var map = new L.Map('map', {center: new L.LatLng(65.00, 27.50), zoom: 5, zoomControl:false });
+
+                var center = map.getCenter();
+                var center = map.getCenter();
 
                 // create a new tile layer
                 var tileUrl = 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
