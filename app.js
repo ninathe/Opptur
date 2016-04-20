@@ -84,7 +84,7 @@ app.get('/getUsername', function(req,res) {
 //-------------------------TRIP --------------------------------
 
 
-app.post('/ma   keTrip', function (req, res) {
+app.post('/makeTrip', function (req, res) {
     var newTrip = new Trip(req.body);
     newTrip.save(function (err, trip) {
             if (err) return console.error(err);

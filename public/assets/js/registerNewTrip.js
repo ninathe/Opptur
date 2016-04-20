@@ -6,8 +6,8 @@ var NUMBER_REGEX = /^\d+$/;
 
 
 function registerTrip(){  //is activated when the "registerTurBtn" button is clicked
-    var latitude = (shape['features'][0]['geometry']['coordinates'][0][1]); //
-    var longitude = (shape['features'][0]['geometry']['coordinates'][0][0]);
+    var latti = (shape['features'][0]['geometry']['coordinates'][0][1]); //
+    var longi = (shape['features'][0]['geometry']['coordinates'][0][0]);
     //var latlng          = document.getElementById("map").getCenter();
     //var zoom            = document.getElementById("map").getZoom();
     var tripName        = document.getElementById("tripNavn").value;
@@ -15,27 +15,26 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
     var description     = document.getElementById("tripBeskrivelse").value;
     var difficulty      = document.getElementById("difficult").value;
     var path            = shape_for_db;
-    //var latitude        = document.getElementById("reg_latitude").value;
-    //var longitude       = document.getElementById("reg_longitude").value;
     var duration        = document.getElementById("estmturtid").value;
     var nameValid       = checkName(tripName);
-    var placeValid      = checkName(place);
 
-    if(nameValid && placeValid){
+    console.log(center + zoom);
+
+    if(nameValid){
          $.post("/makeTrip",
             {
                 tripName: tripName,
-                latitude: latitude,
-                longitude: longitude,
+                latitude: latti,
+                longitude: longi,
                 place: place,
                 difficulty : difficulty,
                 description: description,
                 duration : duration,
                 center : {
-                    lat :63.446827,
-                    long : 10.421906
+                    lat :center.lat,
+                    long : center.lng
                 },
-                zoom : 5,
+                zoom : zoom,
                 path : path,
                 godkjent : false
             })
