@@ -1,6 +1,6 @@
 <div class="container-fluid" style = "background-color: #a4a5a5;">
     <div class="row" style = "background-color: #a4a5a5">
-        <div class="col-sm-4" style = "height: 100em; background-color: #a4a5a5;">
+        <div class="col-sm-4" style = "background-color: #a4a5a5;">
             <ul class="nav nav-sidebar" style = "background-color: #a4a5a5;">
 
 
@@ -8,20 +8,19 @@
 
                     <form>
 
-                        <li><h3 style="color: white; margin-bottom: 7px; margin-top: 4" ng-bind="getTripname()"></h3></li>
+                        <li><h3 style="color: white; margin-bottom: 7px; margin-top: 4" ng-bind="currentTrip.tripName"></h3></li>
                         <li><h4 style="color: white; font-size: small; margin-bottom: 50px;">Her skal plasseringen stå</h4></li>
 
 
 
-                        <li style="
-                        text-align: auto;
-                        text-align: left;
-                        margin-left: 43px;
-                        margin-bottom: 30px;
-                        "></listyle><p style = "margin: auto; display: inline; margin-bottom: 20px; margin-top: 10px; margin-left: 0px; text-align: left; font-size: medium; color: white;">
-                            <b>Estimert turtid: </b></p><p style = "display= inline;font-size: medium;display: inline; margin-left: 10px;color: white;">
-                        <b>3</b></p><p style = "display= inline;font-size: medium;display: inline;color: white;">
-                            <b> timer</b></p></li>
+                        <li style="text-align: auto; text-align: left; margin-left: 43px; margin-bottom: 30px;">
+                            <p style = "margin: auto; display: inline; margin-bottom: 20px; margin-top: 10px; margin-left: 0px; text-align: left; font-size: medium; color: white;">
+                                <b>Estimert turtid: </b>
+                            </p>
+                            <p style = "display= inline;font-size: medium;display: inline; margin-left: 10px;color: white;">
+                                <b ng-bind="currentTrip.duration + ' timer'"></b>
+                            </p>
+                        </li>
 
 
 
@@ -32,9 +31,14 @@
                         <li><img src="bilder/vanskelighetsgrad3.png" style="width:300px; margin-top: -10px;"></li>
                         <p style = "color: white; font-size: smaller; display: inline; margin-top: 7px;">Nybegynner</p>
                         <p style = "color: white; font-size: smaller; display: inline; margin-left: 186px;  margin-top: 7px;">Ekspert</p>
-
-
-
+                        <span ng-switch="currentTrip.difficulty">
+                            <span ng-switch-when="1">A</span> <!-- Bytt ut bokstavene med bilder (duh) -->
+                            <span ng-switch-when="2">B</span>
+                            <span ng-switch-when="3">C</span>
+                            <span ng-switch-when="4">D</span>
+                            <span ng-switch-when="5">E</span>
+                            <span ng-switch-default>F</span>
+                        </span>
 
 
                         <!-- BESKRIVELSE -->
@@ -62,7 +66,7 @@
 
 
                         <div id="checkFormAvalange" style = "color: white; font-size: small; margin-top: 7px; margin-left: 43px; text-align: left;">
-                            <input type="checkbox" id="checkFormAvalange";"><b> Se aktsomhetsområder for skred</b>
+                            <input type="checkbox" id="checkFormAvalange"><b> Se aktsomhetsområder for skred</b>
                         </div>
 
                         <li><p style = "margin: auto; margin-bottom: 7px; font-size: smaller; margin-left: 43px; margin-top: 30px; text-align: left; color: white;">
@@ -83,7 +87,7 @@
 
             <!-- <div id='map'></div> -->
 
-            <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+            <link href="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css" rel="stylesheet" />
             <div id="map" style="width: 100%; height: 92vh; border: 0px solid #ccc; position: fixed"></div>
             <!-- <button id="changeColor">Rectangle -> Blue</button> -->
 
@@ -104,12 +108,7 @@
                     "opacity": 1.0
                 };
 
-
-                var myPolyLine =  {"type":"FeatureCollection","features":
-                        [{"type":"Feature","properties":{},"geometry":{"type":"LineString","coordinates":[
-                            [5.3029632568359375,60.392147922518845],
-                            [10.356674194335938,63.430860212678105],
-                            [10.708236694335938,59.88893689676585]]}}]};
+                var myPolyLine = JSON.parse(sessionStorage.path);
 
                 //L.geoJson(test).addTo(map);
 

@@ -7,12 +7,13 @@ var tripSchema = new Schema({
     latitude: {type: String},
     longitude: {type: String},
     place: {type: String, required: true},
-    difficulty : Number,
+    difficulty : String,
     description: String,
-    duration : Number,
+    duration : String,
     center : Object,
     zoom : Number,
-    path : Object
+    path : Object,
+    godkjent: Boolean
 });
 
 var Trip = mongoose.model('Trip', tripSchema);

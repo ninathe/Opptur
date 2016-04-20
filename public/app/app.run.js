@@ -10,8 +10,8 @@
     // Adds libraries to angular
     angular.module('opptur')
 
-        .run(['$rootScope',
-            function($rootScope) {
+        .run(['$rootScope', '$http',
+            function($rootScope, $http) {
                 var sessLoggedIn = sessionStorage.loggedIn;
                 $rootScope.loggedIn = (sessLoggedIn !== undefined ? (sessLoggedIn === 'true' ? true : false) : false);
                 $rootScope.isAuthorized = function() {
@@ -24,9 +24,44 @@
                 $rootScope.getUsername = function() {
                     return sessionStorage.username;
                 }
-                $rootScope.getTripname = function() {
-                    return sessionStorage.tripName;
+                $rootScope.currentTrip = null;
+                $rootScope.trips = [];
+                $rootScope.tripSearchParams = {
+                    maxDuration: 0,
+                    maxDistance: 0,
+                    maxDifficulty: 0,
+                    latitude: 0,
+                    longitude: 0,
                 }
+                $rootScope.findTrip = function() {
+                    $http.post('/findTrip',
+                    {
+                      'difficulty': $rootScope.tripSearchParams.maxDifficulty,
+                      'duration': $rootScope.tripSearchParams.maxDuration,
+                      'lat': $rootScope.tripSearchParams.latitude,
+                      'long': $rootScope.tripSearchParams.longitude,
+                      'distance': $rootScope.tripSearchParams.maxDistance
+                    })
+                    .then(
+                        function(res) {
+                            $rootScope.trips = res.data.trips;
+                            //sessionStorage.currentTripName = res.data.tripName;
+                        },
+                        function(err) {
+                            console.error(err);
+                        }
+                    );
+                }
+                $rootScope.selectTrip = function(trip) {
+                    $rootScope.currentTrip = trip;
+                    sessionStorage.currentTrip = JSON.stringify(trip);
+                    sessionStorage.path = trip.path;
+                }
+
+                function init() {
+                    $rootScope.currentTrip = sessionStorage.currentTrip === undefined ? { } : JSON.parse(sessionStorage.currentTrip);
+                }
+                init();
             }
         ]);
 
