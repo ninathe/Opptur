@@ -11,7 +11,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ng-if="!isAuthorized()"><a id="BtnNewUser">Ny bruker</a></li>
                 <li ng-if="!isAuthorized()"><a id="BtnlogIn">Logg inn</a></li>
-                <li><a id="BtnInfo">Om oss</a></li>
+                <li><a id="BtnInfo">Om</a></li>
                 <li ng-if="isAuthorized()"><a ui-sref="maketrip">Registrer tur</a></li>
                 <li ng-if="isAuthorized()"><a id="BtnlogOut" ng-click="logOut()">Logg ut</a></li>
                 <li ng-if="isAuthorized()"><a id="Brukernavn"ng-bind="getUsername()"></a></li>
