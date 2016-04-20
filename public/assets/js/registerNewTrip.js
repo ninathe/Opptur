@@ -16,7 +16,7 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
     var place           = document.getElementById("tripPlassering").value;
     var description     = document.getElementById("tripBeskrivelse").value;
     var difficulty      = document.getElementById("difficult").value;
-    var points          = shape_for_db[0];
+    var path            = shape_for_db;
     //var latitude        = document.getElementById("reg_latitude").value;
     //var longitude       = document.getElementById("reg_longitude").value;
     //var duration        = document.getElementById("reg_duration").value;
@@ -25,8 +25,8 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
     //var latitudeValid   = checkLatitude(latitude);
     //var longitudeValid  = checkLongitude(longitude);
     //var durationValid   = checkDuration(duration);
-    console.log("Før posting:::: \nNavnet: "+tripName + "\nplassering: " +place + "\nbeskrivelse: " +description + "\nvanskelighetsgrad: " + difficulty);
-    //console.log("Latlng: " + latlng + "Zoom: " + zoom);
+    //var tryLat = shape_for_db[0];
+    //console.log("Latitude: " +trylat);
 
     if(nameValid && placeValid){
          $.post("/makeTrip",
@@ -43,7 +43,7 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
                     long : 10.421906
                 },
                 zoom : 5,
-                path : points
+                path : path
             })
             .done( function(data,status){
                 alert(data);

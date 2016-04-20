@@ -1,18 +1,19 @@
 
 function findTrip() {  //is activated when the "sig up" button is clicked
-    var duration = document.getElementById("distanceTripValue").value;
+    var maxDuration    = document.getElementById("distanceTrip").value;
+    var maxDistance    = document.getElementById("inputDistanceToStart").value;
+    var maxDifficulty  = document.getElementById("difficult").value;
 
 
     //Plassering, avstand til punktet, må bruke kortestevei greier
     //var plassering = document.getElementById("startPos").value;
     //var distanceToPoint = document.getElementById("inputDistanceToStart").value;
 
-
-
     //Get info from front end  (user), and send the info to back end so it can check database
     $.post("/findTrip",
         {
-            "duration" : duration,
+            "difficulty" : maxDifficulty,
+            //"duration" : maxDuration
         }
     ).complete( function(data,status){
         console.log("Data loaded: " + data + "\nStatus: " + status);

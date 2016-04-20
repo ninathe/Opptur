@@ -96,7 +96,13 @@ app.get('/getUsername', function(req,res) {
         //Talks to the database, check if trip exist
         var dbTrip = Trip.find(req.body, function (err, trip) {
             if (trip.length > 0) {
-                console.log('det sendes inn input, trip');
+                //var testtur =trip;
+
+                for (i=0; i < trip.length; i ++) {
+                    console.log("dette er testturen: " + i);
+                    console.log(trip[i].tripName);
+                    console.log( (trip[i].path)[0].type);
+                }
             } else {
                 console.log("error - wrong input");
             }
