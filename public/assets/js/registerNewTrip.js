@@ -43,6 +43,7 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
                 alert("Data loaded: " + data + "\nStatus: " + status);
             })
     }
+    location.reload();
 }
 
 
