@@ -20,6 +20,9 @@
                         $rootScope.tripSearchParams.latitude = latitude;
                         $rootScope.tripSearchParams.longitude = longitude;
                         map.setView([latitude, longitude], 9);
+
+
+
                     });
                 });
             }

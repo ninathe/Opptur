@@ -18,15 +18,12 @@
 
     function mapController() {
         initmap();
-        //intilizeLocation();
     }
 
     cont.controller('drawMapController', [drawMapController]);
 
     function drawMapController() {
-       // initdrawmap();
-        //intilizeLocation();
-        //registerTrip();
+
     }
 
 

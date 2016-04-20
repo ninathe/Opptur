@@ -113,7 +113,8 @@ function removeMarkers() {
 }
 
 function setPos(lat, long){
-	yourPos = L.marker([lat, long]).addTo(map);
+
+	//yourPos = L.marker([lat, long]).addTo(map);
 }
 
 //Position map:
@@ -123,12 +124,23 @@ function onLocationFound(e) {
 	longitude = long;
 	latitude = lat;
 	var radius = e.accuracy / 2;
-	yourPos = L.marker(e.latlng).addTo(map);
+	//yourPos = L.marker(e.latlng).addTo(map);
 	//yourPos = L.marker([63.4, 10.4]).addTo(map);
 
+	var markerIcon = L.icon({
+		iconUrl: 'bilder/Location.png',
 
-	map.addLayer(yourPos);
-	yourPos.bindPopup("Du er innenfor " + radius + " meter fra dette punktet").openPopup();
+		iconSize:     [30, 40], // size of the icon
+		iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
+	});
+	
+	yourPos = L.marker([lat, long], {icon: markerIcon}).addTo(map);
+
+
+	//map.addLayer(yourPos);
+
+
+	//yourPos.bindPopup("Du er innenfor " + radius + " meter fra dette punktet").openPopup();
 
 	posCircle = L.circle(e.latlng, radius);
 	posCircle.addTo(map);
