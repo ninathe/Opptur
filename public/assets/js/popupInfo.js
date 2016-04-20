@@ -66,6 +66,8 @@ $(document).ready(function(){
 		centerInfoPopup();
 		//load popup
 		loadInfoPopup();
+		disableTripsPopup();
+
 	});
 				
 	//CLOSING info

@@ -66,6 +66,8 @@ $(document).ready(function(){
 		centerNewUserPopup();
 		//load popup
 		loadNewUserPopup();
+		disableTripsPopup();
+
 	});
 				
 	//CLOSING newUser

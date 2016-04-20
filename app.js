@@ -161,7 +161,7 @@ app.post('/findTrip', function (req, res) {
 
         } else {
             console.log("error - wrong input");
-            res.status(500).send({success: false});
+            res.status(500).send({success: false,});
         }
     });
 });
