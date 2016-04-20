@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <div class="row" style = "background-color: #a4a5a5">
-        <div class="col-sm-4 col-md-4" style="height: 100em">
+        <div class="col-sm-4" style = "background-color: #a4a5a5">
             <ul class="nav nav-sidebar">
                 <div id="regTur">
-                <form>
+                <form ng-controller="GooglePlaceController">
                     <li><h3 style="color: white; margin-bottom: 30px; margin-top: 40px"><span class="entypo-pencil"></span>  Registrer din tur</h3></li>
                     <li><h4 style="color: white"></h4></li>
                     <li> <input id = "tripNavn" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Navn på topptur" name="name" required pattern=".{2,}" /></li>
-                    <li><input id = "tripPlassering" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Plassering" name="place" /></li>
+                    <li><input id = "tripPlassering" style = "margin: auto; margin-bottom: 10px" class = "fin" placeholder="Plassering" name="place" ng-model="chosenPlace" googleplace></li>
                     <li><p style = "color: white; font-size: smaller; margin-left: 40px; margin-right: 30px; margin-bottom: 25px; text-align: left;">
                         Hvor er toppturen? Eksempler er "Myrkdalen" eller "Lofoten"</p></li>
 
@@ -50,7 +50,7 @@
                             $(document).on('click', '#BtnRegisterTrip', function(){
                                 console.log("on click #Btn");
                                 registerTrip();
-                                location.reload();
+//                                location.reload();
                             });
                         });
                     </script>
@@ -73,7 +73,7 @@
 
             </ul>
         </div>
-        <div class="col-sm-8" style = "background-color: #a4a5a5; margin-top: -4px; height: 100em">
+        <div class="col-sm-8" style = "background-color: #a4a5a5; margin-top: -4px">
 
 
 
@@ -85,15 +85,13 @@
         <script>
                 var shape_for_db = null;
                 var shape;
-                var center;
-                var zoom;
 
 
 
                 var map = new L.Map('map', {center: new L.LatLng(65.00, 27.50), zoom: 5, zoomControl:false });
-                center = map.getCenter();
-                zoom = map.getZoom();
+                var center = map.getCenter();
 
+                var center = map.getCenter();
                 // create a new tile layer
                 var tileUrl = 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
                     layer = new L.TileLayer(tileUrl, {maxZoom: 18});

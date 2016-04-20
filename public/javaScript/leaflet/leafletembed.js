@@ -142,7 +142,7 @@ function onLocationFound(e) {
 function givePosition() {
 
 	//Setter marker ved posisjon:
-
+	
 
 
 	//yourPos = L.marker([lat, long]).addTo(map);
