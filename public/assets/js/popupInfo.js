@@ -61,7 +61,7 @@ $(document).ready(function(){
 	
 	//LOADING info
 	//Click the button event!
-	$("#BtnInfo").click(function(){
+	$(document).on('click', '#BtnInfo', function(){
 		//centering with css
 		centerInfoPopup();
 		//load popup
@@ -69,17 +69,13 @@ $(document).ready(function(){
 	});
 				
 	//CLOSING info
-	//Click the x event!
-	$("#lukk").click(function(){
-		disableInfoPopup();
-	});
 	//Click out event!
-	$("#backgroundPopup").click(function(){
+	$(document).on('click', '#backgroundPopup', function(){
 		disableInfoPopup();
 	});
 	//Press Escape event!
 	$(document).keypress(function(e){
-		if(e.keyCode==27 && infoStatus==1){
+		if(e.keyCode==27 && loginStatus==1){
 			disableInfoPopup();
 		}
 	});

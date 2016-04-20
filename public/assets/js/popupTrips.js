@@ -52,7 +52,7 @@ $(document).ready(function(){
 	
 	//LOADING Trips
 	//Click the button event!
-	$("#btnSearch").click(function(){
+	$(document).on('click', '#btnSearch', function(){
 		//centering with css
 		centerTripsPopup();
 		//load popup
@@ -60,17 +60,13 @@ $(document).ready(function(){
 	});
 				
 	//CLOSING Trips
-	//Click the x event!
-	$("#lukk").click(function(){
-		disableTripsPopup();
-	});
 	//Click out event!
-	$("#backgroundTripsPopup").click(function(){
+	$(document).on('click', '#backgroundTripsPopup', function(){
 		disableTripsPopup();
 	});
 	//Press Escape event!
 	$(document).keypress(function(e){
-		if(e.keyCode==27 && TripsStatus==1){
+		if(e.keyCode==27 && loginStatus==1){
 			disableTripsPopup();
 		}
 	});
