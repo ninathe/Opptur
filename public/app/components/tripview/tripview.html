@@ -113,7 +113,13 @@
                 var longitudeKart = myPolyLine.features[0].geometry.coordinates[leng/2][0];
                 var latitudeKart = myPolyLine.features[0].geometry.coordinates[leng/2][1];
 
+<<<<<<< Updated upstream
                 var map = new L.Map('map', {center: new L.LatLng(latitudeKart, longitudeKart), zoom: 12});
+=======
+
+                var map = new L.Map('map', {center: new L.LatLng(68.0349, 13.3476), zoom: 12});
+
+>>>>>>> Stashed changes
                 // create a new tile layer
                 var tileUrl = 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png',
                         layer = new L.TileLayer(tileUrl, {maxZoom: 18});
