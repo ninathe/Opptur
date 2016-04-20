@@ -20,7 +20,9 @@
                         .then(
                             function(res) {
                                 //sessionStorage.[navn på variabel som printes i 'tripView' og 'Mulige turer'] = res.data.[JSON element]
-                                sessionStorage.tripName = res.data.tripName;
+                                sessionStorage.tripName = "yo";
+                                //sessionStorage.tripName = res.data.tripName;
+                                console.log(res.data.tripName);
                             },
                             function(err) {
 

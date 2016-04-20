@@ -24,6 +24,9 @@
                 $rootScope.getUsername = function() {
                     return sessionStorage.username;
                 }
+                $rootScope.getTripname = function() {
+                    return sessionStorage.tripName;
+                }
             }
         ]);
 
