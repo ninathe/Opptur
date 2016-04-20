@@ -12,9 +12,10 @@
                         Hvor er toppturen? Eksempler er "Myrkdalen" eller "Lofoten"</p></li>
 
                     <li><p style = "margin: auto; margin-bottom: 10px; margin-left: 43px; text-align: left; color: white;">
-                        <b>Estimert turtid</b></p></li>
-                    <li><input class = "slider" style = "width: 300px" type = "range" id="estmturtid" min = "1" max = "10" step = "1" title = "Velg turtid" value = "0"/>
-                        <output id="turtid"></output></li>
+                        <b>Estimert turtid: </b><output id="turtid">1</output class = "outputValue"></output> t</p></li>
+                    <li><input class = "slider" style = "width: 300px" type = "range" id="estmturtid" min = "1" max = "10" step = "1" title = "Velg turtid" value = "0"
+                               onmousemove="turtid.value=value" + "t" ng-model="tripSearchParams.maxDuration" />
+                        </li>
 
 
                     <li><p style = "margin: auto; margin-bottom: 10px; margin-top: 20px; margin-left: 43px; text-align: left; color: white;">
