@@ -103,7 +103,7 @@ app.get('/getUsername', function(req,res) {
                     console.log("dette er testturen: " + i);
                     console.log(trip[i].tripName);
                 }
-                res.status(200).send({success: true, tripName: "" + trip[0]});
+                res.status(200).send({success: true, tripName: "" + trip[0].tripName});
 
             } else {
                 console.log("error - wrong input");

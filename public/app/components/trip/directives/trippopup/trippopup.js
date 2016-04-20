@@ -14,13 +14,14 @@
                     'duration' : ''
                 };
                 vm.findTrip = findTrip;
+                vm.tripName = 'N/A';
 
                 function findTrip(credentials) {
                     $http.post('/findTrip', credentials)
                         .then(
                             function(res) {
                                 //sessionStorage.[navn på variabel som printes i 'tripView' og 'Mulige turer'] = res.data.[JSON element]
-                                sessionStorage.tripName = "yo";
+                                vm.tripName = res.data.tripName;
                                 //sessionStorage.tripName = res.data.tripName;
                                 console.log(res.data.tripName);
                             },
