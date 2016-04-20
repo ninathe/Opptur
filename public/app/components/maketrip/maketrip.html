@@ -19,8 +19,7 @@
 
                     <li><p style = "margin: auto; margin-bottom: 10px; margin-top: 20px; margin-left: 43px; text-align: left; color: white;">
                         <b>Vanskelighetsgrad</b></p></li>
-                    <li><input class = "slider" style = "width: 300px" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" onchange="difficultValue.value=value"/>
-                        <output id="difficultvalue"></output></li>
+                    <li><input class = "slider" style = "width: 300px" type = "range" id="difficult" min = "1" max = "5" step = "1" title = "Velg vanskelighetsgrad" value = "0" /></li>
                     <p style = "color: white; font-size: smaller; display: inline;">Nybegynner</p>
                     <p style = "color: white; font-size: smaller; display: inline; margin-left: 186px">Ekspert</p>
                     <li><textarea id = "tripBeskrivelse" style = "height: 130px; margin: auto; margin-bottom: 20px; margin-top: 25px;" class = "fin" placeholder=" Beskrivelse" name="description"/></li>
@@ -51,7 +50,7 @@
                             $(document).on('click', '#BtnRegisterTrip', function(){
                                 console.log("on click #Btn");
                                 registerTrip();
-                                location.reload();
+//                                location.reload();
                             });
                         });
                     </script>
@@ -85,6 +84,10 @@
 
         <script>
                 var shape_for_db = null;
+                var shape;
+                var center = map.getCenter();
+                var center = map.getCenter();
+
 
                 var map = new L.Map('map', {center: new L.LatLng(65.00, 27.50), zoom: 5, zoomControl:false });
 
@@ -133,7 +136,7 @@
                     drawnItems.addLayer(layer);
 
 
-                    var shape = drawnItems.toGeoJSON();
+                    shape = drawnItems.toGeoJSON();
                     shape_for_db = JSON.stringify(shape);
                     //var latlong = drawnItems.getLatLngs();
                     console.log("db: " + shape_for_db);

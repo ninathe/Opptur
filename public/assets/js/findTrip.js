@@ -1,23 +1,37 @@
 
+var maxDuration = 10;
+var maxDifficulty = 5;
+var maxDistance;
+
 function findTrip() {  //is activated when the "sig up" button is clicked
-    var duration = document.getElementById("distanceTripValue").value;
+//TODO: lage if for om noen er tomme
+    maxDuration    = document.getElementById("distanceTrip").value;
+    maxDistance    = document.getElementById("inputDistanceToStart").value;
+    maxDifficulty  = document.getElementById("difficult").value;
 
 
     //Plassering, avstand til punktet, må bruke kortestevei greier
     //var plassering = document.getElementById("startPos").value;
     //var distanceToPoint = document.getElementById("inputDistanceToStart").value;
 
-
-
     //Get info from front end  (user), and send the info to back end so it can check database
-    $.post("/findTrip",
-        {
-            "duration" : duration,
-        }
-    ).complete( function(data,status){
-        console.log("Data loaded: " + data + "\nStatus: " + status);
 
-    })
+        $.post("/findTrip",
+            {
+                "difficulty" : maxDifficulty,
+                "duration" : maxDuration
+            }
+        ).complete( function(data,status){
+            console.log("Data loaded: " + data + "\nStatus: " + status);
+
+        })
+
+
+
+
+
+
+
 
 }
 

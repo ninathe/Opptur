@@ -6,27 +6,20 @@ var NUMBER_REGEX = /^\d+$/;
 
 
 function registerTrip(){  //is activated when the "registerTurBtn" button is clicked
-    console.log("dette er shapet: " +shape_for_db);
-    alert("knappen ble trykket");
-    var latitude        = "63.1234";
-    var longitude       = "10.1234";
+    var latitude = (shape['features'][0]['geometry']['coordinates'][0][1]); //
+    var longitude = (shape['features'][0]['geometry']['coordinates'][0][0]);
     //var latlng          = document.getElementById("map").getCenter();
     //var zoom            = document.getElementById("map").getZoom();
     var tripName        = document.getElementById("tripNavn").value;
     var place           = document.getElementById("tripPlassering").value;
     var description     = document.getElementById("tripBeskrivelse").value;
     var difficulty      = document.getElementById("difficult").value;
-    var points          = shape_for_db[0];
+    var path            = shape_for_db;
     //var latitude        = document.getElementById("reg_latitude").value;
     //var longitude       = document.getElementById("reg_longitude").value;
-    //var duration        = document.getElementById("reg_duration").value;
+    var duration        = document.getElementById("estmturtid").value;
     var nameValid       = checkName(tripName);
     var placeValid      = checkName(place);
-    //var latitudeValid   = checkLatitude(latitude);
-    //var longitudeValid  = checkLongitude(longitude);
-    //var durationValid   = checkDuration(duration);
-    console.log("Før posting:::: \nNavnet: "+tripName + "\nplassering: " +place + "\nbeskrivelse: " +description + "\nvanskelighetsgrad: " + difficulty);
-    //console.log("Latlng: " + latlng + "Zoom: " + zoom);
 
     if(nameValid && placeValid){
          $.post("/makeTrip",
@@ -37,13 +30,13 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
                 place: place,
                 difficulty : difficulty,
                 description: description,
-                //duration : Number,
+                duration : duration,
                 center : {
                     lat :63.446827,
                     long : 10.421906
                 },
                 zoom : 5,
-                path : points
+                path : path
             })
             .done( function(data,status){
                 alert(data);

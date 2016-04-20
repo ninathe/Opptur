@@ -9,10 +9,10 @@ var tripSchema = new Schema({
     place: {type: String, required: true},
     difficulty : Number,
     description: String,
-    //duration : Number,
-    center : Number,
+    duration : Number,
+    center : Object,
     zoom : Number,
-    points : Object
+    path : Object
 });
 
 var Trip = mongoose.model('Trip', tripSchema);
