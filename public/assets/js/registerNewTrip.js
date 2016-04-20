@@ -6,8 +6,8 @@ var NUMBER_REGEX = /^\d+$/;
 
 
 function registerTrip(){  //is activated when the "registerTurBtn" button is clicked
-    var latitude = (shape['features'][0]['geometry']['coordinates'][0][1]); //
-    var longitude = (shape['features'][0]['geometry']['coordinates'][0][0]);
+    var latti = (shape['features'][0]['geometry']['coordinates'][0][1]); //
+    var lonngi = (shape['features'][0]['geometry']['coordinates'][0][0]);
     //var latlng          = document.getElementById("map").getCenter();
     //var zoom            = document.getElementById("map").getZoom();
     var tripName        = document.getElementById("tripNavn").value;
@@ -21,21 +21,23 @@ function registerTrip(){  //is activated when the "registerTurBtn" button is cli
     var nameValid       = checkName(tripName);
     var placeValid      = checkName(place);
 
+    console.log("center " + center.lat + "zoom " +zoom);
+
     if(nameValid && placeValid){
          $.post("/makeTrip",
             {
                 tripName: tripName,
-                latitude: latitude,
-                longitude: longitude,
+                latitude: latti,
+                longitude: lonngi,
                 place: place,
                 difficulty : difficulty,
                 description: description,
                 duration : duration,
                 center : {
-                    lat :63.446827,
-                    long : 10.421906
+                    lat: center.lat,
+                    long: center.lng
                 },
-                zoom : 5,
+                zoom : zoom,
                 path : path
             })
             .done( function(data,status){
