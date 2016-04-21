@@ -9,13 +9,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li><a id="BtnInfo">Om</a></li>
+                <li ng-if="state"><a id="FinnDinTur"ui-sref="trip">Finn tur</a></li>
+                <li ng-if="isAuthorized()"><a ui-sref="maketrip">Registrer tur</a></li>
                 <li ng-if="!isAuthorized()"><a id="BtnNewUser">Ny bruker</a></li>
                 <li ng-if="!isAuthorized()"><a id="BtnlogIn">Logg inn</a></li>
-                <li><a id="BtnInfo">Om</a></li>
-                <li ng-if="isAuthorized()"><a ui-sref="maketrip">Registrer tur</a></li>
                 <li ng-if="isAuthorized()"><a id="BtnlogOut" ng-click="logOut()">Logg ut</a></li>
                 <li ng-if="isAuthorized()"><a id="Brukernavn"ng-bind="getUsername()"></a></li>
-                <li><a id="FinnDinTur"ui-sref="trip">Finn tur</a></li>
+
             </ul>
         </div>
     </div>
