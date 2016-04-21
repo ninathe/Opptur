@@ -161,7 +161,8 @@ app.post('/findTrip', function (req, res) {
 
         } else {
             console.log("error - wrong input");
-            res.status(500).send({success: false,message: "Det finnes dessverre ingen turer som matcher ditt søk. Enten kan du prøve med nye verdier, ellers kan du jo prøve å lage en tur selv (logg inn og velg 'Registrer tur'!)"});
+            res.status(500).send({success: false});
+            //res.status(500).send({success: false,message: "Det finnes dessverre ingen turer som matcher ditt søk. Enten kan du prøve med nye verdier, ellers kan du jo prøve å lage en tur selv (logg inn og velg 'Registrer tur'!)"});
         }
     });
 });

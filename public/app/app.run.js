@@ -50,7 +50,7 @@
                         },
                         function(err) {
                             console.error(err);
-                            sessionStorage.message = err.data.message;
+                            //sessionStorage.message = err.data.message;
                         }
                     );
                 }
