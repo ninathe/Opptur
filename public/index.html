@@ -212,6 +212,7 @@
         <li ng-repeat="trip in trips" style = "margin-bottom: 7px">
             <a class="navntrip" style="color: white;" ng-bind="trip.tripName" ui-sref="tripview" ng-click="selectTrip(trip)"></a></li>
     </ul>
+    <li id="Brukernavn"ng-bind="getMessageTrip()"></li>
 </div><!--Trips-->
 
 

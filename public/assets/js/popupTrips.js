@@ -44,7 +44,10 @@ function centerTripsPopup(){
 	
 }
 
+function reloadValues(){
+	document.getElementById("inputDistanceToStart").value = 1;
 
+}
 
 
 //CONTROLLING EVENTS IN jQuery
