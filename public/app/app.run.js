@@ -26,7 +26,7 @@
                 }
                 $rootScope.currentTrip = null;
                 $rootScope.trips = [];
-                $rootScope.message = "";
+                //$rootScope.message = "";
                 $rootScope.tripSearchParams = {
                     maxDuration: 0,
                     maxDistance: 0,
@@ -54,9 +54,9 @@
                         }
                     );
                 }
-                $rootScope.getMessageTrip = function() {
-                    return sessionStorage.message;
-                }
+                //$rootScope.getMessageTrip = function() {
+                //    return sessionStorage.message;
+                //}
                 $rootScope.selectTrip = function(trip) {
                     $rootScope.currentTrip = trip;
                     sessionStorage.currentTrip = JSON.stringify(trip);
