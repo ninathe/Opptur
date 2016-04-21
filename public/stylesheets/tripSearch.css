@@ -1,0 +1,41 @@
+ul#popupContent{
+    color: white;
+    list-style-type: none;
+}
+a.navntrip{
+    color: white;
+}
+
+#muligeturer{
+    margin-bottom: 30px;
+}
+
+
+
+
+/* #tripsPopup{
+    background-color: grey;
+}
+
+ul {
+    color: white;
+    list-style-type: none;
+
+}
+
+li{
+    margin-bottom: 20px;
+}
+
+
+
+
+/*<div id = "tripsPopup">
+<h1>Mulige turer</h1>
+                  <ul id = "popupContent">
+<li ng-repeat="trip in trips"><a class="navntrip" ng-bind="trip.tripName" ui-sref="tripview" ng-click="selectTrip(trip)"></a></li>
+                                                                                                                               </ul>
+                                                                                                                                 </div><!--Trips-->
+                                                                                                                                                                                                                                                                                                                                                                                                           li#popuoC{
+
+                                                                                                                                                                                                                                                                                                                                                                                                           }                                                                                                                                         #

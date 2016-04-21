@@ -66,6 +66,7 @@ $(document).ready(function(){
 		centerPopup();
 		//load popup
 		loadPopup();
+		disableTripsPopup();
 	});
 
 	//CLOSING logIn

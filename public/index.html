@@ -191,18 +191,14 @@
         <br><br> <br>
         <a id = "infotekstoverskrift">Hvordan bruker du Opptur?</a>
         <br> <br>
-        <a id = "infotekstoverskrift" style="font-size: medium">Finn tur</a> <br><br>
+        <a id = "infotekstoverskrift" style="font-size: medium">Finn tur</a> <br>
         For å søke etter en tur, trykker du på «Finn din tur». Inne på søkesiden velger du hvor turen skal starte fra.
-        Her kan du for eksempel velge at du reiser fra gjeldende plassering, men det kan hende du er i Trondheim i dag, og
-        skal til Lofoten i morgen for å stå på ski. Av den grunn, får du også valget om å skrive inn et stedsnavn eller en
-        adresse du vil reise fra.
-        <br><br>
         Videre velger du avstand fra valgt sted til turens startpunkt, toppturens varighet og vanskelighetsgrad.
         Setter du eksempelvis toppturens varighet til å være seks timer, vil søkeresultatene dekke turer med varighet
         fra en til seks timer.
 <br><br> <br>
         <a id = "infotekstoverskrift" style="font-size: medium"><b>Registrer tur</b></a>
-        <br> <br>
+        <br>
         For å registrere tur, må du være innlogget. Når du er logget inn, dukker «Registrer tur» opp i menyen. Inne
         på «Registrer tur», kan du fylle inn all turinformasjon. Etter at du har fylt ut alle feltene og tegnet stien på
         kartet, kan du trykke på «registrer tur». Når du har gjort det, sendes den til oss for godkjenning. Etter at vi har godkjent
@@ -211,9 +207,10 @@
 
 <!--Trips Popup-->
 <div id = "tripsPopup">
-    <h1>Mulige turer</h1>
+    <h1 id ="muligeturer" style = "margin-bottom: 30px">Mulige turer</h1>
     <ul id = "popupContent">
-        <li ng-repeat="trip in trips"><a class="navntrip" ng-bind="trip.tripName" ui-sref="tripview" ng-click="selectTrip(trip)"></a></li>
+        <li ng-repeat="trip in trips" style = "margin-bottom: 7px">
+            <a class="navntrip" style="color: white;" ng-bind="trip.tripName" ui-sref="tripview" ng-click="selectTrip(trip)"></a></li>
     </ul>
 </div><!--Trips-->
 
