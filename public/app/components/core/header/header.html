@@ -15,6 +15,7 @@
                 <li ng-if="isAuthorized()"><a ui-sref="maketrip">Registrer tur</a></li>
                 <li ng-if="isAuthorized()"><a id="BtnlogOut" ng-click="logOut()">Logg ut</a></li>
                 <li ng-if="isAuthorized()"><a id="Brukernavn"ng-bind="getUsername()"></a></li>
+                <li><a id="FinnDinTur"ui-sref="trip">Finn tur</a></li>
             </ul>
         </div>
     </div>
