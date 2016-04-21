@@ -1,10 +1,31 @@
 ul#popupContent{
     color: white;
+    list-style-type: none;
 }
 a.navntrip{
     color: white;
 }
 
+#muligeturer{
+    margin-bottom: 30px;
+}
+
+
+
+
+/* #tripsPopup{
+    background-color: grey;
+}
+
+ul {
+    color: white;
+    list-style-type: none;
+
+}
+
+li{
+    margin-bottom: 20px;
+}
 
 
 

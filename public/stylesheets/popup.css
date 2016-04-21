@@ -97,6 +97,7 @@
 #infotekst{
 	text-align: left;
 	font-size: small;
+	font-weight: 100;
 }
 
 #infotekstoverskrift{
@@ -115,7 +116,8 @@
 	_position:absolute; /* hack for internet explorer 6*/
 	height:384px;
 	width:408px;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: #b4b7b7;
+	background-opacity: 0.5;
 	border-radius: 10px;
 	border: 1px solid #000;
 	z-index:1050;
@@ -123,8 +125,8 @@
 	font-size:13px;
 	color:white;
 	overflow:auto;
-	border-bottom: 2em solid;
-	border-top: 2em solid;
+	border-bottom: 2em solid #b4b7b7;
+	border-top: 2em solid #b4b7b7;
 }
 
 #newUser{
