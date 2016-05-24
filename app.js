@@ -1,6 +1,6 @@
 var express     = require('express');
 var path        = require('path');
-var logger      = require('morgan');
+var logger      = require('morgan');2
 var cookieParser= require('cookie-parser');
 var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
