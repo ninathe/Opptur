@@ -58,9 +58,31 @@
                 //    return sessionStorage.message;
                 //}
                 $rootScope.selectTrip = function(trip) {
-                    $rootScope.currentTrip = trip;
-                    sessionStorage.currentTrip = JSON.stringify(trip);
-                    sessionStorage.path = trip.path;
+                    getVarsom(
+                        function(skredfare) {
+                            trip.skredfare = skredfare;
+                            $rootScope.currentTrip = trip;
+                            sessionStorage.currentTrip = JSON.stringify(trip);
+                            sessionStorage.path = trip.path;
+                            console.log(trip);
+                        }
+                    );
+                }
+
+                function getVarsom(callback) {
+                    $http.post('/varsom',
+                        {
+                            'lat': $rootScope.tripSearchParams.latitude,
+                            'long': $rootScope.tripSearchParams.longitude
+                        }
+                    ).then(
+                        function(res) {
+                            callback(res.data.varsom.skredfare);
+                        },
+                        function(err) {
+                            console.log(err);
+                        }
+                    )
                 }
 
                 function init() {

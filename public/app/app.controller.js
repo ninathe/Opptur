@@ -26,6 +26,12 @@
 
     }
 
+    cont.controller('TripViewController', ['$rootScope', '$scope', '$http', TripViewController]);
+
+    function TripViewController($rootScope, $scope, $http) {
+
+    }
+
 
 
 

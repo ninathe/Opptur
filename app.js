@@ -119,12 +119,36 @@ function getGoogleDur(lat, long, dest, callback) {
         console.log('GOT ERROR: ' + err.message);
     });
 }
+function getSnoskredVarsel(lat, long, callback) {
+    var options = {
+        host: 'api01.nve.no',
+        port: 80,
+        path: '/hydrology/forecast/avalanche/v2.0.2/api/AvalancheWarningByCoordinates/Simple/' +
+              lat + '/' +
+              long
+    };
+
+    http.get(options,
+        function(res) {
+            res.setEncoding('utf8');
+
+            var str = '';
+            res.on('data', function(chunk) {
+                str += chunk;
+            }).on('end', function() {
+                callback(str);
+            });
+        }
+    );
+}
+
 app.post('/findTrip', function (req, res) {
     var query = {
         'difficulty': { $lte: req.body.difficulty },
         'duration': { $lte: req.body.duration },
         'godkjent': true
     };
+
     //Talks to the database, check if trip exist
     var dbTrip = Trip.find(query, function (err, trip) {
         if (trip.length > 0) {
@@ -150,10 +174,14 @@ app.post('/findTrip', function (req, res) {
             getGoogleDur(latOrig, longOrig, dest,
                 function(data) {
                     var json = JSON.parse(data);
+
                     var validTrips = [];
                     for (var d = 0; d < json.destination_addresses.length; ++d) {
-                        if (json.rows[0].elements[d].duration.value <= distance)
-                            validTrips.push(trips[d]);
+                        var dur = json.rows[0].elements[d] !== undefined && json.rows[0].elements[d].duration != undefined;
+                        if (dur)
+                            if (json.rows[0].elements[d].duration.value <= distance) {
+                                validTrips.push(trips[d]);
+                            }
                     }
                     res.status(200).send({success: true, trips: validTrips});
                 }
@@ -167,30 +195,47 @@ app.post('/findTrip', function (req, res) {
     });
 });
 
- app.get('/googleduration', function(req, res, next) {
-     console.log("GET %s", req.path);
+app.post('/varsom',
+    function (req, res) {
+        var lat = req.body.lat;
+        var long = req.body.long;
 
-     var latitudeOrigin = req.query.lat;
-     var longitudeOrigin = req.query.long;
+        getSnoskredVarsel(lat, long,
+            function(data) {
+                var jsonVarsom = JSON.parse(data);
+                var ret = {}
+                ret.skredfare = jsonVarsom[0].DangerLevel;
+                ret.regionname = jsonVarsom[0].RegionName;
+                res.status(200).send({success: true, varsom: ret});
+            }
+        );
+    }
+);
 
-     var options = {
-         host: 'maps.googleapis.com',
-         port: 443,
-         path: '/maps/api/distancematrix/json?units=metric&origins=68.1513,14.1983&destinations=68.2074%2C14.4803%7C68.2343%2C14.5682%7C&key=AIzaSyCVws1GADOVAu0rPTddKuC0gHka0F32_VA'
-     };
-
-     https.get(options,
-         function(res2) {
-             console.log('GOT RESPONSE: ' + res2.statusCode);
-             res2.setEncoding('utf8');
-             res2.on('data', function(chunk) {
-                 res.status(200).send(chunk);
-             });
-         }
-     ).on('error', function(err) {
-         console.log('GOT ERROR: ' + err.message);
-     });
- });
+ //app.get('/googleduration', function(req, res, next) {
+ //    console.log("GET %s", req.path);
+ //
+ //    var latitudeOrigin = req.query.lat;
+ //    var longitudeOrigin = req.query.long;
+ //
+ //    var options = {
+ //        host: 'maps.googleapis.com',
+ //        port: 443,
+ //        path: '/maps/api/distancematrix/json?units=metric&origins=68.1513,14.1983&destinations=68.2074%2C14.4803%7C68.2343%2C14.5682%7C&key=AIzaSyCVws1GADOVAu0rPTddKuC0gHka0F32_VA'
+ //    };
+ //
+ //    https.get(options,
+ //        function(res2) {
+ //            console.log('GOT RESPONSE: ' + res2.statusCode);
+ //            res2.setEncoding('utf8');
+ //            res2.on('data', function(chunk) {
+ //                res.status(200).send(chunk);
+ //            });
+ //        }
+ //    ).on('error', function(err) {
+ //        console.log('GOT ERROR: ' + err.message);
+ //    });
+ //});
 
 app.all('/*', function (req, res, next) {
     // Just send the index.html for other files to support HTML5Mode

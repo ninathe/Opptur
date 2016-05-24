@@ -41,8 +41,7 @@
                     })
                     .state('tripview', {
                         url: '/tripview',
-                        templateUrl: '/app/components/tripview/tripview.html',
-                        controller: 'drawMapController'
+                        templateUrl: '/app/components/tripview/tripview.html'
                     })
             }]
         );
