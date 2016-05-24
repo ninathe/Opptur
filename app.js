@@ -167,30 +167,30 @@ app.post('/findTrip', function (req, res) {
     });
 });
 
-// app.get('/googleduration', function(req, res, next) {
-//     console.log("GET %s", req.path);
+ app.get('/googleduration', function(req, res, next) {
+     console.log("GET %s", req.path);
 
-//     var latitudeOrigin = req.query.lat;
-//     var longitudeOrigin = req.query.long;
+     var latitudeOrigin = req.query.lat;
+     var longitudeOrigin = req.query.long;
 
-//     var options = {
-//         host: 'maps.googleapis.com',
-//         port: 443,
-//         path: '/maps/api/distancematrix/json?units=metric&origins=68.1513,14.1983&destinations=68.2074%2C14.4803%7C68.2343%2C14.5682%7C&key=AIzaSyCVws1GADOVAu0rPTddKuC0gHka0F32_VA'
-//     };
+     var options = {
+         host: 'maps.googleapis.com',
+         port: 443,
+         path: '/maps/api/distancematrix/json?units=metric&origins=68.1513,14.1983&destinations=68.2074%2C14.4803%7C68.2343%2C14.5682%7C&key=AIzaSyCVws1GADOVAu0rPTddKuC0gHka0F32_VA'
+     };
 
-//     https.get(options,
-//         function(res2) {
-//             console.log('GOT RESPONSE: ' + res2.statusCode);
-//             res2.setEncoding('utf8');
-//             res2.on('data', function(chunk) {
-//                 res.status(200).send(chunk);
-//             });
-//         }
-//     ).on('error', function(err) {
-//         console.log('GOT ERROR: ' + err.message);
-//     });
-// });
+     https.get(options,
+         function(res2) {
+             console.log('GOT RESPONSE: ' + res2.statusCode);
+             res2.setEncoding('utf8');
+             res2.on('data', function(chunk) {
+                 res.status(200).send(chunk);
+             });
+         }
+     ).on('error', function(err) {
+         console.log('GOT ERROR: ' + err.message);
+     });
+ });
 
 app.all('/*', function (req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
