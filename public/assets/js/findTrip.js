@@ -28,7 +28,7 @@ $(document).ready(function(){
     //LOADING newUser
     //Click the button event!
     $(document).on('click', '#btnSearch', function(){
-        alert("Longitude: " + longitude + " Latitude: " + latitude + " Avstand til Startpnkt: "
+        //alert("Longitude: " + longitude + " Latitude: " + latitude + " Avstand til Startpnkt: "
             + distanceValue.value + " Lengde på tur: " + distanceTripValue.value + " Vanskelighetsgrad: " + difficult.value);
     });
 

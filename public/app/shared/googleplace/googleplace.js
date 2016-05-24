@@ -15,8 +15,8 @@
                 google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
                     scope.$apply(function() {
                         model.$setViewValue(element.val());
-                        var latitude = scope.gPlace.gm_accessors_.place.Rd.place.geometry.location.lat();
-                        var longitude = scope.gPlace.gm_accessors_.place.Rd.place.geometry.location.lng();
+                        var latitude = scope.gPlace.gm_accessors_.place.Od.place.geometry.location.lat();
+                        var longitude = scope.gPlace.gm_accessors_.place.Od.place.geometry.location.lng();
                         $rootScope.tripSearchParams.latitude = latitude;
                         $rootScope.tripSearchParams.longitude = longitude;
                         map.setView([latitude, longitude], 11);

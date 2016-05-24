@@ -18,7 +18,6 @@
 
     function mapController() {
         initmap();
-
     }
 
     cont.controller('drawMapController', [drawMapController]);
