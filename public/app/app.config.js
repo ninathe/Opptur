@@ -1,4 +1,4 @@
-/**
+    /**
  * Created by Nina on 08.04.16.
  */
 
@@ -32,8 +32,7 @@
                     })
                     .state('trip', {
                         url: '/trip',
-                        templateUrl: '/app/components/trip/trip.html',
-                        controller: 'mapController'
+                        templateUrl: '/app/components/trip/trip.html'
                     })
                     .state('maketrip', {
                         url: '/maketrip',
