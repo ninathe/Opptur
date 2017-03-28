@@ -11,7 +11,9 @@
 
                 vm.credentials = {
                     'difficulty' : '',
-                    'duration' : ''
+                    'duration' : '',
+                    'lat': 63.446827,
+                    'long': 10.421906
                 };
                 vm.findTrip = findTrip;
                 vm.tripName = 'N/A';
